@@ -7,128 +7,96 @@
     <link rel="stylesheet" type="text/css" href="./Styles.css">
     <script src="./cart.js"></script>
     <style>
+        body { background: var(--lux-white); color: var(--lux-black); }
+        .cartsplit {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 4rem;
+        }
+        .itemscontainer {
+            flex: 2;
+            min-width: 300px;
+        }
+        .checkoutcontainer {
+            flex: 1;
+            min-width: 300px;
+            background: #fafafa;
+            padding: 3rem;
+            border: 1px solid var(--lux-gray);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        .col3 {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: var(--lux-gray);
+            border-bottom: 2px solid var(--lux-black);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Overriding cart.js styles for luxury look */
+        .cart-item-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            align-items: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .cart-img {
+            width: 100px;
+            height: 120px;
+            object-fit: cover;
+            filter: grayscale(10%) contrast(1.1);
+        }
+        .cart-item-info { gap: 2rem; }
+        .cart-item-info h4 { font-family: var(--lux-font-heading); font-size: 1.25rem !important; margin: 0 0 0.5rem 0; font-weight: 500 !important; }
+        .price-meta { margin-top: 0.5rem; font-family: var(--lux-font-sans); }
+        .final-price { font-weight: 400; font-size: 1.1rem; }
+        .delete-btn { background: none; border: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; color: var(--lux-gray); text-decoration: underline; margin-top: 1rem; padding: 0; }
+        .qty-box { display: flex; align-items: center; border: 1px solid var(--lux-gray); width: fit-content; }
+        .qty-box input { width: 40px; text-align: center; border: none; font-family: var(--lux-font-sans); background: transparent; }
+        .qty-btn { background: none; border: none; padding: 0.5rem 1rem; cursor: pointer; }
+        .hrline { display: none; }
+        .cart-item-amount { font-family: var(--lux-font-sans); font-size: 1.25rem; font-weight: 400; }
+        
+        .summary-title { font-family: var(--lux-font-heading); font-size: 1.5rem; margin-bottom: 2rem; font-weight: 400; }
+        .checkoutcontainer p { display: flex; justify-content: space-between; font-family: var(--lux-font-sans); margin-bottom: 1rem; border-bottom: 1px solid #eaeaea; padding-bottom: 1rem; }
+        .finalTotal { font-size: 1.5rem; font-weight: 600; }
+        .checkout-btn { width: 100%; background: var(--lux-black) !important; color: var(--lux-white) !important; text-transform: uppercase; letter-spacing: 0.1em; padding: 1.5rem !important; border: none !important; font-family: var(--lux-font-sans); margin-top: 2rem; cursor: pointer; transition: background 0.3s ease !important; }
+        .checkout-btn:hover { background: #333 !important; }
 
-header,
-.header,
-.site-header {
-    width: 100%;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-}
-
-.cartsplit {
-    display: flex;
-    gap: 30px;
-    padding: 20px 40px;
-    align-items: stretch;
-}
-
-.itemscontainer {
-    flex: 2;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.checkoutcontainer {
-    flex: 1;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    position: sticky;
-    top: 20px;
-    height: fit-content;
-}
-
-.cart-item-row {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.cart-item-info {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.cart-img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.cart-item-amount {
-    font-weight: 600;
-    font-size: 16px;
-}
-
-@media (max-width: 768px) {
-
-    .cartsplit {
-        display: grid !important;
-        grid-template-columns: 1fr !important; /* Force single column */
-    }
-
-    .itemscontainer,
-    .checkoutcontainer {
-        grid-column: 1 / -1;  /* Force full width */
-        width: 100%;
-    }
-
-    .checkoutcontainer {
-        position: static !important;
-        margin-top: 20px;
-    }
-
-    .cart-item-row {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .col3 {
-        display: none;
-    }
-}
+        @media (max-width: 768px) {
+            .cart-item-row { grid-template-columns: 1fr; gap: 2rem; }
+            .col3 { display: none; }
+            .cartsplit { padding: 2rem 1rem; gap: 2rem; }
+            .checkoutcontainer { padding: 2rem; position: static; }
+        }
     </style>
 </head>
 <body>
 
     <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/includes/header.php"; ?>
-    <div class="cartsplit">
-        <div class="itemscontainer">
-        <div class="col3">
-            <h6 class="heading">Items</h6>
-            <h6 class="heading">Quantity</h6>
-            <h6 class="heading">Amount</h6>
-        </div>
-
-        <div  id="cartItemsContainer"></div>
-        </div>
-        <div class="checkoutcontainer">
-            <h3 class="summary-title">Order Summary</h3>
-            <p>Total Items: <span id="totalItems">0</span></p>
-            <p>Total Quantity: <span id="totalQty">0</span></p>
-            <p>Total Amount: <span id="grandTotal" class="finalTotal">0</span></p>
-            <button onclick="window.location.href='add_delivery_address.php'" 
-                    class="checkout-btn w-full text-white font-semibold py-3 px-6  transition-all duration-300"
-                    style="background: linear-gradient(135deg, #e91e63, #6a1b9a); border: none;">
-                Checkout
-            </button>
-        </div>
-
+<div class="zara-cart-container">
+    <div class="zara-cart-header">
+        <h3>SHOPPING BAG</h3>
+        <p><span id="totalItems">0</span> ITEMS</p>
     </div>
+    
+    <div id="cartItemsContainer" class="zara-cart-items"></div>
+    
+    <div class="zara-cart-footer">
+        <div class="zara-cart-total">TOTAL: <span id="grandTotal">0</span> INR</div>
+        <button onclick="window.location.href='add_delivery_address.php'" class="zara-checkout-btn">CONTINUE</button>
+    </div>
+</div>
  <?php require_once $_SERVER["DOCUMENT_ROOT"] ."/includes/footer.php"; ?>
     
     <div id="toast-container"></div>

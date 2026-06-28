@@ -95,6 +95,7 @@ $items = $stmt_items->fetchAll(PDO::FETCH_ASSOC);
   
     
 </style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body class="bg-gray-100 min-h-screen">
 
@@ -118,7 +119,7 @@ $items = $stmt_items->fetchAll(PDO::FETCH_ASSOC);
                         $order['status'] === 'ordered'
                     ): ?>
                     <button onclick="markAsPaid(<?= $order['id'] ?>)"
-                        class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition font-semibold">
+                        class="px-4 py-2 bg-black text-white text-white rounded-lg hover:bg-black text-white transition font-semibold">
                         ✓ Mark as Paid
                     </button>
                     <?php endif; ?>
@@ -145,7 +146,7 @@ $items = $stmt_items->fetchAll(PDO::FETCH_ASSOC);
                     <p>
                         <span class="font-semibold">Payment Status:</span>
                         <?php if ($order['payment_status'] === 'paid'): ?>
-                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-sm">Paid</span>
+                            <span class="px-2 py-1 bg-black text-white text-black rounded-full text-sm">Paid</span>
                         <?php elseif ($order['payment_status'] === 'advance_paid'): ?>
                             <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Advance Paid</span>
                         <?php elseif ($order['payment_status'] === 'partial_paid'): ?>
@@ -177,7 +178,7 @@ $items = $stmt_items->fetchAll(PDO::FETCH_ASSOC);
                         <span class="font-semibold">Order Status:</span>
                         <span class="px-2 py-1 rounded-full text-sm 
                             <?= $order['status'] === 'cancelled' ? 'bg-red-100 text-red-800' : '' ?>
-                            <?= $order['status'] === 'delivered' ? 'bg-green-100 text-green-800' : '' ?>
+                            <?= $order['status'] === 'delivered' ? 'bg-black text-white text-black' : '' ?>
                             <?= $order['status'] === 'pending' ? 'bg-yellow-100 text-yellow-800' : '' ?>">
                             <?= ucfirst($order['status']) ?>
                         </span>
@@ -207,7 +208,7 @@ $items = $stmt_items->fetchAll(PDO::FETCH_ASSOC);
                         <span>₹<?= number_format($order['shipping_charge'], 2) ?></span>
                     </div>
                     <?php if (!empty($order['coupon_code']) && floatval($order['coupon_discount_amount'] ?? 0) > 0): ?>
-                    <div class="flex justify-between text-green-700">
+                    <div class="flex justify-between text-black">
                         <span class="font-semibold">🎟 Coupon (<?= htmlspecialchars($order['coupon_code']) ?>):</span>
                         <span>-₹<?= number_format($order['coupon_discount_amount'], 2) ?></span>
                     </div>
@@ -239,7 +240,7 @@ $items = $stmt_items->fetchAll(PDO::FETCH_ASSOC);
                         <span>💳 Advance Paid:</span>
                         <span>₹<?= number_format($order['cod_advance_amount'], 2) ?></span>
                     </div>
-                    <div class="flex justify-between text-green-700 text-xs">
+                    <div class="flex justify-between text-black text-xs">
                         <span>🏠 Balance on Delivery:</span>
                         <span>₹<?= number_format(max(0, $order['overall_total'] - $order['cod_advance_amount']), 2) ?></span>
                     </div>
@@ -261,7 +262,7 @@ $pdfExists = !empty($enquiryNo) && file_exists($pdfPath);
         Open
     </a>
     <a href="<?= htmlspecialchars($pdfUrl) ?>" download="Invoice_<?= htmlspecialchars($enquiryNo) ?>.pdf"
-        class="px-3 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 transition inline-block">
+        class="px-3 py-1 bg-black text-white text-white rounded-lg hover:bg-black text-white transition inline-block">
         Download
     </a>
 <?php else: ?>
@@ -374,7 +375,7 @@ $shipmentRec = $stmtS->fetch(PDO::FETCH_ASSOC);
     position:fixed;bottom:28px;right:28px;z-index:99999;
     min-width:260px;max-width:360px;
     padding:14px 20px 14px 16px;border-radius:12px;
-    background:linear-gradient(135deg,#6a1b9a,#e91e63);
+    background:linear-gradient(135deg,#000000,#000000);
     color:#fff;font-size:14px;font-weight:600;
     box-shadow:0 8px 28px rgba(106,27,154,0.35);
     display:flex;align-items:center;gap:12px;
@@ -409,7 +410,7 @@ $shipmentRec = $stmtS->fetch(PDO::FETCH_ASSOC);
             </button>
             <button id="adminConfirmYes"
                 style="padding:10px 24px;border-radius:9999px;border:none;
-                       background:linear-gradient(135deg,#e91e63,#6a1b9a);
+                       background:linear-gradient(135deg,#000000,#000000);
                        color:#fff;font-weight:700;font-size:14px;cursor:pointer;">
                 Confirm
             </button>
@@ -429,7 +430,7 @@ $shipmentRec = $stmtS->fetch(PDO::FETCH_ASSOC);
 function showAdminToast(msg, type = 'success') {
     const toast = document.getElementById('adminToast');
     const colors = {
-        success: 'linear-gradient(135deg,#6a1b9a,#e91e63)',
+        success: 'linear-gradient(135deg,#000000,#000000)',
         error:   'linear-gradient(135deg,#dc2626,#b91c1c)',
         info:    'linear-gradient(135deg,#0369a1,#0284c7)',
     };

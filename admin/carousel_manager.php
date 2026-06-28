@@ -132,6 +132,7 @@ $carouselHeight = $carDimRow ? (int)$carDimRow['height'] : null;
     .settings-page-tab { color: #6b7280; }
     @media (max-width: 768px) { .admin-main { margin-left: 0 !important; } }
 </style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body class="bg-gray-100">
     <div class="admin-container flex">
@@ -151,7 +152,7 @@ $carouselHeight = $carDimRow ? (int)$carDimRow['height'] : null;
     ?>
 
     <?php if ($carUploadSuccess): ?>
-    <div class="flex items-center gap-2 mb-3 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg text-sm">
+    <div class="flex items-center gap-2 mb-3 p-3 bg-gray-100 border border-black text-black rounded-lg text-sm">
         <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
         </svg>

@@ -345,7 +345,7 @@ foreach ($items as $idx => $item) {
         }
 
         #filter-master-btn.active {
-              background: linear-gradient(135deg, #e91e63, #6a1b9a) !important;
+              background: var(--lux-black) !important;
         }
 
         /* ========================= */
@@ -517,7 +517,7 @@ foreach ($items as $idx => $item) {
             right: 12px;
             top: 50%;
             transform: translateY(-50%);
-            color: #157347;
+            color: var(--lux-black);
             pointer-events: none;
             display: flex;
             align-items: center;
@@ -695,7 +695,7 @@ foreach ($items as $idx => $item) {
     .price-discount-pill {
         font-size: 12px;
         font-weight: 700;
-        color: #388e3c;
+        color: #000000;
         background: #e8f5e9;
         border-radius: 4px;
         padding: 1px 5px;
@@ -768,7 +768,7 @@ foreach ($items as $idx => $item) {
         position: absolute;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, #e91e63, #6a1b9a);
+        background: var(--lux-black);
         border-radius: 18px;
         padding: 30px 20px;
         text-align: center;
@@ -781,7 +781,7 @@ foreach ($items as $idx => $item) {
         transition: 0.3s;
     }
 
-    .purpose-card:hover .purpose-front { box-shadow: 0 20px 45px rgba(21,115,71,0.12); }
+    .purpose-card:hover .purpose-front { box-shadow: 0 20px 45px rgba(0,0,0,0.12); }
 
     .purpose-back {
         transform: rotateY(180deg);
@@ -808,11 +808,15 @@ foreach ($items as $idx => $item) {
     .top-scroll-bar {
         width: 100%;
         overflow: hidden;
-        background: linear-gradient(90deg, #000000, #ff4081);
+        background: #000;
         color: #fff;
-        padding: 18px 0;
+        padding: 12px 0;
+        font-family: var(--lux-font-sans);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
         font-weight: 500;
         position: relative;
+        text-transform: uppercase;
     }
 
     .scroll-track{
@@ -824,7 +828,7 @@ foreach ($items as $idx => $item) {
 
     .scroll-item{
         white-space:nowrap;
-        padding: 0 60px;   /* equal left & right space */
+        padding: 0 40px;
     }
 
     .pipe{
@@ -860,7 +864,7 @@ foreach ($items as $idx => $item) {
 
     .why-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(21,115,71,0.12);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.12);
     }
 
     .why-icon {
@@ -872,13 +876,13 @@ foreach ($items as $idx => $item) {
         justify-content: center;
         margin: 0 auto 18px;
         font-size: 28px;
-        background: linear-gradient(135deg, #e91e63, #6a1b9a);
+        background: var(--lux-black);
         color: #ffff;
         transition: 0.3s;
     }
 
     .why-card:hover .why-icon {
-        background: linear-gradient(135deg, #e91e63, #6a1b9a);
+        background: var(--lux-black);
         color: #ffffff;
         transform: rotateY(180deg);
     }
@@ -907,7 +911,7 @@ foreach ($items as $idx => $item) {
         border-radius: 18px;
         padding: 35px 25px;
         border: none;
-        box-shadow: 0 10px 35px rgba(21,115,71,0.08);
+        box-shadow: 0 10px 35px rgba(0,0,0,0.08);
         transition: all 0.35s ease;
         text-align: center;
         position: relative;
@@ -920,13 +924,13 @@ foreach ($items as $idx => $item) {
         top: 10px;
         left: 20px;
         font-size: 70px;
-        color: rgba(21,115,71,0.06);
+        color: rgba(0,0,0,0.06);
         font-weight: bold;
     }
 
     .testimonial-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 20px 45px rgba(21,115,71,0.15);
+        box-shadow: 0 20px 45px rgba(0,0,0,0.15);
     }
 
     /* Profile Image */
@@ -941,7 +945,7 @@ foreach ($items as $idx => $item) {
         height: 100%;
         border-radius: 50%;
         object-fit: cover;
-        border: 3px solid #6a1b9a;
+        border: 3px solid var(--lux-black);
     }
 
     /* Stars */
@@ -963,7 +967,7 @@ foreach ($items as $idx => $item) {
     /* Name */
     .testimonial-name {
         font-weight: 600;
-        color: #6a1b9a ;
+        color: var(--lux-black) ;
         font-size: 15px;
         padding-bottom: 10px;
     }
@@ -987,7 +991,7 @@ foreach ($items as $idx => $item) {
 
     .btn-gradient-filter:hover {
         transition: all 0.3s ease;
-        background: linear-gradient(135deg, #c2185b, #4a148c);
+        background: var(--lux-black);
     }
 
     /* Product Name Styling */
@@ -1006,6 +1010,7 @@ foreach ($items as $idx => $item) {
         overflow: hidden;
     }
 </style>
+<link rel="stylesheet" type="text/css" href="./premium-design.css">
 </head>
 
 <body>
@@ -1046,32 +1051,27 @@ foreach ($items as $idx => $item) {
     </div>
 </div>
 
+    <!-- LUXURY EDITORIAL HERO -->
     <section id="hero">
-        <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-            <div class="carousel-indicators">
+        <div class="swiper mySwiper lux-swiper-hero">
+            <div class="swiper-wrapper">
                 <?php foreach ($slides as $i => $slide): ?>
-                    <button type="button" data-bs-target="#bannerCarousel" data-bs-slide-to="<?= $i ?>"
-                        class="<?= $i === 0 ? 'active' : '' ?>"></button>
-                <?php endforeach; ?>
-            </div>
-            <div class="carousel-inner">
-                <?php foreach ($slides as $i => $slide): ?>
-                    <div class="carousel-item <?= $i === 0 ? 'active' : '' ?>" data-bs-interval="5000">
-                        <img src="<?= $slide['image_path'] ?>" class="d-block w-100 carousel-img" alt="Slide <?= $i + 1 ?>">
+                    <div class="swiper-slide">
+                        <img src="<?= $slide['image_path'] ?>" alt="Premium Slide <?= $i + 1 ?>" loading="lazy">
+                        <div class="zara-hero-text">
+                            <h2>NEW COLLECTION</h2>
+                            <p>ONLINE AND IN STORES</p>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
+            <!-- Zara uses fade instead of slide, Swiper can handle this via JS later -->
+            <div class="swiper-pagination"></div>
         </div>
     </section>
 
     <!-- Mobile-only floating filter button (hidden on desktop lg+) -->
-    <button class="btn btn-success d-flex d-lg-none align-items-center justify-content-center shadow rounded-circle"
+    <button class="btn btn-dark d-flex d-lg-none align-items-center justify-content-center shadow rounded-circle"
             type="button"
             onclick="toggleFilters()"
             id="filter-master-btn">
@@ -1088,7 +1088,7 @@ foreach ($items as $idx => $item) {
             <aside id="filter-sidebar">
                 <!-- Desktop header (no close button needed since sidebar is always visible) -->
                 <div class="d-none d-lg-flex justify-content-between align-items-center p-3 border-bottom">
-                    <h5 class="m-0 fw-bold" style=" color: linear-gradient(135deg, #e91e63, #6a1b9a);">
+                    <h5 class="m-0 fw-bold" style=" color: var(--lux-black);">
                         <i class="bi bi-funnel me-2"></i>Filters
                     </h5>
                 </div>
@@ -1109,7 +1109,7 @@ foreach ($items as $idx => $item) {
                     </div>
 
                     <div class="mb-3">
-                        <button onclick="clearFilters()" class="btn btn-sm btn-outline-danger w-100">
+                        <button onclick="clearFilters()" class="btn btn-sm btn-outline-dark w-100">
                             <i class="bi bi-x-circle me-1"></i>Clear All Filters
                         </button>
                     </div>
@@ -1156,9 +1156,9 @@ foreach ($items as $idx => $item) {
             </aside>
             <!-- ===== END FILTER SIDEBAR ===== -->
 
-            <!-- ===== PRODUCTS SECTION ===== -->
-            <section id="products" class="transition-all px-2 px-md-3">
-                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
+            <!-- ===== LUXURY EDITORIAL PRODUCTS GRID ===== -->
+            <section id="products" class="transition-all w-100">
+                <div class="lux-magazine-grid">
                     <?php foreach ($processedItems as $item): ?>
                     <?php
                         $cartData = [
@@ -1176,100 +1176,32 @@ foreach ($items as $idx => $item) {
                             "variant_weight"    => $item["weight_value"],
                             "variant_unit"      => $item["weight_unit"],
                         ];
+                        
+                        $images = $productThumbnails[$item['id']] ?? [];
+                        if (empty($images)) { $images = [$item['displayImgPath']]; }
                     ?>
-                    <div class="card-container" data-category="<?= $item['category_id']; ?>" data-brand="<?= $item['brand_id']; ?>">
-                        <a href="product.php?id=<?= $item['id']; ?>">
-                            <div class="thumbnail-image slider-container" style="position:relative;overflow:hidden;">
-                                <?php
-                                    $images = $productThumbnails[$item['id']] ?? [];
-                                    $carouselStmt = $conn->prepare("
-                                        SELECT COALESCE(compressed_path, image_path) AS image_path
-                                        FROM item_images
-                                        WHERE item_id = :item_id AND image_type = 'carousel'
-                                        ORDER BY is_primary DESC, sort_order ASC
-                                    ");
-                                    $carouselStmt->execute([':item_id' => $item['id']]);
-                                    $carouselImages = $carouselStmt->fetchAll(PDO::FETCH_COLUMN);
-                                    $images = array_merge($images, $carouselImages);
-                                    if (empty($images)) { $images = [$item['displayImgPath']]; }
-                                ?>
-                                <div class="slider-images">
-                                    <?php foreach ($images as $index => $img): ?>
-                                        <img src="/admin/<?= ltrim($img, '/') ?>"
-                                            class="slider-img <?= $index === 0 ? 'active' : '' ?>">
-                                    <?php endforeach; ?>
-                                </div>
-
-                                <?php if ($item['discountRate'] > 0): ?>
-                                    <div class="discount-circle-badge">
-                                        <span class="dc-pct"><?= $item['discountRate']; ?>%</span>
-                                        <span class="dc-off">OFF</span>
-                                    </div>
-                                <?php endif; ?>
-
-                                <?php if (!empty($item['badge_label'])): ?>
-                                    <div class="ribbon-badge">
-                                        <span><?= $item['badge_label']; ?></span>
-                                    </div>
-                                <?php endif; ?>
+                    <div class="lux-product-card" data-category="<?= $item['category_id']; ?>" data-brand="<?= $item['brand_id']; ?>">
+                        <a href="product.php?id=<?= $item['id']; ?>" style="text-decoration:none; color:inherit;">
+                            <div class="lux-product-image-wrapper">
+                                <img src="/admin/<?= ltrim($images[0], '/') ?>" alt="<?= htmlspecialchars($item['name']); ?>">
                             </div>
 
-                            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:4px;margin:4px 4px 0px;min-height:2.2rem;">
-                                <p class="product-title" style="margin:0;flex:1;min-width:0;">
+                            <div style="margin-bottom:1rem;">
+                                <h3 class="lux-product-title">
                                     <?= htmlspecialchars($item['name']); ?>
                                     <?php if (!empty($item['weight'])): ?>
-                                    <span class="text-muted small"> (<?= htmlspecialchars($item['weight']); ?>) </span>
+                                        <span style="text-transform:none; color:var(--lux-gray);">(<?= htmlspecialchars($item['weight']); ?>)</span>
                                     <?php endif; ?>
-                                </p>
-                                <?php if ($item['final_rating'] > 0): ?>
-                                <span style="
-                                    display:inline-flex;
-                                    align-items:center;
-                                    gap:4px;
-                                    flex-shrink:0;
-                                    background:#ffa407;
-                                    color:#fff;
-                                    font-size:12px;
-                                    font-weight:700;
-                                    padding:3px 8px 3px 6px;
-                                    border-radius:20px;
-                                    line-height:1.4;
-                                    letter-spacing:0.3px;
-                                    white-space:nowrap;
-                                    margin-top:2px;
-                                ">
-                                    <svg width="11" height="11" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0;">
-                                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                                    </svg>
-                                    <?= number_format($item['final_rating'], 1) ?>
-                                </span>
-                                <?php endif; ?>
-                            </div>
-
-                            <?php
-                                $sp = (int)$item['simpleDiscountedPrice'];
-                                $sp_rupees = $sp;
-                                $gp = (int)$item['grossPrice'];
-                                $dr = (int)$item['discountRate'];
-                            ?>
-                            <div class="price-row">
-                                <?php if ($dr > 0): ?>
-                                    <span class="price-discount-pill">-<?= $dr ?>%</span>
-                                <?php endif; ?>
-                                <span class="price-selling">
-                                    <sup>₹</sup><?= $sp_rupees ?><span class="price-paise"></span>
-                                </span>
-                                <?php if ($gp > $sp): ?>
-                                    <span class="price-mrp">₹<?= $gp ?></span>
-                                <?php endif; ?>
+                                </h3>
+                                <div class="lux-product-price">
+                                    ₹<?= (int)$item['simpleDiscountedPrice'] ?>
+                                    <?php if ($item['grossPrice'] > $item['simpleDiscountedPrice']): ?>
+                                        <span style="text-decoration:line-through; font-size:0.8rem; color:#aaa; margin-left:0.5rem;">₹<?= (int)$item['grossPrice'] ?></span>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </a>
-                        <button class="add-to-cart-btn"
-                                onclick='event.stopPropagation(); event.preventDefault();
-                                saveToCart(<?= json_encode($cartData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>);'
-                                title="Add to Cart">
-                            <i class="fas fa-shopping-cart"></i> Add to Cart
-                        </button>
+                        <button onclick="window.location.href='product.php?id=<?= $item['id']; ?>'" style="width:100%; border:1px solid var(--lux-black); background:none; padding:10px; font-family:var(--lux-font-sans); font-size:0.75rem; font-weight:700; cursor:pointer; letter-spacing:0.05em; transition:background 0.3s, color 0.3s;" onmouseover="this.style.background='var(--lux-black)'; this.style.color='#fff';" onmouseout="this.style.background='none'; this.style.color='var(--lux-black)';">ADD</button>
                     </div>
                     <?php endforeach; ?>
                 </div>
@@ -1290,7 +1222,7 @@ foreach ($items as $idx => $item) {
 <!-- ================= SHOP BY PURPOSE ================= -->
 <section class="container purpose-section">
     <div class="text-center mb-5">
-    <h2 class="fw-bold" style="color: linear-gradient(135deg, #e91e63, #6a1b9a);">Shop By Purpose</h2>
+    <h2 class="fw-bold" style="color: var(--lux-black);">Shop By Purpose</h2>
         <p class="text-muted">
             We just made it easy for you to shop on your terms.
         </p>
@@ -1384,7 +1316,7 @@ foreach ($items as $idx => $item) {
     <div class="container">
         
         <div class="text-center mb-5">
-            <h2 class="fw-bold" style="color: linear-gradient(135deg, #e91e63, #6a1b9a);">Why Choose RGreenMart?</h2>
+            <h2 class="fw-bold" style="color: var(--lux-black);">Why Choose RGreenMart?</h2>
             <p class="text-muted">Premium quality. Honest pricing. Health you can trust.</p>
         </div>
 
@@ -1496,26 +1428,37 @@ function applyFilters() {
     ).map(cb => String(cb.value));
 
     const offerChecked = document.querySelector('.offer-checkbox').checked;
-    const cards = document.querySelectorAll('.card-container');
+    const cards = document.querySelectorAll('.lux-product-card');
     let visibleCount = 0;
 
     cards.forEach(card => {
         // ── Product name (search) ──────────────────────────────
-        const titleEl = card.querySelector('.product-title');
-        const pName   = titleEl ? titleEl.innerText.toLowerCase() : '';
+        const titleEl = card.querySelector('.lux-product-title');
+        let pName = '';
+        if (titleEl) {
+            const clone = titleEl.cloneNode(true);
+            const spans = clone.querySelectorAll('span');
+            spans.forEach(s => s.remove());
+            pName = clone.innerText.toLowerCase().trim();
+        }
 
         // ── Category & brand from data attributes ──────────────
         const pCat   = String(card.getAttribute('data-category') || '');
         const pBrand = String(card.getAttribute('data-brand')    || '');
 
-        // ── Price: use .price-selling (actual class in this template) ──
-        const priceEl   = card.querySelector('.price-selling');
-        const priceText = priceEl ? priceEl.innerText.replace(/[^\d.]/g, '') : '0';
+        // ── Price: use .lux-product-price ──
+        const priceEl   = card.querySelector('.lux-product-price');
+        let priceText = '0';
+        if (priceEl) {
+            const clone = priceEl.cloneNode(true);
+            const spans = clone.querySelectorAll('span');
+            spans.forEach(s => s.remove());
+            priceText = clone.innerText.replace(/[^\d.]/g, '');
+        }
         const pPrice    = parseFloat(priceText) || 0;
 
-        // ── Offer: check .discount-circle-badge OR .price-discount-pill ──
-        const hasOffer = card.querySelector('.discount-circle-badge') !== null
-                      || card.querySelector('.price-discount-pill')   !== null;
+        // ── Offer: check if there is a strikethrough span inside price ──
+        const hasOffer = card.querySelector('.lux-product-price span') !== null;
 
         // ── Apply all filter conditions ──────────────────────────
         const matchSearch = searchVal === '' || pName.includes(searchVal);
@@ -1568,7 +1511,7 @@ function clearFilters() {
     <div class="container">
 
         <div class="text-center mb-5">
-            <h2 class="fw-bold" style="color: linear-gradient(135deg, #e91e63, #6a1b9a);">What Our Customers Say</h2>
+            <h2 class="fw-bold" style="color: var(--lux-black);">What Our Customers Say</h2>
             <p class="text-muted">Real reviews from happy RGreenMart families.</p>
         </div>
 
@@ -1656,10 +1599,10 @@ function clearFilters() {
 
             <!-- Dot Indicators -->
             <div class="carousel-indicators" style="position:relative; bottom:unset; margin-top:1rem;">
-                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" style="background-color:#064e3b; width:10px; height:10px; border-radius:50%;"></button>
-                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" style="background-color:#064e3b; width:10px; height:10px; border-radius:50%;"></button>
-                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" style="background-color:#064e3b; width:10px; height:10px; border-radius:50%;"></button>
-                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="3" style="background-color:#064e3b; width:10px; height:10px; border-radius:50%;"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" style="background-color:var(--lux-black); width:10px; height:10px; border-radius:50%;"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" style="background-color:var(--lux-black); width:10px; height:10px; border-radius:50%;"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" style="background-color:var(--lux-black); width:10px; height:10px; border-radius:50%;"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="3" style="background-color:var(--lux-black); width:10px; height:10px; border-radius:50%;"></button>
             </div>
 
             <!-- Controls -->
@@ -1738,13 +1681,13 @@ document.querySelectorAll('.slider-container').forEach(container => {
   padding:0 0 24px;
   box-shadow:0 -12px 48px rgba(0,0,0,.16);
   transition:transform .34s cubic-bezier(.4,0,.2,1);
-  font-family:Arial,sans-serif;
+  font-family:var(--lux-font-sans);
 ">
   <div style="text-align:center;padding:14px 0 2px;">
     <span style="display:inline-block;width:40px;height:4px;background:#e5e7eb;border-radius:99px;"></span>
   </div>
   <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px 12px;">
-    <span style="font-size:16px;font-weight:700;color:#064e3b;">Select Variant</span>
+    <span style="font-size:16px;font-weight:700;color:var(--lux-black);">Select Variant</span>
     <button onclick="closeVariantModal()" style="
       background:#f3f4f6;border:none;width:32px;height:32px;
       border-radius:50%;cursor:pointer;font-size:15px;color:#555;
@@ -1755,16 +1698,16 @@ document.querySelectorAll('.slider-container').forEach(container => {
   <!-- product preview strip -->
   <div style="
     display:flex;align-items:center;gap:12px;
-    padding:10px 20px;background:#f0fdf4;
-    border-top:1px solid #d1fae5;border-bottom:1px solid #d1fae5;margin-bottom:16px;
+    padding:10px 20px;background:#f5f5f5;
+    border-top:1px solid #eaeaea;border-bottom:1px solid #eaeaea;margin-bottom:16px;
   ">
-    <img id="vm-img" src="" alt="" style="width:56px;height:56px;border-radius:8px;object-fit:cover;border:1px solid #d1fae5;flex-shrink:0;">
+    <img id="vm-img" src="" alt="" style="width:56px;height:56px;border-radius:8px;object-fit:cover;border:1px solid #eaeaea;flex-shrink:0;">
     <div>
-      <div id="vm-name" style="font-size:13px;font-weight:700;color:#064e3b;margin-bottom:3px;line-height:1.3;"></div>
+      <div id="vm-name" style="font-size:13px;font-weight:700;color:var(--lux-black);margin-bottom:3px;line-height:1.3;"></div>
       <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
         <span id="vm-old-price" style="font-size:12px;color:#9ca3af;text-decoration:line-through;display:none;"></span>
-        <span id="vm-price"     style="font-size:15px;font-weight:700;color:#059669;"></span>
-        <span id="vm-disc"      style="display:none;font-size:11px;font-weight:700;color:#fff;background:#e91e63;border-radius:4px;padding:1px 6px;"></span>
+        <span id="vm-price"     style="font-size:15px;font-weight:700;color:var(--lux-black);"></span>
+        <span id="vm-disc"      style="display:none;font-size:11px;font-weight:700;color:#fff;background:var(--lux-black);border-radius:4px;padding:1px 6px;"></span>
       </div>
     </div>
   </div>
@@ -1778,7 +1721,7 @@ document.querySelectorAll('.slider-container').forEach(container => {
     <!-- qty row -->
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
       <span style="font-size:13px;font-weight:600;color:#475569;">Quantity:</span>
-      <div style="display:flex;align-items:center;border:2px solid #059669;border-radius:8px;overflow:hidden;">
+      <div style="display:flex;align-items:center;border:2px solid var(--lux-black);border-radius:8px;overflow:hidden;">
         <button onclick="vmQtyChange(-1)" class="vmqbtn">&#8722;</button>
         <span id="vm-qty-val" style="width:36px;text-align:center;font-size:14px;font-weight:700;color:#1f2937;">1</span>
         <button onclick="vmQtyChange(1)"  class="vmqbtn">+</button>
@@ -1789,8 +1732,8 @@ document.querySelectorAll('.slider-container').forEach(container => {
       width:100%;padding:14px;border:none;border-radius:10px;
       background:#d1d5db;color:#fff;font-size:15px;font-weight:700;
       cursor:not-allowed;transition:all .2s;letter-spacing:.3px;
-      font-family:Arial,sans-serif;
-    ">Add to Cart</button>
+      font-family:var(--lux-font-sans);
+    ">ADD TO BASKET</button>
   </div>
 </div>
 
@@ -1811,13 +1754,13 @@ document.querySelectorAll('.slider-container').forEach(container => {
   transition:transform .36s cubic-bezier(.4,0,.2,1);
   display:flex;flex-direction:column;
   box-shadow:-6px 0 40px rgba(0,0,0,.13);
-  font-family:Arial,sans-serif;
+  font-family:var(--lux-font-sans);
 ">
   <!-- header -->
   <div style="
     padding:16px 18px;
     display:flex;align-items:center;justify-content:space-between;
-    background: linear-gradient(135deg, #e91e63 0%, #6a1b9a 100%);
+    background: linear-gradient(135deg, var(--lux-black) 0%, var(--lux-black) 100%);
     color:#fff;flex-shrink:0;
   ">
     <div style="display:flex;align-items:center;gap:9px;">
@@ -1842,28 +1785,28 @@ document.querySelectorAll('.slider-container').forEach(container => {
 
   <!-- order summary footer -->
   <div style="border-top:2px solid #e5e7eb;background:#fff;flex-shrink:0;padding:14px 18px 18px;">
-    <div style="font-size:15px;font-weight:700;color:#064e3b;text-align:center;margin-bottom:11px;">Order Summary</div>
+    <div style="font-size:15px;font-weight:700;color:var(--lux-black);text-align:center;margin-bottom:11px;">Order Summary</div>
 
     <div class="cprow"><span>Total Items</span><strong id="cp-ti">0</strong></div>
     <div class="cprow"><span>Total Quantity</span><strong id="cp-tq">0</strong></div>
     <div class="cprow" style="border-bottom:none;padding-bottom:12px;">
       <span style="font-size:14px;font-weight:700;color:#1f2937;">Total Amount</span>
-      <strong id="cp-gt" style="font-size:17px;color:#059669;font-weight:800;">&#8377;0.00</strong>
+      <strong id="cp-gt" style="font-size:17px;color:var(--lux-black);font-weight:800;">&#8377;0.00</strong>
     </div>
 
     <!-- Checkout — PHP session check -->
     <?php if (isset($_SESSION['user_id'])): ?>
     <button onclick="window.location.href='add_delivery_address.php'" class="cp-checkout-btn">
-      Proceed to Checkout &#8594;
+      PROCEED TO CHECKOUT &#8594;
     </button>
     <?php else: ?>
     <button onclick="window.location.href='login.php'" class="cp-checkout-btn">
-      Login to Checkout &#8594;
+      LOGIN TO CHECKOUT &#8594;
     </button>
     <?php endif; ?>
 
     <button onclick="window.location.href='viewcart.php'" class="cp-viewcart-btn">
-      View Full Cart
+      VIEW FULL CART
     </button>
   </div>
 </div>
@@ -1872,52 +1815,52 @@ document.querySelectorAll('.slider-container').forEach(container => {
 .vm-chip {
   padding:8px 14px;border:2px solid #e5e7eb;border-radius:8px;
   cursor:pointer;background:#fff;transition:all .14s;
-  font-family:Arial,sans-serif;text-align:left;
+  font-family:var(--lux-font-sans);text-align:left;
 }
-.vm-chip:hover { border-color:#059669;color:#059669; }
+.vm-chip:hover { border-color:var(--lux-black);color:var(--lux-black); }
 .vm-chip.active {
-  border-color:#059669;background:#f0fdf4;color:#064e3b;
-  box-shadow:0 0 0 3px rgba(5,150,105,.14);
+  border-color:var(--lux-black);background:#f5f5f5;color:var(--lux-black);
+  box-shadow:0 0 0 3px rgba(0,0,0,.14);
 }
 .vm-chip-weight { font-size:13px;font-weight:700;color:inherit;display:block;line-height:1.2; }
-.vm-chip-price  { font-size:12px;color:#059669;display:block;margin-top:2px;font-weight:600; }
-.vm-chip.active .vm-chip-price { color:#064e3b; }
+.vm-chip-price  { font-size:12px;color:var(--lux-black);display:block;margin-top:2px;font-weight:600; }
+.vm-chip.active .vm-chip-price { color:var(--lux-black); }
 
 /* variant modal qty buttons */
 .vmqbtn {
-  background:#f0fdf4;border:none;width:32px;height:32px;cursor:pointer;
-  font-size:16px;color:#059669;font-weight:700;
+  background:#f5f5f5;border:none;width:32px;height:32px;cursor:pointer;
+  font-size:16px;color:var(--lux-black);font-weight:700;
   display:flex;align-items:center;justify-content:center;transition:background .13s;
 }
-.vmqbtn:hover { background:#d1fae5; }
+.vmqbtn:hover { background:#eaeaea; }
 
 /* cart panel summary rows */
 .cprow {
   display:flex;justify-content:space-between;align-items:center;
   padding:7px 0;border-bottom:1px solid #f3f4f6;
-  font-size:14px;color:#6b7280;font-family:Arial,sans-serif;
+  font-size:14px;color:#6b7280;font-family:var(--lux-font-sans);
 }
 
 /* checkout button — matches project .checkout-btn */
 .cp-checkout-btn {
   width:100%;padding:13px;border:none;border-radius:4px;cursor:pointer;
-  background:linear-gradient(135deg,#e91e63,#6a1b9a);
+  background:var(--lux-black);
   color:#fff;font-size:15px;font-weight:600;letter-spacing:.2px;
-  transition:all .25s;font-family:Arial,sans-serif;
+  transition:all .25s;font-family:var(--lux-font-sans);
 }
 .cp-checkout-btn:hover {
-  background:linear-gradient(135deg,#c2185b,#4a148c);
+  background:var(--lux-black);
   transform:translateY(-2px);
 }
 .cp-checkout-btn:active { transform:scale(0.97); }
 
 .cp-viewcart-btn {
   width:100%;padding:10px;margin-top:7px;
-  border:2px solid #059669;border-radius:4px;
-  background:#fff;color:#059669;font-size:14px;font-weight:600;
-  cursor:pointer;transition:background .18s;font-family:Arial,sans-serif;
+  border:2px solid var(--lux-black);border-radius:4px;
+  background:#fff;color:var(--lux-black);font-size:14px;font-weight:600;
+  cursor:pointer;transition:background .18s;font-family:var(--lux-font-sans);
 }
-.cp-viewcart-btn:hover { background:#f0fdf4; }
+.cp-viewcart-btn:hover { background:#f5f5f5; }
 
 /* cart item card */
 .cp-card {
@@ -1929,7 +1872,7 @@ document.querySelectorAll('.slider-container').forEach(container => {
 .cp-card:hover { box-shadow:0 3px 14px rgba(0,0,0,.08); }
 .cp-card img {
   width:68px;height:68px;border-radius:7px;object-fit:cover;
-  border:1px solid #d1fae5;flex-shrink:0;
+  border:1px solid #eaeaea;flex-shrink:0;
 }
 .cp-card-body { flex:1;min-width:0; }
 .cp-card-name {
@@ -1938,47 +1881,47 @@ document.querySelectorAll('.slider-container').forEach(container => {
 }
 .cp-variant-tag { font-size:11px;color:#6b7280;margin-bottom:4px; }
 .cp-prices { display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:8px; }
-.cp-fp  { font-size:14px;font-weight:700;color:#059669; }
+.cp-fp  { font-size:14px;font-weight:700;color:var(--lux-black); }
 .cp-op  { font-size:12px;color:#d1d5db;text-decoration:line-through; }
-.cp-dc  { font-size:10px;font-weight:700;color:#e91e63;background:#fce7f3;border-radius:4px;padding:1px 5px; }
+.cp-dc  { font-size:10px;font-weight:700;color:var(--lux-black);background:#eaeaea;border-radius:4px;padding:1px 5px; }
 .cp-bot { display:flex;align-items:center;justify-content:space-between; }
 .cp-qwrap {
   display:flex;align-items:center;
-  border:1.5px solid #059669;border-radius:7px;overflow:hidden;
+  border:1.5px solid var(--lux-black);border-radius:7px;overflow:hidden;
 }
 .cpqb {
-  background:#f0fdf4;border:none;width:27px;height:27px;cursor:pointer;
-  font-size:13px;color:#059669;font-weight:700;
+  background:#f5f5f5;border:none;width:27px;height:27px;cursor:pointer;
+  font-size:13px;color:var(--lux-black);font-weight:700;
   display:flex;align-items:center;justify-content:center;transition:background .13s;
 }
-.cpqb:hover { background:#d1fae5; }
+.cpqb:hover { background:#eaeaea; }
 .cpqi {
   width:30px;text-align:center;font-size:13px;font-weight:700;
-  color:#1f2937;border:none;border-left:1.5px solid linear-gradient(135deg, #e91e63, #6a1b9a);
-  border-right:1.5px solid linear-gradient(135deg, #e91e63, #6a1b9a);height:27px;background:#fff;outline:none;
-  font-family:Arial,sans-serif;
+  color:#1f2937;border:none;border-left:1.5px solid var(--lux-black);
+  border-right:1.5px solid var(--lux-black);height:27px;background:#fff;outline:none;
+  font-family:var(--lux-font-sans);
 }
 .cp-line-total { font-size:13px;font-weight:700;color:#374151; }
 .cp-rm {
   background:none;border:none;color:#dc2626;font-size:12px;
   cursor:pointer;padding:2px 5px;border-radius:4px;transition:background .13s;
-  margin-top:4px;font-family:Arial,sans-serif;
+  margin-top:4px;font-family:var(--lux-font-sans);
 }
 .cp-rm:hover { background:#fee2e2; }
 
 /* empty state */
 .cp-empty {
   text-align:center;padding:60px 20px;
-  font-family:Arial,sans-serif;
+  font-family:var(--lux-font-sans);
 }
-.cp-empty i   { font-size:50px;color:#d1fae5;display:block;margin-bottom:12px; }
+.cp-empty i   { font-size:50px;color:#eaeaea;display:block;margin-bottom:12px; }
 .cp-empty p   { font-size:15px;font-weight:700;color:#6b7280;margin-bottom:4px; }
 .cp-empty small { font-size:12px;color:#9ca3af; }
 
 /* scrollbar */
 #cp-items::-webkit-scrollbar { width:4px; }
 #cp-items::-webkit-scrollbar-track { background:#f9fafb; }
-#cp-items::-webkit-scrollbar-thumb { background:#d1fae5;border-radius:4px; }
+#cp-items::-webkit-scrollbar-thumb { background:#eaeaea;border-radius:4px; }
 
 @media (max-width:480px) {
   #cart-panel { width:100vw !important; }
@@ -2094,7 +2037,7 @@ function _vmRefPrice(v) {
 function _vmBtnState(on) {
   var btn = document.getElementById('vm-add-btn');
   btn.disabled    = !on;
-  btn.style.background = on ? 'linear-gradient(135deg,#e91e63,#6a1b9a)' : '#d1d5db';
+  btn.style.background = on ? 'var(--lux-black)' : '#d1d5db';
   btn.style.cursor     = on ? 'pointer' : 'not-allowed';
 }
 
@@ -2322,8 +2265,8 @@ document.addEventListener('DOMContentLoaded', updateCartCount);
     line-height:1;
 }
 #padClose:hover {
-    background: rgba(220,38,38,.9);
-    border-color: rgba(220,38,38,.9);
+    background: rgba(0,0,0,.9);
+    border-color: rgba(0,0,0,.9);
     transform: scale(1.1);
 }
 
@@ -2377,7 +2320,7 @@ document.addEventListener('DOMContentLoaded', updateCartCount);
 #padProgress {
     position: absolute; bottom:0; left:0;
     height:3px;
-    background: linear-gradient(90deg, #e91e63, #6a1b9a);
+    background: var(--lux-black);
     width:0%; z-index:11;
     transition: width linear;
 }
@@ -2404,7 +2347,7 @@ var _padAutoSlideMs   = 2000;
 
         <!-- ◀ Prev arrow (only if multiple images) -->
         <?php if (count($popupAdImages) > 1): ?>
-        <button class="pad-arrow pad-hidden" id="padPrev" onclick="padNav(-1)" aria-label="Previous">&#8249;</button>
+        <button class="pad-arrow pad-hidden" id="padPrev" onclick="padNav(-1)" aria-label="Previous">&lt;</button>
         <?php endif; ?>
 
         <!-- Ad image -->
@@ -2412,7 +2355,7 @@ var _padAutoSlideMs   = 2000;
 
         <!-- ▶ Next arrow (only if multiple images) -->
         <?php if (count($popupAdImages) > 1): ?>
-        <button class="pad-arrow" id="padNext" onclick="padNav(1)" aria-label="Next">&#8250;</button>
+        <button class="pad-arrow" id="padNext" onclick="padNav(1)" aria-label="Next">&gt;</button>
         <?php endif; ?>
 
         <!-- Dot indicators (only if multiple images) -->
@@ -2572,6 +2515,34 @@ var _padAutoSlideMs   = 2000;
 })();
 </script>
 <?php endif; ?>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper (Zara Style) -->
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true
+    },
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 1,
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+
+  // Add smooth fade in to body to prevent flash of unstyled content
+  document.body.classList.add('page-fade-in');
+</script>
 
 </body>
 </html>

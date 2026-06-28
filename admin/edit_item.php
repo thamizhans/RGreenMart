@@ -283,6 +283,7 @@ function compressImage($source, $destination, $quality = 25) {
         .delete-icon { position: absolute; top: -8px; right: -8px; width: 24px; height: 24px; border-radius: 50%; background: #ef4444; color: #fff; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 14px; }
         .thumbnail-control { position: absolute; bottom: 5px; left: 5px; font-size: 10px; background: #4F46E5; color: #fff; padding: 2px 6px; border-radius: 10px; }
     </style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body class="bg-gray-100">
     <div class="flex">
@@ -296,7 +297,7 @@ function compressImage($source, $destination, $quality = 25) {
                 </div>
 
                 <?php if(isset($_GET['success'])): ?>
-                    <div class="bg-green-100 text-green-700 p-4 rounded mb-6">Item updated successfully!</div>
+                    <div class="bg-black text-white text-black p-4 rounded mb-6">Item updated successfully!</div>
                 <?php endif; ?>
 
                 <form id="itemForm" method="POST" enctype="multipart/form-data" class="space-y-6">
@@ -524,7 +525,7 @@ function compressImage($source, $destination, $quality = 25) {
         <div class="bg-white p-6 rounded-xl w-96">
             <h2 class="text-xl font-bold mb-4">Add Category</h2>
             <input id="newCategoryName" type="text" class="w-full p-2 border rounded mb-4" placeholder="Category Name">
-            <button onclick="saveCategory()" class="w-full py-2 bg-green-600 text-white rounded">Save</button>
+            <button onclick="saveCategory()" class="w-full py-2 bg-black text-white text-white rounded">Save</button>
             <button onclick="document.getElementById('categoryModal').classList.add('hidden')" class="w-full mt-2 py-2 text-gray-500">Cancel</button>
         </div>
     </div>
@@ -533,7 +534,7 @@ function compressImage($source, $destination, $quality = 25) {
         <div class="bg-white p-6 rounded-xl w-96">
             <h2 class="text-xl font-bold mb-4">Add Brand</h2>
             <input id="newBrandName" type="text" class="w-full p-2 border rounded mb-4" placeholder="Brand Name">
-            <button onclick="saveBrand()" class="w-full py-2 bg-green-600 text-white rounded">Save</button>
+            <button onclick="saveBrand()" class="w-full py-2 bg-black text-white text-white rounded">Save</button>
             <button onclick="document.getElementById('brandModal').classList.add('hidden')" class="w-full mt-2 py-2 text-gray-500">Cancel</button>
         </div>
     </div>

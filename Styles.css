@@ -3,33 +3,34 @@
   padding: 0;
   box-sizing: border-box;
 }
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 :root {
-  --gradient: linear-gradient(to right, #064e3b, #84cc16);
-  --secondary:#84cc16;
-  /* --link:#639b10; */
-  --link:#059669;
-  --primaryclr:#064e3b;
-  --green-700:#047857;
---green-600:#059669;
---green-50:#f0fdf4;
---accent: #064e3b;
+  --gradient: linear-gradient(135deg, #000000 0%, #000000 100%);
+  --secondary: #000000;
+  --link: #000000;
+  --primaryclr: #000000;
+  --green-700: #000000;
+  --green-600: #000000;
+  --green-50: #eaeaea;
+  --accent: #000000;
   --white: #ffffff;
-  --black: #000000;
+  --black: #0f172a;
 
   /* Text Colors */
-  --text-dark: #1f2937;
-  --text-muted: #999;
-  --muted:#475569;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --muted: #475569;
   /* Gray Shades */
-  --gray-light-bg: #f3f4f6;
-  --gray-border: #e5e7eb;
-  --gray-medium: #ccc;
-  --gray-bg-light: #f9f9f9;
-  --gray: #f1f1f1;
+  --gray-light-bg: #f8fafc;
+  --gray-border: #e2e8f0;
+  --gray-medium: #cbd5e1;
+  --gray-bg-light: #f1f5f9;
+  --gray: #f1f5f9;
 
   /* Accent Colors */
-  --highlight-red: #e63946;
-  --badge-red: red;
+  --highlight-red: #ef4444;
+  --badge-red: #ef4444;
   --red-dark: #dc2626;
   --orange-bright: #f97316;
 
@@ -38,25 +39,30 @@
   --blue-light: #3b82f6;
 
   /* Green shades */
-  --green-accent: #10b981;
-  --green-light: #d1fae5;
-  --green-hover: #a7f3d0;
+  --green-accent: #000000;
+  --green-light: #eaeaea;
+  --green-hover: #eaeaea;
 }
 
-.headicon{
+.headicon {
   color: var(--link);
+  transition: all 0.3s ease;
 }
-.headicon:hover{
-  color: var(--primaryclr)!important;
+.headicon:hover {
+  color: var(--primaryclr) !important;
+  transform: scale(1.1);
 }
-.primaryclr{
+.primaryclr {
   color: var(--primaryclr) !important;
 }
 body {
-  font-family: Arial, sans-serif;
-  color: #333;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-dark);
   line-height: 1.6;
-  background: linear-gradient(180deg,var(--green-50),white 5%);
+  background-color: var(--gray-light-bg);
+  background-image: radial-gradient(circle at top right, rgba(0,0,0,0.05), transparent 40%),
+                    radial-gradient(circle at bottom left, rgba(0,0,0,0.05), transparent 40%);
+  background-attachment: fixed;
 }
 .secclr{
   color: var(--secondary) !important;
@@ -174,7 +180,7 @@ h6 {
 }
 .logo-text p {
     font-size: 0.75rem;
-    color: #15803d; /* green-700 */
+    color: #000000; /* green-700 */
     margin: 0;
 }
 .desktop-nav {
@@ -183,7 +189,7 @@ h6 {
     gap: 2rem;
 }
 .desktop-nav a {
-    color: #059669; /* gray-700 */
+    color: #000000; /* gray-700 */
     font-weight: 500;
     text-decoration: none;
     transition: color 0.2s;
@@ -249,7 +255,7 @@ h6 {
     position: absolute;
     top: -0.5rem;
     right: -0.5rem;
-    background-color: #16a34a; /* green-600 */
+    background-color: #000000; /* green-600 */
     color: #ffffff;
     font-size: 0.75rem;
     font-weight: bold;
@@ -342,7 +348,7 @@ h6 {
 .finalTotal {
     font-size: 18px;
     font-weight: 700;
-    color: #0f9d58;
+    color: #000000;
 }
 /* delete button */
 .delete-btn{
@@ -365,7 +371,7 @@ h6 {
     width: 100%;
     margin-top: 18px;
     padding: 12px;
-    background: linear-gradient(135deg, #e91e63, #6a1b9a);
+    background: linear-gradient(135deg, #000000, #000000);
     color: white;
     border: none;
     border-radius: 2px;
@@ -373,12 +379,12 @@ h6 {
     font-weight: 600;
     cursor: pointer;
     transition: 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(15,157,88,0.3);
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
 }
 
 /* Hover Animation */
 .checkout-btn:hover {
-    background: linear-gradient(135deg, #c2185b, #4a148c);
+    background: linear-gradient(135deg, #000000, #000000);
     transform: translateY(-2px);
 }
 
@@ -643,17 +649,17 @@ h6 {
 
     /* Highlight selected items */
     .selected {
-        background-color: #d1fae5;
+        background-color: #eaeaea;
         transition: background-color 0.3s ease;
     }
 
     .mobile-card.selected {
-        background-color: #d1fae5;
-        border-color: #10b981;
+        background-color: #eaeaea;
+        border-color: #000000;
     }
 
     .selected:hover {
-        background-color: #a7f3d0;
+        background-color: #eaeaea;
     }
       @keyframes blink-step {
       0%   { opacity: 1; }
@@ -764,7 +770,7 @@ img.loaded {
 }
 
 .discount-text {
-    color: #388e3c;
+    color: #000000;
     font-size: 12px;
     font-weight: 600;
 }
@@ -773,7 +779,7 @@ img.loaded {
   position: absolute;
   top: 0;
   left: 0; /* Image 2 usually places badges on the top-left or top-right */
-  background: linear-gradient(135deg, #e91e63, #6a1b9a);
+  background: linear-gradient(135deg, #000000, #000000);
   color: #fff;
   border: none;
   padding: 5px 10px;
@@ -816,7 +822,7 @@ img.loaded {
 .cart-icon-wrapper {
     /* position: relative;   */
     display: inline-block;
-    background: #f0fdf4;
+    background: #eaeaea;
     border-radius: 50%;
     transition: all 0.2s ease;
     }
@@ -1221,7 +1227,7 @@ img.loaded {
             color: #4b5563;
         }
         .discounted-price {
-            color: #16a34a;
+            color: #000000;
             font-weight: bold;
             font-size: 1.25rem;
         }
@@ -1249,10 +1255,10 @@ img.loaded {
             background-color: #b91c1c;
         }
         .quantity-controls button.plus {
-            background-color: #16a34a;
+            background-color: #000000;
         }
         .quantity-controls button.plus:hover {
-            background-color: #15803d;
+            background-color: #000000;
         }
         .quantity-controls input {
             width: 4rem;
@@ -1469,8 +1475,8 @@ img.loaded {
             font-weight: bold;
             color: #1f2937;
         }
-        .btn-success {
-            background: #16a34a;
+        .btn-dark {
+            background: #000000;
             color: #ffffff;
             padding: 0.75rem 1.5rem;
             border-radius: 9999px;
@@ -1478,8 +1484,8 @@ img.loaded {
             font-weight: bold;
             transition: all 0.2s;
         }
-        .btn-success:hover {
-            background: #15803d;
+        .btn-dark:hover {
+            background: #000000;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         /* Modal styles */
@@ -1758,14 +1764,14 @@ img.loaded {
     padding: 12px 16px;
     min-width: 320px;
     max-width: 400px;
-    border-left: 5px solid #6a1b9a; 
+    border-left: 5px solid #000000; 
     animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Added a slight "bounce" effect */
     transition: all 0.4s ease;
     position: relative;
 }
 
 .mytoast-status {
-    color: #28a745;
+    color: #000000;
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
@@ -1798,12 +1804,12 @@ img.loaded {
 
 .mytoast-price {
     font-size: 13px;
-    color: #16a34a;
+    color: #000000;
     font-weight: 500;
 }
 
 .mytoast button {
-    background-color: #28a745;
+    background-color: #000000;
     color: white;
     border: none;
     padding: 8px 14px;
@@ -1817,7 +1823,7 @@ img.loaded {
 }
 
 .mytoast button:hover {
-  background-color: #1f8b36;
+  background-color: #000000;
   transform: scale(1.05);
 }
 
@@ -1914,7 +1920,7 @@ border-bottom: 3px solid var(--gray-border);
   --bs-red: #dc3545;
   --bs-orange: #fd7e14;
   --bs-yellow: #ffc107;
-  --bs-green: #198754;
+  --bs-green: #000000;
   --bs-teal: #20c997;
   --bs-cyan: #0dcaf0;
   --bs-white: #fff;
@@ -1931,7 +1937,7 @@ border-bottom: 3px solid var(--gray-border);
   --bs-gray-900: #212529;
   --bs-primary: #0d6efd;
   --bs-secondary: #6c757d;
-  --bs-success: #198754;
+  --bs-success: #000000;
   --ba-grade: #8748ae;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
@@ -7036,7 +7042,7 @@ border-bottom: 3px solid var(--gray-border);
   padding: 14px;
   width: 100%;
   border: none;
-  background: linear-gradient(135deg, #e91e63, #6a1b9a);
+  background: linear-gradient(135deg, #000000, #000000);
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -7046,7 +7052,7 @@ border-bottom: 3px solid var(--gray-border);
 
 .gradient-btn:hover {
     transform: translateY(-2px);
-    background: linear-gradient(135deg, #c2185b, #4a148c);
+    background: linear-gradient(135deg, #000000, #000000);
 }
 
 .add-to-cart-btn {
@@ -7054,7 +7060,7 @@ border-bottom: 3px solid var(--gray-border);
   padding: 14px;
   width: 100%;
   border: none;
-  background: linear-gradient(135deg, #e91e63, #6a1b9a);
+  background: linear-gradient(135deg, #000000, #000000);
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -7063,7 +7069,7 @@ border-bottom: 3px solid var(--gray-border);
 }
 
 .add-to-cart-btn:hover {
-  background: linear-gradient(135deg, #c2185b, #4a148c);
+  background: linear-gradient(135deg, #000000, #000000);
 }
 
 /* Mobile: remove any remaining gap between price row and button */
@@ -7104,7 +7110,7 @@ border-bottom: 3px solid var(--gray-border);
     width: 100%;
     overflow: hidden;
     
-background: rgba(94, 166, 8, 0.42);
+background: rgba(0,0,0,0.42);
 backdrop-filter: blur(0.2px);
 -webkit-backdrop-filter: blur(0.2px);
     backdrop-filter: blur(6px);
@@ -7146,4 +7152,86 @@ backdrop-filter: blur(0.2px);
     .partner-logo img {
         height: 40px;
     }
+}
+
+/* =========================================
+   UI/UX PREMIUM UPGRADES
+   ========================================= */
+
+/* Glassmorphism Navbar */
+.navbar {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+header {
+  background: transparent !important;
+}
+
+/* Product Card Micro-Animations */
+.card, .cp-card, .product-card {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  border-radius: 12px;
+  border: 1px solid var(--gray-border);
+  overflow: hidden;
+  background: var(--white);
+}
+
+.card:hover, .cp-card:hover, .product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.card img, .cp-card img, .product-card img {
+  transition: transform 0.5s ease;
+}
+
+.card:hover img, .cp-card:hover img, .product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Modernized Buttons */
+.btn-primary, .btn-dark, button {
+  background: var(--gradient) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.btn-primary:hover, .btn-dark:hover, button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  filter: brightness(1.1);
+}
+
+/* Form Inputs & Focus states */
+input, select, textarea, .form-control {
+  border-radius: 8px !important;
+  border: 1px solid var(--gray-border) !important;
+  transition: all 0.3s ease !important;
+  background-color: var(--white) !important;
+}
+
+input:focus, select:focus, textarea:focus, .form-control:focus {
+  border-color: var(--secondary) !important;
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.1) !important;
+  outline: none !important;
+}
+
+/* Badges */
+.badge {
+  border-radius: 6px;
+  font-weight: 600;
+  padding: 0.4em 0.8em;
+  background: var(--highlight-red);
+  color: white;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
 }

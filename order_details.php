@@ -147,18 +147,18 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f3f4f6; }
     text-transform: uppercase;
     letter-spacing: 0.04em;
 }
-.paid     { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+.paid     { background: #dcfce7; color: #000000; border: 1px solid #86efac; }
 .pending  { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
 .failed   { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
 .badge-cod     { background:#fff4e6; color:#92400e; border:1px solid #f59e0b; }
-.badge-online  { background:#dcfce7; color:#15803d; border:1px solid #86efac; }
+.badge-online  { background:#dcfce7; color:#000000; border:1px solid #86efac; }
 .badge-advance { background:#fef3c7; color:#78350f; border:1px solid #f59e0b; }
 
 .shipment_badge { display:inline-block; padding:3px 12px; border-radius:20px; font-size:12px; font-weight:700; text-transform:uppercase; }
 .shipment_badge.not_shipped { background:#f3f4f6; color:#4b5563; border:1px solid #d1d5db; }
 .shipment_badge.shipped     { background:#dbeafe; color:#1d4ed8; border:1px solid #93c5fd; }
 .shipment_badge.in_transit  { background:#fef9c3; color:#854d0e; border:1px solid #fde047; }
-.shipment_badge.delivered   { background:#dcfce7; color:#15803d; border:1px solid #86efac; }
+.shipment_badge.delivered   { background:#dcfce7; color:#000000; border:1px solid #86efac; }
 .shipment_badge.cancelled   { background:#fee2e2; color:#b91c1c; border:1px solid #fca5a5; }
 .shipment_badge.error       { background:#fee2e2; color:#b91c1c; border:1px solid #fca5a5; }
 
@@ -214,7 +214,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f3f4f6; }
 .item-selling-price {
     font-size: 16px;
     font-weight: 700;
-    color: #059669;
+    color: #000000;
 }
 .item-mrp {
     font-size: 13px;
@@ -577,7 +577,7 @@ $codConvFee         = floatval($order['cod_convenience_fee'] ?? 0);
                 <div>
                     <p style="font-weight:600; color:#1d4ed8; font-size:13px; margin:0;">💳 Advance Paid Online</p>
                     <p style="font-size:11px; color:#6b7280; margin:2px 0 0;">
-                        <?= ($order['payment_status'] === 'advance_paid') ? '<span style="color:#16a34a;">✓ Confirmed</span>' : '<span style="color:#d97706;">Pending</span>' ?>
+                        <?= ($order['payment_status'] === 'advance_paid') ? '<span style="color:#000000;">✓ Confirmed</span>' : '<span style="color:#d97706;">Pending</span>' ?>
                     </p>
                 </div>
                 <span style="font-weight:700; color:#1d4ed8; font-size:15px;">₹<?= number_format($codAdvAmt, 2) ?></span>
@@ -603,7 +603,7 @@ $codConvFee         = floatval($order['cod_convenience_fee'] ?? 0);
         ?>
         <a href="<?= htmlspecialchars($ordPdfUrl) ?>"
            download="Invoice_<?= htmlspecialchars($enqNo) ?>.pdf"
-           style="display:inline-flex; align-items:center; gap:7px; padding:10px 20px; background:linear-gradient(135deg,#e91e63,#6a1b9a); color:#fff; border-radius:9999px; font-size:13px; font-weight:600; text-decoration:none; box-shadow:0 2px 8px rgba(233,30,99,0.3); transition:opacity 0.2s;"
+           style="display:inline-flex; align-items:center; gap:7px; padding:10px 20px; background:linear-gradient(135deg,#000000,#000000); color:#fff; border-radius:9999px; font-size:13px; font-weight:600; text-decoration:none; box-shadow:0 2px 8px rgba(233,30,99,0.3); transition:opacity 0.2s;"
            onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
             <i class="fa-solid fa-file-pdf"></i> Download Invoice
         </a>

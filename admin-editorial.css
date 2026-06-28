@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+    --admin-black: #000000;
+    --admin-white: #ffffff;
+    --admin-gray: #e5e5e5;
+    --admin-dark-gray: #333333;
+    --admin-font-sans: 'Inter', -apple-system, sans-serif;
+    --admin-font-serif: 'Playfair Display', serif;
+}
+
+/* Base Overrides */
+body {
+    font-family: var(--admin-font-sans) !important;
+    background-color: var(--admin-white) !important;
+    color: var(--admin-black) !important;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: var(--admin-font-sans) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: var(--admin-black) !important;
+}
+
+/* Strip gradients and colors from Navigation & Sidebar */
+.navbar, .sidebar, [class*="bg-"], [style*="background"] {
+    background-color: var(--admin-white) !important;
+    background-image: none !important; /* Kill gradients */
+    color: var(--admin-black) !important;
+}
+
+/* Nav links */
+.nav-link, .navbar-brand, .sidebar a {
+    color: var(--admin-black) !important;
+    font-family: var(--admin-font-sans) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    border-radius: 0 !important;
+}
+.nav-link:hover, .sidebar a:hover {
+    background-color: var(--admin-black) !important;
+    color: var(--admin-white) !important;
+}
+
+/* Cards */
+.card {
+    border-radius: 0 !important;
+    border: 1px solid var(--admin-black) !important;
+    box-shadow: none !important;
+    background: var(--admin-white) !important;
+    margin-bottom: 2rem !important;
+}
+.card-header {
+    background-color: var(--admin-white) !important;
+    border-bottom: 1px solid var(--admin-black) !important;
+    border-radius: 0 !important;
+    color: var(--admin-black) !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+}
+.card-footer {
+    background-color: var(--admin-white) !important;
+    border-top: 1px solid var(--admin-black) !important;
+    border-radius: 0 !important;
+}
+
+/* Buttons */
+.btn, button {
+    border-radius: 0 !important;
+    font-family: var(--admin-font-sans) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+    background-image: none !important; /* Kill gradients */
+}
+.btn-primary, .btn-dark, .btn-info, .btn-warning, .btn-danger, .btn-dark {
+    background-color: var(--admin-black) !important;
+    color: var(--admin-white) !important;
+    border: 1px solid var(--admin-black) !important;
+}
+.btn-primary:hover, .btn-dark:hover, .btn-info:hover, .btn-warning:hover, .btn-danger:hover, .btn-dark:hover {
+    background-color: var(--admin-white) !important;
+    color: var(--admin-black) !important;
+}
+.btn-outline-primary, .btn-outline-dark, .btn-outline-info, .btn-outline-warning, .btn-outline-danger, .btn-outline-dark, .btn-light, .btn-secondary {
+    background-color: transparent !important;
+    color: var(--admin-black) !important;
+    border: 1px solid var(--admin-black) !important;
+}
+.btn-outline-primary:hover, .btn-outline-dark:hover, .btn-outline-info:hover, .btn-outline-warning:hover, .btn-outline-danger:hover, .btn-outline-dark:hover, .btn-light:hover, .btn-secondary:hover {
+    background-color: var(--admin-black) !important;
+    color: var(--admin-white) !important;
+}
+
+/* Forms and Inputs */
+.form-control, .form-select, input, select, textarea {
+    border-radius: 0 !important;
+    border: 1px solid var(--admin-gray) !important;
+    background-color: var(--admin-white) !important;
+    color: var(--admin-black) !important;
+    box-shadow: none !important;
+    font-family: var(--admin-font-sans) !important;
+}
+.form-control:focus, .form-select:focus, input:focus, select:focus, textarea:focus {
+    border-color: var(--admin-black) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+label, .form-label {
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-size: 0.85rem !important;
+    color: var(--admin-black) !important;
+}
+
+/* Tables */
+table, .table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin-bottom: 2rem !important;
+    background-color: transparent !important;
+    border: 1px solid var(--admin-black) !important;
+}
+th, td, .table th, .table td {
+    border: 1px solid var(--admin-gray) !important;
+    padding: 1rem !important;
+    vertical-align: middle !important;
+    color: var(--admin-black) !important;
+}
+th, .table th, thead th {
+    background-color: var(--admin-black) !important;
+    color: var(--admin-white) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-weight: 600 !important;
+    border-color: var(--admin-black) !important;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fafafa !important;
+}
+.table-hover tbody tr:hover {
+    background-color: #f0f0f0 !important;
+}
+
+/* Badges */
+.badge {
+    border-radius: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-weight: 600 !important;
+    padding: 0.4em 0.6em !important;
+    border: 1px solid var(--admin-black) !important;
+}
+.bg-success, .bg-primary, .bg-info, .bg-warning, .bg-danger, .bg-secondary, .bg-dark {
+    background-color: var(--admin-black) !important;
+    color: var(--admin-white) !important;
+}
+
+/* Modals */
+.modal-content {
+    border-radius: 0 !important;
+    border: 1px solid var(--admin-black) !important;
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.1) !important;
+}
+.modal-header {
+    border-bottom: 1px solid var(--admin-black) !important;
+    background: var(--admin-white) !important;
+}
+.modal-footer {
+    border-top: 1px solid var(--admin-black) !important;
+    background: var(--admin-white) !important;
+}
+.modal-title {
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+}
+
+/* Dropdowns */
+.dropdown-menu {
+    border-radius: 0 !important;
+    border: 1px solid var(--admin-black) !important;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.05) !important;
+}
+.dropdown-item {
+    font-family: var(--admin-font-sans) !important;
+    font-weight: 500 !important;
+}
+.dropdown-item:hover {
+    background-color: var(--admin-black) !important;
+    color: var(--admin-white) !important;
+}
+
+/* Pagination */
+.pagination .page-link {
+    border-radius: 0 !important;
+    color: var(--admin-black) !important;
+    border: 1px solid var(--admin-gray) !important;
+    font-family: var(--admin-font-sans) !important;
+}
+.pagination .page-item.active .page-link {
+    background-color: var(--admin-black) !important;
+    border-color: var(--admin-black) !important;
+    color: var(--admin-white) !important;
+}
+.pagination .page-link:hover {
+    background-color: var(--admin-black) !important;
+    color: var(--admin-white) !important;
+}
+
+/* Miscellaneous utility resets */
+.rounded, .rounded-circle, .rounded-pill, .rounded-top, .rounded-bottom, .rounded-start, .rounded-end {
+    border-radius: 0 !important;
+}
+.shadow, .shadow-sm, .shadow-lg {
+    box-shadow: none !important;
+}

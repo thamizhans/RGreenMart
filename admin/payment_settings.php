@@ -104,6 +104,7 @@ $cacheBust = $imageExists ? filemtime($imagePath) : 0;
         .drop-zone.error-zone { border-color: #f87171; background-color: #fff1f2; }
         .preview-img { max-height: 300px; object-fit: contain; }
     </style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body class="bg-gray-100">
 <div class="admin-container flex">
@@ -123,7 +124,7 @@ $cacheBust = $imageExists ? filemtime($imagePath) : 0;
             <?php if ($message): ?>
                 <div class="mb-5 p-4 rounded-lg flex items-start gap-3
                     <?= $messageType === 'success'
-                        ? 'bg-green-50 text-green-800 border border-green-200'
+                        ? 'bg-gray-100 text-black border border-black'
                         : 'bg-red-50 text-red-800 border border-red-200' ?>">
                     <span class="text-2xl leading-none mt-0.5"><?= $messageType === 'success' ? '✅' : '❌' ?></span>
                     <span class="text-sm leading-relaxed"><?= $message ?></span>
@@ -295,7 +296,7 @@ function validateAndPreview(file) {
         newPreview.classList.remove('hidden');
         dropContent.classList.add('hidden');
         fileNameLabel.textContent = full + ' — ' + (file.size / 1024).toFixed(1) + ' KB ✔';
-        fileNameLabel.className = 'text-sm font-medium mt-2 text-green-600';
+        fileNameLabel.className = 'text-sm font-medium mt-2 text-black';
         submitBtn.disabled = false;
     };
     reader.readAsDataURL(file);

@@ -136,6 +136,7 @@ $coupons = $conn->query("SELECT * FROM coupons ORDER BY id DESC")->fetchAll(PDO:
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>body { font-family: 'Poppins', sans-serif; } .admin-main { margin-left: 3rem; }</style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body class="bg-gray-100">
 <div class="admin-container flex">
@@ -166,7 +167,7 @@ $coupons = $conn->query("SELECT * FROM coupons ORDER BY id DESC")->fetchAll(PDO:
                 <h2 class="text-2xl font-bold text-indigo-600 mb-4">Company Profile</h2>
                 <p class="text-sm text-gray-500 mb-4">These details appear on every customer invoice.</p>
                 <?php if ($companyMessage): ?>
-                    <div class="mb-4 p-3 bg-green-100 text-green-700 rounded"><?= htmlspecialchars($companyMessage) ?></div>
+                    <div class="mb-4 p-3 bg-black text-white text-black rounded"><?= htmlspecialchars($companyMessage) ?></div>
                 <?php endif; ?>
                 <form method="POST" class="space-y-4">
                     <input type="hidden" name="company_profile_submit" value="1">
@@ -217,7 +218,7 @@ $coupons = $conn->query("SELECT * FROM coupons ORDER BY id DESC")->fetchAll(PDO:
             <!-- ── IMAGE SETTINGS ── -->
             <div id="imageSection" class="hidden">
                 <h2 class="text-2xl font-bold text-indigo-600 mb-4">Image Size Settings</h2>
-                <?php if($imageMessage): ?><div class="mb-4 p-3 bg-green-100 text-green-700 rounded"><?= htmlspecialchars($imageMessage) ?></div><?php endif; ?>
+                <?php if($imageMessage): ?><div class="mb-4 p-3 bg-black text-white text-black rounded"><?= htmlspecialchars($imageMessage) ?></div><?php endif; ?>
                 <form method="POST" class="space-y-4">
                     <input type="hidden" name="image_settings_submit" value="1">
                     <div><label class="block text-sm font-medium text-gray-700">Image Type</label>
@@ -299,7 +300,7 @@ $coupons = $conn->query("SELECT * FROM coupons ORDER BY id DESC")->fetchAll(PDO:
 
                 <!-- Flash messages -->
                 <?php if ($promoMessage): ?>
-                    <div class="p-3 bg-green-100 text-green-700 rounded"><?= htmlspecialchars($promoMessage) ?></div>
+                    <div class="p-3 bg-black text-white text-black rounded"><?= htmlspecialchars($promoMessage) ?></div>
                 <?php endif; ?>
                 <?php if ($couponMessage): ?>
                     <div class="p-3 bg-blue-100 text-blue-700 rounded"><?= $couponMessage ?></div>
@@ -331,7 +332,7 @@ $coupons = $conn->query("SELECT * FROM coupons ORDER BY id DESC")->fetchAll(PDO:
                             <label class="relative inline-flex items-center cursor-pointer">
                                 <input type="checkbox" name="referral_enabled" value="1" class="sr-only peer"
                                     <?= $promo['referral_enabled'] ? 'checked' : '' ?>>
-                                <div class="w-11 h-6 bg-gray-300 peer-focus:ring-2 peer-focus:ring-indigo-300 rounded-full peer peer-checked:bg-green-500 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
+                                <div class="w-11 h-6 bg-gray-300 peer-focus:ring-2 peer-focus:ring-indigo-300 rounded-full peer peer-checked:bg-black text-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"></div>
                             </label>
                         </div>
 
@@ -457,7 +458,7 @@ $coupons = $conn->query("SELECT * FROM coupons ORDER BY id DESC")->fetchAll(PDO:
                                 <tr><td colspan="7" class="p-4 text-center text-gray-500">No coupons created yet.</td></tr>
                             <?php else: foreach ($coupons as $c):
                                 $expired = strtotime($c['expiry_date']) < time();
-                                $statusClass = $c['is_active'] && !$expired ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700';
+                                $statusClass = $c['is_active'] && !$expired ? 'bg-black text-white text-black' : 'bg-red-100 text-red-700';
                                 $statusText  = $expired ? 'Expired' : ($c['is_active'] ? 'Active' : 'Disabled');
                             ?>
                                 <tr class="border-t hover:bg-gray-50">
@@ -477,7 +478,7 @@ $coupons = $conn->query("SELECT * FROM coupons ORDER BY id DESC")->fetchAll(PDO:
                                         <?php if (!$expired): ?>
                                         <form method="POST" class="inline">
                                             <input type="hidden" name="toggle_coupon_id" value="<?= $c['id'] ?>">
-                                            <button class="text-xs px-3 py-1 rounded <?= $c['is_active'] ? 'bg-yellow-500 text-white hover:bg-yellow-600' : 'bg-green-600 text-white hover:bg-green-700' ?>">
+                                            <button class="text-xs px-3 py-1 rounded <?= $c['is_active'] ? 'bg-yellow-500 text-white hover:bg-yellow-600' : 'bg-black text-white text-white hover:bg-black text-white' ?>">
                                                 <?= $c['is_active'] ? 'Disable' : 'Enable' ?>
                                             </button>
                                         </form>
@@ -538,7 +539,7 @@ document.getElementById("settingsForm")?.addEventListener("submit", async functi
     const box    = document.getElementById("messageBox");
     box.classList.remove("hidden");
     box.textContent = result.message;
-    box.style.backgroundColor = result.status === "success" ? "#d1fae5" : "#fee2e2";
+    box.style.backgroundColor = result.status === "success" ? "#eaeaea" : "#fee2e2";
     box.style.color            = result.status === "success" ? "#065f46" : "#991b1b";
     setTimeout(() => { box.classList.add("hidden"); }, 6000);
 });

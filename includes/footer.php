@@ -61,7 +61,7 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
 }
 
 .dos {
-    color: #15803d;
+    color: #000000;
 }
 
 .donts {
@@ -71,9 +71,9 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
 
 <style>
 .wa-icon {
-    font-size: 30px;
-    color: white;
-    margin-top: 15px;
+    font-size: 24px;
+    color: var(--lux-white);
+    margin-top: 17px;
 }
 
 .whatsapp-float {
@@ -82,43 +82,30 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
     height: 60px;
     bottom: 40px;
     right: 40px;
-    background-color: #25d366;
-    color: #FFF;
-    border-radius: 50%;
+    background-color: var(--lux-black);
+    color: var(--lux-white);
+    border-radius: 0;
     text-align: center;
-    font-size: 30px;
-    box-shadow: 2px 2px 3px #999;
+    box-shadow: none;
     z-index: 1000;
+    border: 1px solid var(--lux-black);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.whatsapp-float:hover {
+    background-color: var(--lux-white);
+    color: var(--lux-black);
+}
+.whatsapp-float:hover .wa-icon {
+    color: var(--lux-black);
 }
 
 .whatsapp-icon {
     margin: 0 auto;
 }
 
-.whatsapp-float:hover {
-    background-color: #1ebe57;
-}
-
 .info-float {
-    position: fixed;
-    width: 100px;
-    height: 100px;
-    bottom: 110px;
-    /* Placed above the WhatsApp button (60px height + 10px spacing) */
-    right: 20px;
-    color: #FFF;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 24px;
-    line-height: 50px;
-    box-shadow: 2px 2px 3px #999;
-    z-index: 1001;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.info-float:hover {
-    background-color: transparent;
+    display: none !important; /* Hide old generic red sticker to maintain editorial aesthetic */
 }
 </style>
 <footer id="footer" class="bg-gradient-to-b from-gray-900 to-black text-white">
@@ -134,7 +121,7 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
                     </svg>
                     <div>
                         <h3 class="text-xl font-bold text-white">RGreenMart</h3>
-                        <p class="text-red-400 text-sm">Fresh. Pure. Premium.</p>
+                        <p class="text-white text-sm">Fresh. Pure. Premium.</p>
                     </div>
                 </div>
                 <p class="text-gray-300 leading-relaxed text-sm">
@@ -144,37 +131,37 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
 
                 </p>
                 <div class="flex items-center space-x-2 text-sm">
-                    <span class="bg-blue-600 text-white px-3 py-1 rounded-full">Made In India</span>
-                    <span class="bg-green-600 text-white px-3 py-1 rounded-full">Fresh and Pure</span>
+                    <span class="border border-gray-700 text-white px-3 py-1 rounded-full">Made In India</span>
+                    <span class="border border-gray-700 text-white px-3 py-1 rounded-full">Fresh and Pure</span>
                 </div>
             </div>
 
             <!-- Quick Links -->
             <div class="space-y-4">
-                <h3 class="text-xl font-bold text-red-400 mb-6">Quick Links</h3>
+                <h3 class="text-xl font-bold text-white mb-6">Quick Links</h3>
                 <ul class="space-y-3">
                     <li><a href="/index.php"
-                            class="text-gray-300 hover:text-red-400 transition-colors flex items-center space-x-2">
+                            class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
                             <span class="w-2 h-2 bg-red-500 rounded-full"></span>
                             <span>Home</span>
                         </a></li>
 
                     <li><a href="/includes/HealthyTips.php"
-                            class="text-gray-300 hover:text-red-400 transition-colors flex items-center space-x-2">
+                            class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
                             <span class="w-2 h-2 bg-red-500 rounded-full"></span>
                             <span>Healthy Tips</span>
                         </a></li>
                     <li><a href="/includes/ContactUs.php"
-                            class="text-gray-300 hover:text-red-400 transition-colors flex items-center space-x-2">
+                            class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
                             <span class="w-2 h-2 bg-red-500 rounded-full"></span>
                             <span>Contact Us</span>
                         </a></li>
                     <li><a href="/includes/About.php"
-                            class="text-gray-300 hover:text-red-400 transition-colors flex items-center space-x-2">
+                            class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
                             <span class="w-2 h-2 bg-red-500 rounded-full"></span>
                             <span>About Us</span>
                         </a></li>
-                    <!-- <li><a href="#offers" class="text-gray-300 hover:text-red-400 transition-colors flex items-center space-x-2">
+                    <!-- <li><a href="#offers" class="text-gray-300 hover:text-white transition-colors flex items-center space-x-2">
                         <span class="w-2 h-2 bg-red-500 rounded-full"></span>
                         <span>Special Offers</span>
                     </a></li> -->
@@ -183,10 +170,10 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
 
             <!-- Contact Info -->
             <div class="space-y-4">
-                <h3 class="text-xl font-bold text-red-400 mb-6">Contact Info</h3>
+                <h3 class="text-xl font-bold text-white mb-6">Contact Info</h3>
                 <div class="space-y-4">
                     <div class="flex items-start space-x-3">
-                        <div class="bg-red-600 p-2 rounded-lg">
+                        <div class="border border-gray-700 p-2 rounded-lg">
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -202,7 +189,7 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
                         </div>
                     </div>
                     <div class="flex items-start space-x-3">
-                        <div class="bg-green-600 p-2 rounded-lg">
+                        <div class="border border-gray-700 p-2 rounded-lg">
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -214,13 +201,13 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
                             </a>
                             <a href="https://wa.me/<?php echo preg_replace('/\D/', '', $phone); ?>" target="_blank"
                                 class="block">
-                                <p class="text-white font-medium hover:text-green-400 transition">
+                                <p class="text-white font-medium hover:text-white transition">
                                     <?php echo htmlspecialchars($phone, ENT_QUOTES, 'UTF-8'); ?>
                                 </p>
                             </a>
                             <a href="https://wa.me/<?php echo preg_replace('/\D/', '', $phone2); ?>" target="_blank"
                                 class="block">
-                                <p class="text-white font-medium hover:text-green-400 transition">
+                                <p class="text-white font-medium hover:text-white transition">
                                     <?php echo htmlspecialchars($phone2, ENT_QUOTES, 'UTF-8'); ?>
                                 </p>
                             </a>
@@ -230,7 +217,7 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
 
                     </div>
                     <div class="flex items-start space-x-3">
-                        <div class="bg-blue-600 p-2 rounded-lg">
+                        <div class="border border-gray-700 p-2 rounded-lg">
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -248,13 +235,13 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
 
             <!-- Social Media & Newsletter -->
             <div class="space-y-4">
-                <h3 class="text-xl font-bold text-red-400 mb-6">Connect With Us</h3>
+                <h3 class="text-xl font-bold text-white mb-6">Connect With Us</h3>
                 <!-- Social Icons -->
                 <div class="flex space-x-4">
                     <!-- Facebook -->
                     <a href="https://www.facebook.com/people/RGreenMart/61584629313778/" 
                     target="_blank" 
-                    class="bg-blue-600 hover:bg-blue-700 w-12 h-12 rounded-full flex items-center justify-center transition-colors text-white">   
+                    class="border border-gray-700 hover:bg-blue-700 w-12 h-12 rounded-full flex items-center justify-center transition-colors text-white">   
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
                         </svg>
@@ -263,7 +250,7 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
                     <!-- YouTube -->
                     <a href="https://www.youtube.com/@RGreenmart" 
                     target="_blank" 
-                    class="bg-red-600 hover:bg-red-700 w-12 h-12 rounded-full flex items-center justify-center transition-colors text-white">       
+                    class="border border-gray-700 hover:bg-red-700 w-12 h-12 rounded-full flex items-center justify-center transition-colors text-white">       
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M23.498 6.186a2.97 2.97 0 0 0-2.092-2.105C19.606 3.5 12 3.5 12 3.5s-7.606 0-9.406.581a2.97 2.97 0 0 0-2.092 2.105C0 8.001 0 12 0 12s0 3.999.502 5.814a2.97 2.97 0 0 0 2.092 2.105C4.394 20.5 12 20.5 12 20.5s7.606-.581 9.406-.581a2.97 2.97 0 0 0 2.092-2.105C24 15.999 24 12 24 12s0-3.999-.502-5.814zM9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
                         </svg>
@@ -273,15 +260,15 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
                 <!-- Trust Badges -->
                 <div class="space-y-2">
                     <div class="flex items-center space-x-2 text-sm">
-                        <span class="text-green-400">✓</span>
+                        <span class="text-white">✓</span>
                         <span class="text-gray-300">Licensed Dealer</span>
                     </div>
                     <div class="flex items-center space-x-2 text-sm">
-                        <span class="text-green-400">✓</span>
+                        <span class="text-white">✓</span>
                         <span class="text-gray-300">Quality Assured</span>
                     </div>
                     <div class="flex items-center space-x-2 text-sm">
-                        <span class="text-green-400">✓</span>
+                        <span class="text-white">✓</span>
                         <span class="text-gray-300">24/7 Support</span>
                     </div>
                 </div>
@@ -290,7 +277,7 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
         <!-- Payment QR Code -->
         <!-- 
 <div class="space-y-4">
-    <h3 class="text-xl font-bold text-red-400 mb-6 text-center">Payment Options</h3>
+    <h3 class="text-xl font-bold text-white mb-6 text-center">Payment Options</h3>
     <div class="bg-gray-800 p-4 rounded-lg text-center">
         <a href="https://rgreenenterprise.com/Payments.php">
             <img src="./images/PaymentShort.jpg" alt="Scan to Pay" class="mx-auto w-40 h-40 rounded-lg shadow-md border border-gray-700">
@@ -328,7 +315,7 @@ $message = urlencode(WHATSAPP_DEFAULT_MESSAGE);
     </div>
 
     <!-- Festive Bottom Strip -->
-    <div class="bg-gradient-to-r from-green-600 via-lime-500 to-green-600 py-3">
+    <div class="bg-black py-3">
         <div class="text-center">
             <p class="text-white font-medium text-sm">
                 🌿 RGreenMart: Fresh Quality, Healthy Choices • Shop Sustainably • Live Well!. Powered by Shopify 💚

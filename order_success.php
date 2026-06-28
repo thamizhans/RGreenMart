@@ -72,7 +72,7 @@ $pdfUrl    = "/bills/invoice_{$enquiryNo}.pdf";
 
             <!-- Animated checkmark -->
             <div class="mx-auto mb-6 flex items-center justify-center"
-                 style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#e91e63,#6a1b9a);">
+                 style="width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#000000,#000000);">
                 <svg width="44" height="44" viewBox="0 0 24 24" fill="none"
                      stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
                     <polyline class="check-path" points="20 6 9 17 4 12"/>
@@ -91,7 +91,7 @@ $pdfUrl    = "/bills/invoice_{$enquiryNo}.pdf";
             <?php if ($hasPdf): ?>
             <a href="<?= htmlspecialchars($pdfUrl) ?>" target="_blank"
                class="inline-flex items-center gap-3 w-full justify-center px-6 py-4 rounded-xl font-bold text-white text-base mb-4 transition-opacity hover:opacity-90"
-               style="background:linear-gradient(135deg,#e91e63,#6a1b9a);box-shadow:0 6px 18px rgba(233,30,99,0.3);">
+               style="background:linear-gradient(135deg,#000000,#000000);box-shadow:0 6px 18px rgba(233,30,99,0.3);">
                 <i class="fa-solid fa-file-pdf text-lg"></i>
                 Download Invoice
             </a>
@@ -99,7 +99,7 @@ $pdfUrl    = "/bills/invoice_{$enquiryNo}.pdf";
             <!-- PDF not ready yet — poll until it appears -->
             <button id="invoiceBtn" disabled
                class="inline-flex items-center gap-3 w-full justify-center px-6 py-4 rounded-xl font-bold text-white text-base mb-4 opacity-60 cursor-not-allowed"
-               style="background:linear-gradient(135deg,#e91e63,#6a1b9a);">
+               style="background:linear-gradient(135deg,#000000,#000000);">
                 <i class="fa-solid fa-spinner fa-spin text-lg"></i>
                 <span id="invoiceBtnText">Preparing Invoice…</span>
             </button>

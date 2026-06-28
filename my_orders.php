@@ -152,70 +152,69 @@ if (!empty($shipmentIds)) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Orders</title>
+    <title>My Orders | RGreenMart</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="luxury-editorial.css">
     <style>
     * { box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f3f4f6; margin: 0; }
+    body { font-family: var(--lux-font-sans); background: var(--lux-white); margin: 0; color: var(--lux-black); }
 
     .orders-container {
-        max-width: 780px;
-        margin: 0 auto;
+        max-width: 900px;
+        margin: 4rem auto;
         padding: 24px 16px;
         min-height: 50vh;
     }
 
     .headingh2 {
-        font-size: 1.6em;
-        font-weight: 700;
-        background: linear-gradient(135deg, #e91e63, #6a1b9a);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 20px;
+        font-size: 2.5rem;
+        font-family: var(--lux-font-heading);
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-bottom: 3rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--lux-black);
     }
 
     /* ── Card wrapper ── */
     .order-card-wrapper {
-        margin-bottom: 14px;
+        margin-bottom: 2rem;
         cursor: pointer;
     }
     .order-card {
-        background: #fff;
-        border-radius: 14px;
-        border-left: 5px solid #6a1b9a;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-        transition: box-shadow 0.18s;
+        background: transparent;
+        border: 1px solid var(--lux-gray);
+        transition: border-color 0.2s;
         overflow: hidden;
     }
     .order-card-wrapper:hover .order-card {
-        box-shadow: 0 6px 22px rgba(106,27,154,0.13);
+        border-color: var(--lux-black);
     }
 
     /* ── Card top row: image + header info ── */
     .card-top {
         display: flex;
         align-items: flex-start;
-        gap: 14px;
-        padding: 14px 16px 10px;
+        gap: 1.5rem;
+        padding: 1.5rem;
     }
     .card-thumb {
-        width: 64px;
-        height: 64px;
-        border-radius: 10px;
+        width: 80px;
+        height: 100px;
         object-fit: cover;
         flex-shrink: 0;
-        border: 1px solid #e5e7eb;
+        filter: grayscale(10%) contrast(1.1);
     }
     .card-header {
         flex: 1;
         min-width: 0;
     }
     .card-product-name {
-        font-size: 15px;
-        font-weight: 700;
-        color: #1f2937;
-        margin: 0 0 3px;
+        font-size: 1.25rem;
+        font-family: var(--lux-font-heading);
+        font-weight: 400;
+        color: var(--lux-black);
+        margin: 0 0 5px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -225,76 +224,75 @@ if (!empty($shipmentIds)) {
         align-items: center;
         gap: 10px;
         flex-wrap: wrap;
-        margin-bottom: 2px;
+        margin-bottom: 5px;
+        font-family: var(--lux-font-sans);
     }
     .card-date {
-        font-size: 12px;
-        color: #9ca3af;
+        font-size: 0.85rem;
+        color: var(--lux-gray);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
     .card-price {
-        font-size: 15px;
-        font-weight: 700;
-        color: #166534;
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--lux-black);
     }
     .card-chevron {
-        color: #d1d5db;
+        color: var(--lux-black);
         font-size: 14px;
         padding-top: 4px;
     }
 
     /* ── Items list ── */
     .card-items {
-        padding: 0 16px 6px 16px;
-        border-top: 1px solid #f3f4f6;
-        margin-top: 4px;
+        padding: 0 1.5rem 1rem 1.5rem;
+        border-top: 1px solid #eaeaea;
+        margin-top: 10px;
     }
     .card-items-label {
-        font-size: 10px;
-        font-weight: 700;
-        color: #9ca3af;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--lux-gray);
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        padding: 7px 0 5px;
+        padding: 1rem 0 0.5rem;
     }
     .item-line {
         display: flex;
         align-items: baseline;
         gap: 8px;
-        padding: 4px 0;
-        border-bottom: 1px dashed #f3f4f6;
-        font-size: 13px;
-        color: #374151;
+        padding: 8px 0;
+        border-bottom: 1px solid #eaeaea;
+        font-size: 0.9rem;
+        color: var(--lux-black);
     }
     .item-line:last-child { border-bottom: none; }
     .item-name {
-        font-weight: 600;
-        color: #1f2937;
+        font-weight: 400;
+        color: var(--lux-black);
         flex-shrink: 0;
     }
     .item-weight {
-        background: #ede9fe;
-        color: #6d28d9;
-        font-size: 11px;
-        font-weight: 600;
-        padding: 1px 7px;
-        border-radius: 20px;
+        color: var(--lux-gray);
+        font-size: 0.8rem;
         white-space: nowrap;
     }
     .item-qty {
-        color: #6b7280;
-        font-size: 12px;
+        color: var(--lux-gray);
+        font-size: 0.8rem;
         white-space: nowrap;
     }
     .item-price {
         margin-left: auto;
-        font-weight: 600;
-        color: #059669;
+        font-weight: 400;
+        color: var(--lux-black);
         white-space: nowrap;
-        font-size: 12px;
+        font-size: 0.9rem;
     }
     .item-discount {
-        font-size: 11px;
-        color: #dc2626;
+        font-size: 0.8rem;
+        color: var(--lux-black);
         white-space: nowrap;
     }
 
@@ -303,67 +301,76 @@ if (!empty($shipmentIds)) {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        gap: 6px;
-        padding: 8px 16px 12px;
+        gap: 10px;
+        padding: 1rem 1.5rem;
         background: #fafafa;
-        border-top: 1px solid #f3f4f6;
+        border-top: 1px solid #eaeaea;
     }
     .badge {
-        padding: 2px 10px;
-        border-radius: 20px;
-        font-size: 11px;
-        font-weight: 600;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.75rem;
+        font-weight: 500;
         white-space: nowrap;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border: 1px solid var(--lux-black);
+        background: transparent;
+        color: var(--lux-black);
     }
-    .badge-cod     { background:#fff4e6; color:#92400e; border:1px solid #f59e0b; }
-    .badge-advance { background:#fef3c7; color:#78350f; border:1px solid #f59e0b; }
-    .badge-prepaid { background:#ecfccb; color:#14532d; border:1px solid #86efac; }
-    .badge-coupon  { background:#f0fdf4; color:#166534; border:1px solid #86efac; }
-    .badge-referral{ background:#faf5ff; color:#6b21a8; border:1px solid #c4b5fd; }
-    .badge-wallet  { background:#eff6ff; color:#1d4ed8; border:1px solid #93c5fd; }
 
     .invoice-btn {
         display: inline-flex;
         align-items: center;
         gap: 5px;
-        padding: 4px 12px;
-        background: linear-gradient(135deg, #e91e63, #6a1b9a);
-        color: #fff !important;
-        border-radius: 20px;
-        font-size: 11px;
-        font-weight: 600;
+        padding: 0.5rem 1rem;
+        background: var(--lux-black);
+        color: var(--lux-white) !important;
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
         text-decoration: none !important;
         border: none;
         cursor: pointer;
-        transition: opacity 0.2s;
+        transition: background 0.2s;
         z-index: 10;
         position: relative;
     }
-    .invoice-btn:hover { opacity: 0.88; color: #fff !important; }
+    .invoice-btn:hover { background: #333; color: var(--lux-white) !important; }
 
     .cancel-btn {
         display: inline-flex;
         align-items: center;
         gap: 5px;
-        padding: 4px 12px;
-        background: #dc2626;
-        color: #fff;
-        border: none;
-        border-radius: 20px;
-        font-size: 11px;
-        font-weight: 600;
+        padding: 0.5rem 1rem;
+        background: transparent;
+        color: var(--lux-black);
+        border: 1px solid var(--lux-black);
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
         cursor: pointer;
-        transition: opacity 0.2s;
+        transition: background 0.2s;
         z-index: 10;
         position: relative;
     }
-    .cancel-btn:hover { opacity: 0.85; }
+    .cancel-btn:hover { background: #f0f0f0; }
 
     /* Cancel modal */
-    #cancelModal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:999; align-items:center; justify-content:center; }
+    #cancelModal { display:none; position:fixed; inset:0; background:rgba(255,255,255,0.9); z-index:999; align-items:center; justify-content:center; }
     #cancelModal.open { display:flex; }
+    #cancelModal > div { background: #fff; padding: 3rem; border: 1px solid #000; max-width: 400px; width: 100%; text-align: center; }
+    #cancelModal h3 { font-family: var(--lux-font-heading); font-weight: 400; text-transform: uppercase; font-size: 1.5rem; margin-bottom: 1rem; }
+    #cancelModal p { font-family: var(--lux-font-sans); color: var(--lux-gray); margin-bottom: 2rem; }
+    #cancelModal button { text-transform: uppercase; letter-spacing: 0.05em; padding: 0.75rem 1.5rem; cursor: pointer; border: 1px solid #000; background: transparent; transition: 0.2s; }
+    #cancelModal button.bg-red-600 { background: #000; color: #fff; border: none; }
+    #cancelModal button.bg-red-600:hover { background: #333; }
+
+    @media (max-width: 768px) {
         .card-top { gap: 10px; }
-        .card-thumb { width: 52px; height: 52px; }
+        .card-thumb { width: 60px; height: 80px; }
+        .orders-container { margin: 2rem auto; }
     }
     </style>
 </head>

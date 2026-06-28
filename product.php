@@ -343,7 +343,7 @@ if ($isLoggedIn) {
     <script src="cart.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root { --primary-pink: #e91e63; --dark-blue: #212b36; --success-green: #16a34a; }
+        :root { --primary-pink: #000000; --dark-blue: #212b36; --success-green: #000000; }
         body { background-color: #fcfcfc; font-family: 'Inter', sans-serif; color: #333; }
         .product-container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         .image-viewer { position: sticky; top: 20px; }
@@ -500,7 +500,7 @@ if ($isLoggedIn) {
   padding: 14px;
   width: 100%;
   border: none;
-  background: linear-gradient(135deg, #e91e63, #6a1b9a);
+  background: linear-gradient(135deg, #000000, #000000);
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -514,7 +514,7 @@ if ($isLoggedIn) {
 
 .gradient-btn:hover {
     transform: translateY(-2px);
-    background: linear-gradient(135deg, #c2185b, #4a148c);
+    background: linear-gradient(135deg, #000000, #000000);
 }
 
 /* ── Mobile: proper gap between Add to Cart and Buy Now ── */
@@ -530,253 +530,69 @@ if ($isLoggedIn) {
 
 <body>
 <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/includes/header.php"; ?>
-<div class="max-w-7xl mx-auto mt-4 mb-10 bg-white shadow-lg overflow-hidden">
-<div class="product-container">
-    <div class="row g-4">
-        <div class="col-md-6 mt-0">
-            <div class="image-viewer">
-                    <div class="main-img-holder">
-                        <div id="productCarousel" class="mx-auto" data-bs-ride="false" style="max-width: <?= $productWidth ?>px; width: <?= $productWidth ?>px;">
-                            <div class="carousel-inner" style="width: <?= $productWidth ?>px; height: <?= $productHeight ?>px;">    
-                                <?php foreach($images as $i => $imgEntry): ?>
-                                    <div class="carousel-item <?= ($i === $initialIndex) ? 'active' : '' ?>">
-                                        <img src="<?= htmlspecialchars($imgEntry['src'], ENT_QUOTES, 'UTF-8') ?>" 
-                                            class="d-block w-100"
-                                            style="aspect-ratio: <?= $productWidth ?>/<?= $productHeight ?>; object-fit: cover;"
-                                            alt="Product image">
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div  id="thumbsColumn" class="thumbs-container thumbs flex flex-row items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
-                        <?php foreach($images as $i => $imgEntry): ?>
-                            <div class="thumb-box <?= $i === $initialIndex ? 'selected' : '' ?>" 
-                            onclick="updateGallery(this, '<?= $imgEntry['src'] ?>')"
-                            data-bs-target="#productCarousel" 
-                            data-bs-slide-to="<?= $i ?>">
-                            <img src="<?= htmlspecialchars($imgEntry['src'], ENT_QUOTES, 'UTF-8') ?>" />
-                        </div>
-                        <?php endforeach; ?>
-                    </div>
-            </div>
-        </div>
+<main class="zara-product-container">
+    <!-- LEFT COLUMN -->
+    <div class="zara-product-left">
+        <h4>MATERIALS, CARE AND ORIGIN</h4>
+        <h3>MATERIALS</h3>
+        <p>
+            We work with monitoring programmes to ensure compliance with safety,
+            health and quality standards for our products.
+        </p>
+        <p style="margin-top:2rem;">
+            <?= nl2br(htmlspecialchars($product['description'] ?? '')); ?>
+        </p>
+    </div>
 
-        <div class="col-md-6">
-            <div class="flex items-start justify-between gap-3">
-                <h1 class="text-3xl font-semibold text-gray-800 tracking-tight mb-2"><?= htmlspecialchars($product['name']); ?></h1>
-                <!-- ── Share Button ── -->
-                <div style="position:relative;flex-shrink:0;margin-top:4px;" id="shareWrapper">
-                    <button id="shareToggleBtn" onclick="toggleSharePanel()" title="Share this product"
-                        style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#e91e63,#6a1b9a);
-                               color:#fff;border:none;border-radius:22px;padding:8px 14px 8px 12px;
-                               font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;
-                               box-shadow:0 2px 10px rgba(106,27,154,0.35);transition:opacity 0.2s;"
-                        onmouseover="this.style.opacity=0.88" onmouseout="this.style.opacity=1">
-                        <!-- Arrow/share SVG -->
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-                            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-                            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-                        </svg>
+    <!-- CENTER COLUMN: IMAGES -->
+    <div class="zara-product-center">
+        <?php foreach($images as $imgEntry): ?>
+            <img src="<?= htmlspecialchars($imgEntry['src'], ENT_QUOTES, 'UTF-8') ?>" alt="Product image">
+        <?php endforeach; ?>
+    </div>
+
+    <!-- RIGHT COLUMN: DETAILS -->
+    <div class="zara-product-right">
+        <h1 class="zara-product-title"><?= htmlspecialchars($product['name']); ?></h1>
+        <p class="zara-product-price">
+            <span id="sellPrice">₹<?= number_format($simpleDiscountedPrice); ?></span>
+            <?php if($discountRate > 0): ?>
+                <span id="oldPrice" style="text-decoration:line-through; font-size:0.8em; color:#999; margin-left: 10px;">₹<?= number_format($grossPrice); ?></span>
+            <?php endif; ?>
+        </p>
+        
+        <input id="qtyInput" type="hidden" value="1" min="1">
+        
+        <!-- Variants -->
+        <?php if (!empty($variants)): ?>
+            <div class="zara-product-variants">
+                <?php foreach ($variants as $index => $v): ?>
+                    <button class="zara-variant-btn <?= $index === 0 ? 'active' : '' ?>"
+                        data-id="<?= $v['id'] ?>"
+                        data-price="<?= floatval($v['price'] ?? 0) ?>"
+                        data-old-price="<?= floatval($v['old_price'] ?? 0) ?>"
+                        data-discount="<?= floatval($v['discount'] ?? 0) ?>"
+                        data-stock="<?= $v['stock'] ?>"
+                        data-weight-value="<?= htmlspecialchars($v['weight_value']) ?>"
+                        data-weight-unit="<?= htmlspecialchars($v['weight_unit']) ?>"
+                        onclick="updateVariant(this)">
+                        <?= (int)$v['weight_value'] . htmlspecialchars($v['weight_unit']) ?>
                     </button>
-
-                    <!-- Share Panel (dropdown) -->
-                    <div id="sharePanel" style="display:none;position:absolute;top:calc(100% + 10px);right:0;
-                         background:#fff;border-radius:16px;padding:14px 16px;
-                         box-shadow:0 8px 32px rgba(0,0,0,0.18);border:1px solid #f0f0f0;
-                         min-width:200px;z-index:500;">
-                        <p style="font-size:11px;font-weight:700;color:#888;text-transform:uppercase;
-                                  letter-spacing:0.8px;margin:0 0 12px;">Share via</p>
-                        <div style="display:flex;flex-direction:column;gap:8px;">
-
-                            <!-- WhatsApp -->
-                            <a id="whatsappShare" target="_blank" rel="noopener"
-                               style="display:flex;align-items:center;gap:10px;padding:9px 12px;
-                                      border-radius:10px;text-decoration:none;color:#111;font-size:14px;font-weight:500;
-                                      transition:background 0.15s;background:#f5f5f5;"
-                               onmouseover="this.style.background='#e8f5e9'" onmouseout="this.style.background='#f5f5f5'">
-                                <svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill="#25D366" d="M16 3C9.373 3 4 8.373 4 15c0 2.385.668 4.61 1.828 6.504L4 29l7.746-1.812A12.94 12.94 0 0016 28c6.627 0 12-5.373 12-12S22.627 3 16 3z"/>
-                                    <path fill="#fff" d="M21.5 18.9c-.3-.15-1.77-.87-2.04-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.68-1.64-.93-2.25-.24-.58-.5-.5-.68-.51l-.58-.01c-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.46s1.06 2.85 1.2 3.05c.15.2 2.08 3.17 5.04 4.45.7.3 1.25.48 1.67.62.7.22 1.34.19 1.85.11.56-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
-                                </svg>
-                                WhatsApp
-                            </a>
-
-                            <!-- Facebook -->
-                            <a id="facebookShare" target="_blank" rel="noopener"
-                               style="display:flex;align-items:center;gap:10px;padding:9px 12px;
-                                      border-radius:10px;text-decoration:none;color:#111;font-size:14px;font-weight:500;
-                                      transition:background 0.15s;background:#f5f5f5;"
-                               onmouseover="this.style.background='#e8eaf6'" onmouseout="this.style.background='#f5f5f5'">
-                                <svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="16" cy="16" r="13" fill="#1877F2"/>
-                                    <path fill="#fff" d="M18.5 10h-2c-.83 0-1 .42-1 1v1.5H18l-.3 2.5H15.5V22h-3v-7H11v-2.5h1.5V11c0-2.21 1.34-3 3.5-3 1 0 2.5.08 2.5.08V10z"/>
-                                </svg>
-                                Facebook
-                            </a>
-
-                            <!-- Instagram (copy link — IG has no direct share URL) -->
-                            <button id="instagramShare" onclick="copyForInstagram()"
-                               style="display:flex;align-items:center;gap:10px;padding:9px 12px;
-                                      border-radius:10px;color:#111;font-size:14px;font-weight:500;
-                                      transition:background 0.15s;background:#f5f5f5;border:none;cursor:pointer;width:100%;text-align:left;"
-                               onmouseover="this.style.background='#fce4ec'" onmouseout="this.style.background='#f5f5f5'">
-                                <svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                        <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
-                                            <stop offset="0%" stop-color="#fdf497"/>
-                                            <stop offset="5%" stop-color="#fdf497"/>
-                                            <stop offset="45%" stop-color="#fd5949"/>
-                                            <stop offset="60%" stop-color="#d6249f"/>
-                                            <stop offset="90%" stop-color="#285AEB"/>
-                                        </radialGradient>
-                                    </defs>
-                                    <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#ig-grad)"/>
-                                    <rect x="7" y="7" width="18" height="18" rx="5" fill="none" stroke="#fff" stroke-width="2"/>
-                                    <circle cx="16" cy="16" r="4.5" fill="none" stroke="#fff" stroke-width="2"/>
-                                    <circle cx="22" cy="10" r="1.3" fill="#fff"/>
-                                </svg>
-                                <span id="igBtnLabel">Copy link for Instagram</span>
-                            </button>
-
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
+        <?php endif; ?>
 
-            <!-- ── Star Rating Bar ── -->
-            <div class="flex items-center flex-wrap gap-x-2 gap-y-1 mb-1">
-                <!-- Gradient pill badge -->
-                <span style="display:inline-flex;align-items:center;gap:4px;background:linear-gradient(135deg,#e91e63,#6a1b9a);color:#fff;font-size:13px;font-weight:700;padding:4px 10px 4px 8px;border-radius:20px;letter-spacing:0.3px;line-height:1;">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="#fff" style="flex-shrink:0;"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    <?= number_format($finalRating, 1) ?>
-                </span>
-                <!-- Gold individual stars -->
-                <div class="flex items-center gap-0.5">
-                    <?php
-                    $fullStars  = floor($finalRating);
-                    $halfStar   = ($finalRating - $fullStars) >= 0.3;
-                    $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
-                    for ($s = 0; $s < $fullStars; $s++):
-                    ?><svg width="17" height="17" viewBox="0 0 24 24" fill="#FFCC00"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><?php
-                    endfor;
-                    if ($halfStar):
-                    ?><svg width="17" height="17" viewBox="0 0 24 24"><defs><linearGradient id="hg"><stop offset="50%" stop-color="#FFCC00"/><stop offset="50%" stop-color="#e5e7eb"/></linearGradient></defs><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="url(#hg)"/></svg><?php
-                    endif;
-                    for ($s = 0; $s < $emptyStars; $s++):
-                    ?><svg width="17" height="17" viewBox="0 0 24 24" fill="#e5e7eb"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><?php
-                    endfor;
-                    ?>
-                </div>
-                <span class="text-xs text-gray-400">(<?= $totalReviews ?> <?= $totalReviews === 1 ? 'review' : 'reviews' ?>)</span>
-                <a href="#review-section" style="font-size:11px;font-weight:600;color:#6a1b9a;text-decoration:none;line-height:1.2;">
-                    <?= $userAlreadyReviewed ? '📝 My Review' : '✏️ Write a Review' ?>
-                </a>
-            </div>
-
-            <?php
-            $boughtCount = intval($product['bought_count'] ?? 0);
-            if ($boughtCount > 0):
-                // Display as "50+", "100+", etc.
-                $boughtLabel = $boughtCount . '+';
-            ?>
-            <div class="flex items-center gap-1 mb-1" style="margin-top:4px;">
-                <span style="display:inline-flex;align-items:center;gap:5px;background:#fff8e1;border:1px solid #ffe082;color:#5f3e00;font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;line-height:1.3;margin:3px 0px;">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e65100" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">
-                        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
-                    </svg>
-                    <strong><?= $boughtLabel ?></strong>&nbsp;bought in last month
-                </span>
-            </div>
-            <?php endif; ?>
-
-            <p class="text-gray-600 text-sm leading-relaxed"><?= nl2br(htmlspecialchars($product['description'])); ?></p>
-
-            <div class="flex items-center gap-3 py-1 border-y border-gray-50 mt-2">
-                <span id="sellPrice" class="text-3xl font-bold text-green-600">₹<?= number_format($simpleDiscountedPrice); ?></span>
-                <div id="discountBlock" class="flex items-center gap-2" <?= $discountRate <= 0 ? 'style="display:none"' : '' ?>>
-                    <div class="flex flex-col">
-                        <span id="oldPrice" class="text-gray-400 line-through text-sm">₹<?= number_format($grossPrice); ?></span>
-                        <span id="saveAmount" class="save-badge">
-                            SAVE ₹<?= number_format(max(0, $grossPrice - $simpleDiscountedPrice)) ?>
-                        </span>
-                    </div>
-                    <span id="discBadge" class="px-2 py-1 bg-red-100 text-red-600 text-xs font-bold rounded"><?= $discountRate; ?>% OFF</span>
-                </div>
-            </div>
-
-            <?php if (!empty($variants)): ?>
-                <div>
-                    <p class="text-sm font-semibold text-gray-700 mb-3 mt-3">Select Size / Weight:</p>
-                    <div class="flex flex-wrap gap-3" style="align-items:flex-start;">
-                        <?php foreach ($variants as $index => $v): ?>
-                            <?php
-                                // Derive old_price for variants where it's null but discount% is set
-                                $vOldPrice = floatval($v['old_price'] ?? 0);
-                                $vPrice    = floatval($v['price']     ?? 0);
-                                $vDiscount = floatval($v['discount']  ?? 0);
-                                if ($vOldPrice <= 0 && $vPrice > 0 && $vDiscount > 0 && $vDiscount < 100) {
-                                    $vOldPrice = $vPrice / (1 - $vDiscount / 100);
-                                }
-                            ?>
-                            <div class="variant-box border p-2 cursor-pointer <?= $index === 0 ? 'border-green-500 bg-green-50 active' : 'border-gray-200' ?>"
-                                data-id="<?= $v['id'] ?>"
-                                data-price="<?= $vPrice ?>"
-                                data-old-price="<?= $vOldPrice ?>"
-                                data-discount="<?= $vDiscount ?>"
-                                data-stock="<?= $v['stock'] ?>"
-                                data-weight-value="<?= $v['weight_value'] ?>"
-                                data-weight-unit="<?= $v['weight_unit'] ?>"
-                                onclick="updateVariant(this)">
-                                <div class="text-xs font-bold" style="color: #000000; padding-bottom: 4px"><?= (int)$v['weight_value'] . $v['weight_unit'] ?></div>
-                                <div class="text-sm" style="color: #000000c7">₹<?= number_format($v['price']); ?></div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            <?php endif; ?>
-
-            <div class="flex items-center gap-2 mt-3">
-                <span class="text-sm font-semibold text-gray-700">Stock:</span>
-                <span id="stockText" class="text-sm font-bold <?= $stockQty > 0 ? 'text-green-600' : 'text-red-600' ?>">
-                    <?= $stockQty > 0 ? ' Available' : ' Out of stock' ?>
-                </span>
-            </div>
-
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-gray-50 border border-gray-100 mt-2 mb-2">
-                    <div class="space-y-2">
-                        <p class="text-sm font-semibold text-gray-700">Quantity:</p>
-                        <div class="flex items-center w-40 border border-gray-300  overflow-hidden bg-white shadow-sm">
-                            <button onclick="changeQty(-1)" class="px-3 py-2 hover:bg-red-50 text-gray-600 border-r transition-colors">−</button>
-                            
-                            <div class="flex-1 flex flex-col items-center justify-center leading-none">
-                                <input id="qtyInput" type="number" value="1" min="1" readonly class="hidden">
-                                <span id="qtyDisplay" class="text-xs text-gray-400 font-bold uppercase" style="font-size: 0.65rem;">Qty</span>
-                                <span id="qtyNumber" class="text-sm font-black text-green-700">1</span>
-                            </div>
-
-                            <button onclick="changeQty(1)" class="px-3 py-2 hover:bg-green-50 text-gray-600 border-l transition-colors">+</button>
-                        </div>
-                    </div>
-                <div class="text-right">
-                    <p class="text-xs text-gray-500 uppercase font-bold">Total Amount</p>
-                    <p class="text-2xl font-black text-gray-900">₹<span id="displayTotal"><?= number_format($simpleDiscountedPrice); ?></span></p>
-                </div>
-            </div>
-            
-            <!-- ADD TO CART Button -->
-            <button onclick="sendToCart()" class="gradient-btn w-full flex items-center justify-center gap-3">
-                ADD TO CART <i class="fas fa-shopping-cart"></i>
-            </button>
-
-            <!-- BUY NOW Button -->
-            <button onclick="buyNow()" class="gradient-btn w-full flex items-center justify-center gap-3 mt-3">
-                BUY NOW <i class="fas fa-arrow-right"></i>
-            </button>
+        <div class="zara-product-actions">
+            <button class="zara-add-btn" style="width:100%" onclick="sendToCart()">ADD TO BASKET</button>
         </div>
+        
+        <div style="margin-top: 2rem;">
+             <span id="stockText" style="font-size: 0.75rem; font-weight:700; color: <?= $stockQty > 0 ? '#000000' : '#dc2626' ?>">
+                 <?= $stockQty > 0 ? 'AVAILABLE' : 'OUT OF STOCK' ?>
+             </span>
         </div>
     </div>
+</main>
 
     <div class="mt-1">
         <?php 
@@ -797,7 +613,7 @@ if ($isLoggedIn) {
 <?php if(!empty($fields)): ?>
     <div class="p-8 bg-gray-50 border-t border-gray-100">
         <h2 class="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
-            <i class="fas fa-list-ul text-green-600 text-sm"></i> Product Details
+            <i class="fas fa-list-ul text-black text-sm"></i> Product Details
         </h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
             <?php foreach($fields as $label => $val): ?>
@@ -861,7 +677,7 @@ if ($isLoggedIn) {
         </div>
 
         <?php if (!empty($reviewMsg)): ?>
-        <div class="mb-4 px-4 py-3 rounded-lg text-sm font-medium <?= $reviewMsgType === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200' ?>">
+        <div class="mb-4 px-4 py-3 rounded-lg text-sm font-medium <?= $reviewMsgType === 'success' ? 'bg-gray-100 text-black border border-black' : 'bg-red-50 text-red-700 border border-red-200' ?>">
             <?= htmlspecialchars($reviewMsg) ?>
         </div>
         <?php endif; ?>
@@ -888,7 +704,7 @@ if ($isLoggedIn) {
                           class="w-full border border-gray-200 rounded-lg p-3 text-sm outline-none focus:ring-2 focus:ring-indigo-300 resize-none mb-3"></textarea>
                 <button type="submit" name="submit_review"
                         class="px-6 py-2 rounded-lg text-white text-sm font-bold"
-                        style="background:linear-gradient(135deg,#e91e63,#6a1b9a);">
+                        style="background:var(--lux-black);">
                     Submit Review
                 </button>
             </form>
@@ -1032,9 +848,8 @@ function updateDisplayPrice() {
 
     function updateVariant(el) {
         // Remove active class from all variant boxes
-        document.querySelectorAll('.variant-box')
-            .forEach(b => b.classList.remove('active', 'border-green-500', 'bg-green-50'));
-        el.classList.add('active', 'border-green-500', 'bg-green-50');
+        document.querySelectorAll('.zara-variant-btn').forEach(b => b.classList.remove('active', 'bg-black', 'text-white', 'border-black', 'bg-gray-100'));
+        el.classList.add('active');
 
         const selPrice    = parseFloat(el.dataset.price    || 0);
         var   selOldPrice = parseFloat(el.dataset.oldPrice || 0);
@@ -1067,7 +882,7 @@ function updateDisplayPrice() {
         const stockText = document.getElementById('stockText');
         if (stockText) {
             stockText.innerText = stock > 0 ? '● Available' : '● Out of stock';
-            stockText.style.color = stock > 0 ? '#16a34a' : '#dc2626';
+            stockText.style.color = stock > 0 ? '#000000' : '#dc2626';
         }
 
         updateDisplayPrice();
@@ -1140,10 +955,10 @@ function updateDisplayPrice() {
                     
                     // Update Thumbnail Borders
                     thumbs.forEach(x => {
-                        x.classList.remove('selected', 'border-green-500');
+                        x.classList.remove('selected', 'border-black');
                         x.classList.add('border-gray-200');
                     });
-                    t.classList.add('selected', 'border-green-500');
+                    t.classList.add('selected', 'border-black');
                     t.classList.remove('border-gray-200');
                 });
             });
@@ -1248,13 +1063,13 @@ function copyForInstagram() {
   padding:0 0 24px;
   box-shadow:0 -12px 48px rgba(0,0,0,.16);
   transition:transform .34s cubic-bezier(.4,0,.2,1);
-  font-family:Arial,sans-serif;
+  font-family:var(--lux-font-sans);
 ">
   <div style="text-align:center;padding:14px 0 2px;">
     <span style="display:inline-block;width:40px;height:4px;background:#e5e7eb;border-radius:99px;"></span>
   </div>
   <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px 12px;">
-    <span style="font-size:16px;font-weight:700;color:#064e3b;">Select Variant</span>
+    <span style="font-size:16px;font-weight:700;color:#000000;">Select Variant</span>
     <button onclick="closeVariantModal()" style="
       background:#f3f4f6;border:none;width:32px;height:32px;
       border-radius:50%;cursor:pointer;font-size:15px;color:#555;
@@ -1265,16 +1080,16 @@ function copyForInstagram() {
   <!-- product preview strip -->
   <div style="
     display:flex;align-items:center;gap:12px;
-    padding:10px 20px;background:#f0fdf4;
-    border-top:1px solid #d1fae5;border-bottom:1px solid #d1fae5;margin-bottom:16px;
+    padding:10px 20px;background:#eaeaea;
+    border-top:1px solid #eaeaea;border-bottom:1px solid #eaeaea;margin-bottom:16px;
   ">
-    <img id="vm-img" src="" alt="" style="width:56px;height:56px;border-radius:8px;object-fit:cover;border:1px solid #d1fae5;flex-shrink:0;">
+    <img id="vm-img" src="" alt="" style="width:56px;height:56px;border-radius:8px;object-fit:cover;border:1px solid #eaeaea;flex-shrink:0;">
     <div>
-      <div id="vm-name" style="font-size:13px;font-weight:700;color:#064e3b;margin-bottom:3px;line-height:1.3;"></div>
+      <div id="vm-name" style="font-size:13px;font-weight:700;color:#000000;margin-bottom:3px;line-height:1.3;"></div>
       <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
         <span id="vm-old-price" style="font-size:12px;color:#9ca3af;text-decoration:line-through;display:none;"></span>
-        <span id="vm-price"     style="font-size:15px;font-weight:700;color:#059669;"></span>
-        <span id="vm-disc"      style="display:none;font-size:11px;font-weight:700;color:#fff;background:#e91e63;border-radius:4px;padding:1px 6px;"></span>
+        <span id="vm-price"     style="font-size:15px;font-weight:700;color:#000000;"></span>
+        <span id="vm-disc"      style="display:none;font-size:11px;font-weight:700;color:#fff;background:#000000;border-radius:4px;padding:1px 6px;"></span>
       </div>
     </div>
   </div>
@@ -1288,7 +1103,7 @@ function copyForInstagram() {
     <!-- qty row -->
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
       <span style="font-size:13px;font-weight:600;color:#475569;">Quantity:</span>
-      <div style="display:flex;align-items:center;border:2px solid #059669;border-radius:8px;overflow:hidden;">
+      <div style="display:flex;align-items:center;border:2px solid #000000;border-radius:8px;overflow:hidden;">
         <button onclick="vmQtyChange(-1)" class="vmqbtn">&#8722;</button>
         <span id="vm-qty-val" style="width:36px;text-align:center;font-size:14px;font-weight:700;color:#1f2937;">1</span>
         <button onclick="vmQtyChange(1)"  class="vmqbtn">+</button>
@@ -1299,8 +1114,8 @@ function copyForInstagram() {
       width:100%;padding:14px;border:none;border-radius:10px;
       background:#d1d5db;color:#fff;font-size:15px;font-weight:700;
       cursor:not-allowed;transition:all .2s;letter-spacing:.3px;
-      font-family:Arial,sans-serif;
-    ">Add to Cart</button>
+      font-family:var(--lux-font-sans);
+    ">ADD TO BASKET</button>
   </div>
 </div>
 
@@ -1321,13 +1136,13 @@ function copyForInstagram() {
   transition:transform .36s cubic-bezier(.4,0,.2,1);
   display:flex;flex-direction:column;
   box-shadow:-6px 0 40px rgba(0,0,0,.13);
-  font-family:Arial,sans-serif;
+  font-family:var(--lux-font-sans);
 ">
   <!-- header -->
   <div style="
     padding:16px 18px;
     display:flex;align-items:center;justify-content:space-between;
-    background: linear-gradient(135deg, #e91e63 0%, #6a1b9a 100%);
+    background: linear-gradient(135deg, #000000 0%, #000000 100%);
     color:#fff;flex-shrink:0;
   ">
     <div style="display:flex;align-items:center;gap:9px;">
@@ -1352,28 +1167,28 @@ function copyForInstagram() {
 
   <!-- order summary footer -->
   <div style="border-top:2px solid #e5e7eb;background:#fff;flex-shrink:0;padding:14px 18px 18px;">
-    <div style="font-size:15px;font-weight:700;color:#064e3b;text-align:center;margin-bottom:11px;">Order Summary</div>
+    <div style="font-size:15px;font-weight:700;color:#000000;text-align:center;margin-bottom:11px;">Order Summary</div>
 
     <div class="cprow"><span>Total Items</span><strong id="cp-ti">0</strong></div>
     <div class="cprow"><span>Total Quantity</span><strong id="cp-tq">0</strong></div>
     <div class="cprow" style="border-bottom:none;padding-bottom:12px;">
       <span style="font-size:14px;font-weight:700;color:#1f2937;">Total Amount</span>
-      <strong id="cp-gt" style="font-size:17px;color:#059669;font-weight:800;">&#8377;0.00</strong>
+      <strong id="cp-gt" style="font-size:17px;color:#000000;font-weight:800;">&#8377;0.00</strong>
     </div>
 
     <!-- Checkout — PHP session check -->
     <?php if (isset($_SESSION['user_id'])): ?>
     <button onclick="window.location.href='add_delivery_address.php'" class="cp-checkout-btn">
-      Proceed to Checkout &#8594;
+      PROCEED TO CHECKOUT &#8594;
     </button>
     <?php else: ?>
     <button onclick="window.location.href='login.php'" class="cp-checkout-btn">
-      Login to Checkout &#8594;
+      LOGIN TO CHECKOUT &#8594;
     </button>
     <?php endif; ?>
 
     <button onclick="window.location.href='viewcart.php'" class="cp-viewcart-btn">
-      View Full Cart
+      VIEW FULL CART
     </button>
   </div>
 </div>
@@ -1387,52 +1202,52 @@ function copyForInstagram() {
 .vm-chip {
   padding:8px 14px;border:2px solid #e5e7eb;border-radius:8px;
   cursor:pointer;background:#fff;transition:all .14s;
-  font-family:Arial,sans-serif;text-align:left;
+  font-family:var(--lux-font-sans);text-align:left;
 }
-.vm-chip:hover { border-color:#059669;color:#059669; }
+.vm-chip:hover { border-color:#000000;color:#000000; }
 .vm-chip.active {
-  border-color:#059669;background:#f0fdf4;color:#064e3b;
+  border-color:#000000;background:#eaeaea;color:#000000;
   box-shadow:0 0 0 3px rgba(5,150,105,.14);
 }
 .vm-chip-weight { font-size:13px;font-weight:700;color:inherit;display:block;line-height:1.2; }
-.vm-chip-price  { font-size:12px;color:#059669;display:block;margin-top:2px;font-weight:600; }
-.vm-chip.active .vm-chip-price { color:#064e3b; }
+.vm-chip-price  { font-size:12px;color:#000000;display:block;margin-top:2px;font-weight:600; }
+.vm-chip.active .vm-chip-price { color:#000000; }
 
 /* variant modal qty buttons */
 .vmqbtn {
-  background:#f0fdf4;border:none;width:32px;height:32px;cursor:pointer;
-  font-size:16px;color:#059669;font-weight:700;
+  background:#eaeaea;border:none;width:32px;height:32px;cursor:pointer;
+  font-size:16px;color:#000000;font-weight:700;
   display:flex;align-items:center;justify-content:center;transition:background .13s;
 }
-.vmqbtn:hover { background:#d1fae5; }
+.vmqbtn:hover { background:#eaeaea; }
 
 /* cart panel summary rows */
 .cprow {
   display:flex;justify-content:space-between;align-items:center;
   padding:7px 0;border-bottom:1px solid #f3f4f6;
-  font-size:14px;color:#6b7280;font-family:Arial,sans-serif;
+  font-size:14px;color:#6b7280;font-family:var(--lux-font-sans);
 }
 
 /* checkout button — matches project .checkout-btn */
 .cp-checkout-btn {
   width:100%;padding:13px;border:none;border-radius:4px;cursor:pointer;
-  background:linear-gradient(135deg,#e91e63,#6a1b9a);
+  background:var(--lux-black);
   color:#fff;font-size:15px;font-weight:600;letter-spacing:.2px;
-  transition:all .25s;font-family:Arial,sans-serif;
+  transition:all .25s;font-family:var(--lux-font-sans);
 }
 .cp-checkout-btn:hover {
-  background:linear-gradient(135deg,#c2185b,#4a148c);
+  background:linear-gradient(135deg,#000000,#000000);
   transform:translateY(-2px);
 }
 .cp-checkout-btn:active { transform:scale(0.97); }
 
 .cp-viewcart-btn {
   width:100%;padding:10px;margin-top:7px;
-  border:2px solid #059669;border-radius:4px;
-  background:#fff;color:#059669;font-size:14px;font-weight:600;
-  cursor:pointer;transition:background .18s;font-family:Arial,sans-serif;
+  border:2px solid #000000;border-radius:4px;
+  background:#fff;color:#000000;font-size:14px;font-weight:600;
+  cursor:pointer;transition:background .18s;font-family:var(--lux-font-sans);
 }
-.cp-viewcart-btn:hover { background:#f0fdf4; }
+.cp-viewcart-btn:hover { background:#eaeaea; }
 
 /* cart item card */
 .cp-card {
@@ -1444,7 +1259,7 @@ function copyForInstagram() {
 .cp-card:hover { box-shadow:0 3px 14px rgba(0,0,0,.08); }
 .cp-card img {
   width:68px;height:68px;border-radius:7px;object-fit:cover;
-  border:1px solid #d1fae5;flex-shrink:0;
+  border:1px solid #eaeaea;flex-shrink:0;
 }
 .cp-card-body { flex:1;min-width:0; }
 .cp-card-name {
@@ -1453,47 +1268,47 @@ function copyForInstagram() {
 }
 .cp-variant-tag { font-size:11px;color:#6b7280;margin-bottom:4px; }
 .cp-prices { display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-bottom:8px; }
-.cp-fp  { font-size:14px;font-weight:700;color:#059669; }
+.cp-fp  { font-size:14px;font-weight:700;color:#000000; }
 .cp-op  { font-size:12px;color:#d1d5db;text-decoration:line-through; }
-.cp-dc  { font-size:10px;font-weight:700;color:#e91e63;background:#fce7f3;border-radius:4px;padding:1px 5px; }
+.cp-dc  { font-size:10px;font-weight:700;color:#000000;background:#eaeaea;border-radius:4px;padding:1px 5px; }
 .cp-bot { display:flex;align-items:center;justify-content:space-between; }
 .cp-qwrap {
   display:flex;align-items:center;
-  border:1.5px solid #059669;border-radius:7px;overflow:hidden;
+  border:1.5px solid #000000;border-radius:7px;overflow:hidden;
 }
 .cpqb {
-  background:#f0fdf4;border:none;width:27px;height:27px;cursor:pointer;
-  font-size:13px;color:#059669;font-weight:700;
+  background:#eaeaea;border:none;width:27px;height:27px;cursor:pointer;
+  font-size:13px;color:#000000;font-weight:700;
   display:flex;align-items:center;justify-content:center;transition:background .13s;
 }
-.cpqb:hover { background:#d1fae5; }
+.cpqb:hover { background:#eaeaea; }
 .cpqi {
   width:30px;text-align:center;font-size:13px;font-weight:700;
-  color:#1f2937;border:none;border-left:1.5px solid #059669;
-  border-right:1.5px solid #059669;height:27px;background:#fff;outline:none;
-  font-family:Arial,sans-serif;
+  color:#1f2937;border:none;border-left:1.5px solid #000000;
+  border-right:1.5px solid #000000;height:27px;background:#fff;outline:none;
+  font-family:var(--lux-font-sans);
 }
 .cp-line-total { font-size:13px;font-weight:700;color:#374151; }
 .cp-rm {
   background:none;border:none;color:#dc2626;font-size:12px;
   cursor:pointer;padding:2px 5px;border-radius:4px;transition:background .13s;
-  margin-top:4px;font-family:Arial,sans-serif;
+  margin-top:4px;font-family:var(--lux-font-sans);
 }
 .cp-rm:hover { background:#fee2e2; }
 
 /* empty state */
 .cp-empty {
   text-align:center;padding:60px 20px;
-  font-family:Arial,sans-serif;
+  font-family:var(--lux-font-sans);
 }
-.cp-empty i   { font-size:50px;color:#d1fae5;display:block;margin-bottom:12px; }
+.cp-empty i   { font-size:50px;color:#eaeaea;display:block;margin-bottom:12px; }
 .cp-empty p   { font-size:15px;font-weight:700;color:#6b7280;margin-bottom:4px; }
 .cp-empty small { font-size:12px;color:#9ca3af; }
 
 /* scrollbar */
 #cp-items::-webkit-scrollbar { width:4px; }
 #cp-items::-webkit-scrollbar-track { background:#f9fafb; }
-#cp-items::-webkit-scrollbar-thumb { background:#d1fae5;border-radius:4px; }
+#cp-items::-webkit-scrollbar-thumb { background:#eaeaea;border-radius:4px; }
 
 @media (max-width:480px) {
   #cart-panel { width:100vw !important; }
@@ -1596,7 +1411,7 @@ function _vmRefPrice(v) {
 function _vmBtnState(on) {
   var btn = document.getElementById('vm-add-btn');
   btn.disabled    = !on;
-  btn.style.background = on ? 'linear-gradient(135deg,#e91e63,#6a1b9a)' : '#d1d5db';
+  btn.style.background = on ? 'var(--lux-black)' : '#d1d5db';
   btn.style.cursor     = on ? 'pointer' : 'not-allowed';
 }
 

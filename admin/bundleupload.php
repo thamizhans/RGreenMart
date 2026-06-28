@@ -541,6 +541,7 @@ $uploadErrors  = $uploadDone ? $errors : [];
     <meta charset="UTF-8">
     <title>Bundle Upload</title>
     <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body class="bg-gray-100">
     <div class="flex">
@@ -552,7 +553,7 @@ $uploadErrors  = $uploadDone ? $errors : [];
         <div class="mb-6 flex items-center justify-between">
             <p class="text-sm text-gray-500">Upload a CSV with images to add or update products in bulk.</p>
             <a href="?export=csv"
-               class="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-lg transition">
+               class="inline-flex items-center gap-2 px-4 py-2 bg-black text-white hover:bg-black text-white text-white text-sm font-semibold rounded-lg transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -599,13 +600,13 @@ $uploadErrors  = $uploadDone ? $errors : [];
         <!-- ── Upload result messages ── -->
         <?php if (isset($uploadDone) && $uploadDone): ?>
             <?php if ($uploadSuccess): ?>
-            <div class="mb-4 flex items-start gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
-                <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="mb-4 flex items-start gap-3 p-4 bg-gray-100 border border-black rounded-lg">
+                <svg class="w-5 h-5 text-black flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                 </svg>
                 <div>
-                    <p class="text-sm font-semibold text-green-800">Upload Completed Successfully</p>
-                    <p class="text-xs text-green-700 mt-0.5"><?= $successCount ?> item<?= $successCount !== 1 ? 's' : '' ?> added or updated.</p>
+                    <p class="text-sm font-semibold text-black">Upload Completed Successfully</p>
+                    <p class="text-xs text-black mt-0.5"><?= $successCount ?> item<?= $successCount !== 1 ? 's' : '' ?> added or updated.</p>
                 </div>
             </div>
             <?php endif; ?>
@@ -638,7 +639,7 @@ $uploadErrors  = $uploadDone ? $errors : [];
             <div class="mb-4">
                 <label class="block font-medium text-gray-700 mb-1">
                     Images
-                    <!-- <span class="ml-2 text-xs font-normal text-green-600 bg-green-50 border border-green-200 px-2 py-0.5 rounded-full">Optional</span> -->
+                    <!-- <span class="ml-2 text-xs font-normal text-black bg-gray-100 border border-black px-2 py-0.5 rounded-full">Optional</span> -->
                 </label>
                 <input type="file" name="images[]" multiple accept="image/*" class="w-full border p-2 rounded">
                 <div class="mt-1 space-y-1">

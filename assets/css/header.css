@@ -40,7 +40,7 @@
         }
         .logo-text p {
             font-size: 0.75rem;
-            color: #15803d; /* green-700 */
+            color: #000000; /* green-700 */
             margin: 0;
         }
         .desktop-nav {
@@ -115,7 +115,7 @@
             position: absolute;
             top: -0.5rem;
             right: -0.5rem;
-            background-color: #16a34a; /* green-600 */
+            background-color: #000000; /* green-600 */
             color: #ffffff;
             font-size: 0.75rem;
             font-weight: bold;

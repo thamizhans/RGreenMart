@@ -193,7 +193,7 @@ try {
                     " . number_format($codAdvanceAmount, 2) . "
                 </td>
             </tr>
-            <tr style='background:#f0fdf4;'>
+            <tr style='background:#eaeaea;'>
                 <td colspan='6' style='text-align:right; font-weight:bold; color:#065f46;'>
                     🏠 Balance to Pay on Delivery (Cash)
                 </td>
@@ -233,8 +233,8 @@ try {
                 margin-top: 8px;
                 font-size: 12px;
             }
-            .btn-success {
-                background: #16a34a; color: #ffffff; padding: 0.75rem 1.5rem;
+            .btn-dark {
+                background: #000000; color: #ffffff; padding: 0.75rem 1.5rem;
                 border-radius: 9999px; text-decoration: none; font-weight: bold;
                 transition: all 0.2s; display: inline-block;
             }
@@ -346,7 +346,7 @@ try {
                         <td colspan='6' class='right'>COD Convenience Fee</td>
                         <td>" . number_format($codConvenienceFee, 2) . "</td>
                     </tr>" : "") . "
-                    <tr style='background:#f0fdf4;'>
+                    <tr style='background:#eaeaea;'>
                         <td colspan='6' class='right bold'>Overall Total</td>
                         <td class='bold'>" . number_format($overallTotal, 2) . "</td>
                     </tr>

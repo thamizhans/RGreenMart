@@ -78,22 +78,44 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Select Delivery Address</title>
+    <title>Checkout | RGreenMart</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="cart.js"></script>
     <script src="toast.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="luxury-editorial.css">
+    <style>
+        /* Brutalist Overrides */
+        body { font-family: var(--lux-font-sans); background: var(--lux-white) !important; color: var(--lux-black) !important; }
+        .rounded-xl, .rounded-lg, .rounded, .rounded-md, .rounded-sm, .rounded-full { border-radius: 0 !important; }
+        .shadow-lg, .shadow-md, .shadow { box-shadow: none !important; }
+        .bg-white { background-color: var(--lux-white) !important; }
+        .bg-gray-100, .bg-gray-50 { background-color: transparent !important; }
+        input[type="text"], input[type="email"], input[type="tel"], select, textarea { border: 1px solid var(--lux-gray) !important; background: transparent !important; outline: none !important; padding: 0.75rem !important; font-family: var(--lux-font-sans); width: 100%; margin-top: 0.5rem; transition: border-color 0.2s; }
+        input:focus, select:focus, textarea:focus { border-color: var(--lux-black) !important; }
+        .border-gray-200, .border-gray-300 { border-color: #eaeaea !important; }
+        .text-indigo-600, .text-purple-700, .text-blue-600 { color: var(--lux-black) !important; }
+        .text-black { color: #000 !important; font-weight: bold; }
+        .bg-indigo-600, .bg-purple-600, .bg-blue-600 { background-color: var(--lux-black) !important; color: var(--lux-white) !important; }
+        .hover\:bg-indigo-700:hover { background-color: #333 !important; }
+        .bg-black text-white, .bg-purple-50, .bg-orange-100 { background: var(--lux-white) !important; border: 1px solid var(--lux-gray) !important; }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--lux-font-heading); font-weight: 400 !important; text-transform: uppercase; letter-spacing: 0.05em; color: var(--lux-black) !important; }
+        .checkout-wrapper { max-width: 900px; margin: 4rem auto; border: 1px solid var(--lux-gray); padding: 4rem; }
+        .btn-black { background: var(--lux-black); color: var(--lux-white); text-transform: uppercase; padding: 1rem 2rem; border: none; font-weight: 500; letter-spacing: 0.05em; cursor: pointer; transition: background 0.2s; }
+        .btn-black:hover { background: #333; }
+        @media (max-width: 768px) { .checkout-wrapper { padding: 2rem; border: none; } }
+    </style>
 </head>
 
 <body class="bg-gray-100">
     <?php include "includes/header.php"; ?>
 
-    <div class="max-w-3xl mx-auto m-10 p-6 bg-white rounded-xl shadow-lg">
-        <div class="flex items-center justify-between mb-6">
-            <h2 class="text-2xl font-bold text-gray-700">Select Delivery Address</h2>
-            <button onclick="openModal()" class="text-indigo-600 hover:text-indigo-800 font-semibold">
-                + Add New Address
+    <div class="checkout-wrapper">
+        <div class="flex items-center justify-between mb-8 border-b border-gray-300 pb-4">
+            <h2 class="text-3xl font-bold text-gray-700 m-0">Checkout</h2>
+            <button onclick="openModal()" class="text-sm font-semibold uppercase tracking-wider" style="border:1px solid #000; padding: 0.5rem 1rem;">
+                + Add Address
             </button>
         </div>
 
@@ -109,7 +131,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <p class="font-semibold text-gray-800">
                                 <?= htmlspecialchars($addr['contact_name']) ?>
                                 <?php if($addr['is_default']): ?>
-                                <span class="ml-2 text-xs bg-green-200 text-green-700 px-2 py-1 rounded-full">Default</span>
+                                <span class="ml-2 text-xs bg-black text-white text-black px-2 py-1 rounded-full">Default</span>
                                 <?php endif; ?>
                             </p>
                             <p class="text-gray-600 text-sm"><?= htmlspecialchars($addr['contact_mobile']) ?></p>
@@ -146,7 +168,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- Order Summary -->
         <div id="orderSummary" class="mt-8 mb-4 p-4 bg-gray-50 rounded-lg text-gray-700 space-y-2"
-             style="border-top: 4px solid; border-image: linear-gradient(135deg,#e91e63,#6a1b9a) 1; border-left:none; border-right:none; border-bottom:none;">
+             style="border-top: 4px solid; border-image: linear-gradient(135deg,#000000,#000000) 1; border-left:none; border-right:none; border-bottom:none;">
 
             <div class="flex justify-between">
                 <span>Items Subtotal:</span>
@@ -166,7 +188,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <span>
                     <span id="originalShippingCharge" class="line-through text-gray-400 mr-1 hidden"></span>
                     <span id="shippingChargeLabel">₹<span id="shippingCharge">0.00</span></span>
-                    <span id="freeShippingBadge" class="hidden text-green-600 font-semibold">FREE</span>
+                    <span id="freeShippingBadge" class="hidden text-black font-semibold">FREE</span>
                 </span>
             </div>
 
@@ -195,7 +217,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
             <!-- Coupon discount row (shown after successful apply) -->
-            <div id="couponDiscountRow" class="hidden flex justify-between text-green-700 font-semibold text-sm">
+            <div id="couponDiscountRow" class="hidden flex justify-between text-black font-semibold text-sm">
                 <span>🎟 Coupon (<span id="couponCodeApplied" class="font-mono"></span>):</span>
                 <span>-₹<span id="couponDiscountAmt">0.00</span></span>
             </div>
@@ -271,7 +293,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </p>
                     <p class="text-orange-700">
                         Remaining balance
-                        <strong class="text-green-700">₹<span id="balanceAmountDisplay">—</span></strong>
+                        <strong class="text-black">₹<span id="balanceAmountDisplay">—</span></strong>
                         will be collected in cash at delivery.
                     </p>
                     <p class="text-xs text-gray-500 mt-1">
@@ -300,7 +322,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </p>
                     <p class="text-amber-700">
                         Remaining order amount
-                        <strong class="text-green-700">₹<span id="codChargeBalanceDisplay">—</span></strong>
+                        <strong class="text-black">₹<span id="codChargeBalanceDisplay">—</span></strong>
                         will be collected in cash at delivery.
                     </p>
                     <p class="text-xs text-gray-500 mt-1">
@@ -356,7 +378,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <span>💳 Pay COD Fee Online Now:</span>
                     <span>₹<span id="codChargeDueDisplay">—</span></span>
                 </div>
-                <div class="flex justify-between text-sm text-green-700 font-semibold">
+                <div class="flex justify-between text-sm text-black font-semibold">
                     <span>🏠 Pay Cash on Delivery:</span>
                     <span>₹<span id="codChargeBalanceDueDisplay">—</span></span>
                 </div>
@@ -370,7 +392,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <span>💳 Pay Online Now (<?= $codAdvancePercent ?>% advance):</span>
                     <span>₹<span id="advanceDueDisplay">—</span></span>
                 </div>
-                <div class="flex justify-between text-sm text-green-700 font-semibold">
+                <div class="flex justify-between text-sm text-black font-semibold">
                     <span>🏠 Pay Cash on Delivery:</span>
                     <span>₹<span id="balanceDueDisplay">—</span></span>
                 </div>
@@ -379,8 +401,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <button onclick="continueToPayment()" id="payBtn"
-            class="mt-4 w-full bg-gradient-to-br from-[#e91e63] to-[#6a1b9a]
-                hover:from-[#c2185b] hover:to-[#4a148c]
+            class="mt-4 w-full bg-black hover:bg-gray-800
                 text-white py-3 rounded-lg font-bold text-lg
                 transition duration-300 disabled:bg-gray-400">
             Continue to Payment
@@ -558,7 +579,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
         const el = document.getElementById('couponMsg');
         if (!el) return;
         el.textContent = msg;
-        el.className   = 'text-xs mt-1 p-2 rounded ' + (ok ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700');
+        el.className   = 'text-xs mt-1 p-2 rounded ' + (ok ? 'bg-gray-100 text-black' : 'bg-red-50 text-red-700');
         el.classList.remove('hidden');
     }
     function hideCouponMsg() {
@@ -645,10 +666,10 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
             // ✅ Full coverage
             if (bannerMsg) {
                 bannerMsg.textContent = `✅ Your wallet balance (₹${WALLET_BALANCE.toFixed(2)}) fully covers this order. No additional payment needed!`;
-                bannerMsg.className = 'font-medium text-green-700';
+                bannerMsg.className = 'font-medium text-black';
             }
             if (banner) {
-                banner.className = 'mt-1 ml-6 p-3 rounded-lg text-sm bg-green-50 border border-green-200';
+                banner.className = 'mt-1 ml-6 p-3 rounded-lg text-sm bg-gray-100 border border-black';
                 banner.classList.remove('hidden');
             }
             if (walletAmt) walletAmt.textContent = orderTotal.toFixed(2);
@@ -1215,7 +1236,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     document.getElementById('evOtpWrap').style.display = 'block';
                     document.getElementById('evPopupSubtitle').textContent = data.message;
                     btn.textContent     = 'Verify OTP';
-                    msgEl.style.color   = '#059669';
+                    msgEl.style.color   = '#000000';
                     msgEl.textContent   = 'OTP sent! Check your inbox.';
                 } else {
                     msgEl.style.color   = '#dc2626';
@@ -1254,7 +1275,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     btn.disabled = false; btn.textContent = 'Verify OTP'; return;
                 }
                 if (data.success) {
-                    msgEl.style.color   = '#059669';
+                    msgEl.style.color   = '#000000';
                     msgEl.textContent   = '✅ Email verified! Continuing…';
                     btn.textContent     = '✅ Verified';
                     setTimeout(() => location.reload(), 1200);
@@ -1321,7 +1342,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </button>
                 <button id="evActionBtn" onclick="handleEvBtn()"
                     style="flex:2;padding:11px;
-                           background:linear-gradient(135deg,#e91e63,#6a1b9a);
+                           background:linear-gradient(135deg,#000000,#000000);
                            color:#fff;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;">
                     Send OTP
                 </button>
@@ -1344,7 +1365,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <!-- Checkmark circle -->
             <div style="
                 width:80px;height:80px;border-radius:50%;margin:0 auto 20px;
-                background:linear-gradient(135deg,#e91e63,#6a1b9a);
+                background:linear-gradient(135deg,#000000,#000000);
                 display:flex;align-items:center;justify-content:center;
             ">
                 <svg width="38" height="38" viewBox="0 0 24 24" fill="none"
@@ -1358,14 +1379,14 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 Your order has been placed successfully.
             </p>
             <p style="font-size:13px;color:#9ca3af;margin:0 0 28px;">
-                Order ID: <strong id="successOrderId" style="color:#6a1b9a;"></strong>
+                Order ID: <strong id="successOrderId" style="color:#000000;"></strong>
             </p>
 
             <!-- Invoice download button -->
             <a id="invoiceDownloadBtn" href="#" target="_blank" style="
                 display:inline-flex;align-items:center;gap:8px;
                 padding:13px 28px;border-radius:10px;
-                background:linear-gradient(135deg,#e91e63,#6a1b9a);
+                background:linear-gradient(135deg,#000000,#000000);
                 color:#fff;font-size:15px;font-weight:700;
                 text-decoration:none;margin-bottom:12px;
                 transition:opacity 0.2s;cursor:pointer;
@@ -1384,7 +1405,7 @@ $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <br>
             <a href="my_orders.php" style="
                 display:inline-block;margin-top:4px;
-                font-size:13px;color:#6a1b9a;font-weight:600;
+                font-size:13px;color:#000000;font-weight:600;
                 text-decoration:underline;
             ">View My Orders</a>
         </div>

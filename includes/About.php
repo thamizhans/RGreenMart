@@ -180,7 +180,7 @@ try {
         .stat-card.years {
             bottom: -1.5rem;
             left: -1.5rem;
-            border: 4px solid #064e3b; /* red-100 */
+            border: 4px solid #000000; /* red-100 */
         }
         .stat-card.customers {
             top: -1.5rem;
@@ -190,7 +190,7 @@ try {
         .stat-card .value {
             font-size: 1.875rem;
             font-weight: bold;
-            color: #064e3b; /* red-600 */
+            color: #000000; /* red-600 */
         }
         .stat-card.customers .value {
             color: #ffffff;
@@ -200,7 +200,7 @@ try {
             color: #4b5563; /* gray-600 */
         }
         .stat-card.customers .label {
-            color: #064e3b; /* green-100 */
+            color: #000000; /* green-100 */
         }
         .contact-section {
             padding: 5rem 0;
@@ -226,7 +226,7 @@ try {
         .contact-form h2 {
             font-size: 2rem;
             font-weight: bold;
-            color: #064e3b; /* red-600 */
+            color: #000000; /* red-600 */
             margin-bottom: 1.5rem;
         }
         .form-group {
@@ -245,7 +245,7 @@ try {
         }
         .contact-form input:focus,
         .contact-form textarea:focus {
-            border-color: #064e3b; /* red-600 */
+            border-color: #000000; /* red-600 */
             outline: none;
         }
         .contact-form textarea {
@@ -253,7 +253,7 @@ try {
             resize: vertical;
         }
         .contact-form button {
-            background: linear-gradient(to right, #064e3b, #f97316); /* red-600 to orange-400 */
+            background: linear-gradient(to right, #000000, #f97316); /* red-600 to orange-400 */
             color: #ffffff;
             font-weight: bold;
             padding: 0.75rem 2rem;
@@ -275,7 +275,7 @@ try {
         .contact-info h3 {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #064e3b; /* red-600 */
+            color: #000000; /* red-600 */
             margin-bottom: 1rem;
         }
         .contact-info p {
@@ -315,7 +315,7 @@ try {
         }
         .stat-box {
             background: #fff;
-            border: 1px solid #064e3b; /* light red border */
+            border: 1px solid #000000; /* light red border */
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             border-radius: 12px;
             padding: 24px;
@@ -327,7 +327,7 @@ try {
         .stat-box .value {
             font-size: 2rem;
             font-weight: bold;
-            color: #064e3b; /* red-600 */
+            color: #000000; /* red-600 */
         }
         .stat-box .label {
             margin-top: 8px;

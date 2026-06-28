@@ -154,14 +154,14 @@ else echo "Reset Password";
 <?php endif; ?>
 
 <?php if ($success): ?>
-<div class="bg-green-100 text-green-800 p-3 mb-4 rounded"><?= $success ?></div>
+<div class="bg-black text-white text-black p-3 mb-4 rounded"><?= $success ?></div>
 <?php endif; ?>
 
 <!-- STEP 1 -->
 <?php if ($step === 1): ?>
 <form method="POST" class="space-y-4">
     <input type="text" name="user_input" placeholder="Email or Mobile" class="w-full p-3 border rounded-lg" required>
-    <button name="send_otp" class="w-full bg-green-600 text-white p-3 rounded-lg">Send OTP</button>
+    <button name="send_otp" class="w-full bg-black text-white text-white p-3 rounded-lg">Send OTP</button>
 </form>
 
 <!-- STEP 2 -->
@@ -169,7 +169,7 @@ else echo "Reset Password";
 <form method="POST" class="space-y-4">
     <input type="text" name="otp" placeholder="Enter OTP" class="w-full p-3 border rounded-lg" required>
     <input type="hidden" name="user_id" value="<?= $latestReset['user_id'] ?>">
-    <button name="verify_otp" class="w-full bg-green-600 text-white p-3 rounded-lg">Verify OTP</button>
+    <button name="verify_otp" class="w-full bg-black text-white text-white p-3 rounded-lg">Verify OTP</button>
 </form>
 
 <!-- STEP 3 -->
@@ -178,12 +178,12 @@ else echo "Reset Password";
     <input type="password" name="password" placeholder="New Password" class="w-full p-3 border rounded-lg" required>
     <input type="password" name="confirm_password" placeholder="Confirm Password" class="w-full p-3 border rounded-lg" required>
     <input type="hidden" name="user_id" value="<?= $latestReset['user_id'] ?>">
-    <button name="reset_pass" class="w-full bg-green-600 text-white p-3 rounded-lg">Reset Password</button>
+    <button name="reset_pass" class="w-full bg-black text-white text-white p-3 rounded-lg">Reset Password</button>
 </form>
 <?php endif; ?>
 
 <p class="text-center text-sm mt-4">
-    <a href="login.php" class="text-green-600">Back to Login</a>
+    <a href="login.php" class="text-black">Back to Login</a>
 </p>
 
 </div>

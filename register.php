@@ -94,132 +94,132 @@ $hasErrors = !empty($errors);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Register | RGreenMart</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="luxury-editorial.css">
+    <style>
+        /* Brutalist Overrides */
+        body { font-family: var(--lux-font-sans); background: var(--lux-white) !important; color: var(--lux-black) !important; }
+        .rounded-xl, .rounded-lg, .rounded, .rounded-md, .rounded-sm, .rounded-full { border-radius: 0 !important; }
+        .shadow-lg, .shadow-md, .shadow { box-shadow: none !important; }
+        .bg-white { background-color: var(--lux-white) !important; }
+        .bg-gray-100 { background-color: transparent !important; }
+        input[type="text"], input[type="password"], input[type="tel"], input[type="email"] { border: 1px solid var(--lux-gray) !important; background: transparent !important; outline: none !important; padding: 1rem !important; font-family: var(--lux-font-sans); width: 100%; transition: border-color 0.2s; margin-top: 0.5rem; }
+        input:focus { border-color: var(--lux-black) !important; }
+        .text-black { color: var(--lux-black) !important; font-family: var(--lux-font-heading); text-transform: uppercase; font-size: 2rem; }
+        .bg-black text-white { background-color: var(--lux-black) !important; color: var(--lux-white) !important; text-transform: uppercase; letter-spacing: 0.1em; padding: 1rem !important; border: none !important; font-family: var(--lux-font-sans); margin-top: 1rem; cursor: pointer; transition: background 0.3s ease !important; border-radius: 0 !important;}
+        .bg-black text-white:hover { background-color: #333 !important; }
+        .text-gray-700 { color: var(--lux-black) !important; }
+    </style>
 </head>
 <body>
 <?php include "includes/header.php"; ?>
+<div class="zara-auth-container">
+    
+    <!-- LEFT: REGISTER FORM -->
+    <div class="zara-auth-left">
+        <h2>REGISTER</h2>
 
-<div class="flex items-center justify-center bg-gray-100 p-8 min-h-screen">
-<div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-
-    <h2 class="text-2xl font-bold text-center text-green-600 mb-6">Create Account</h2>
-
-    <!-- General / numeric-keyed errors -->
-    <?php
-    $generalErrors = array_filter($errors, fn($k) => is_int($k), ARRAY_FILTER_USE_KEY);
-    if ($generalErrors): ?>
-        <div class="bg-red-100 text-red-700 p-3 mb-4 rounded text-sm" id="alertBox">
-            <?php foreach ($generalErrors as $e) echo "<p>" . htmlspecialchars($e) . "</p>"; ?>
-        </div>
-    <?php endif; ?>
-
-    <form method="POST" id="registerForm" novalidate>
-
-        <!-- ── Email ─────────────────────────────────────────── -->
-        <label class="block text-gray-700 font-medium mb-1">
-            Email <span class="text-red-500">*</span>
-        </label>
-        <input type="email" name="email" id="emailInput" required
-               value="<?= $oldEmail ?>"
-               placeholder="Enter your email"
-               class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none mb-1
-                      <?= isset($errors['email']) ? 'border-red-500' : '' ?>">
-        <?php if (isset($errors['email'])): ?>
-            <p class="text-red-500 text-xs mb-3"><?= htmlspecialchars($errors['email']) ?></p>
-        <?php else: ?>
-            <div class="mb-4"></div>
+        <!-- General / numeric-keyed errors -->
+        <?php
+        $generalErrors = array_filter($errors, fn($k) => is_int($k), ARRAY_FILTER_USE_KEY);
+        if ($generalErrors): ?>
+            <div style="background:#fee2e2; color:#b91c1c; padding:10px; margin-bottom:20px; font-size:0.85rem;" id="alertBox">
+                <?php foreach ($generalErrors as $e) echo "<p>" . htmlspecialchars($e) . "</p>"; ?>
+            </div>
         <?php endif; ?>
 
-        <!-- ── Mobile (optional) ─────────────────────────────── -->
-        <label class="block text-gray-700 font-medium mb-1">
-            Mobile
-            <span class="text-gray-400 font-normal text-xs">(optional)</span>
-        </label>
-        <input type="text" name="mobile" id="mobileInput"
-               value="<?= $oldMobile ?>"
-               placeholder="10-digit mobile number"
-               maxlength="10"
-               class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none mb-1
-                      <?= isset($errors['mobile']) ? 'border-red-500' : '' ?>">
-        <?php if (isset($errors['mobile'])): ?>
-            <p class="text-red-500 text-xs mb-3"><?= htmlspecialchars($errors['mobile']) ?></p>
-        <?php else: ?>
-            <div class="mb-4"></div>
-        <?php endif; ?>
+        <form method="POST" id="registerForm" novalidate>
 
-        <!-- ── Password section (revealed after email confirmed) -->
-        <div id="passwordSection" class="<?= $hasErrors ? '' : 'hidden' ?>">
-
-            <hr class="my-4 border-gray-200">
-            <p class="text-sm text-gray-500 mb-4 text-center">Now set a password to complete your registration.</p>
-
-            <!-- Password -->
-            <label class="block text-gray-700 font-medium mb-1">
-                Password <span class="text-red-500">*</span>
-            </label>
-            <div class="relative mb-1">
-                <input type="password" id="password" name="password"
-                       placeholder="Min 6 characters"
-                       class="w-full p-3 pr-12 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none
-                              <?= isset($errors['password']) ? 'border-red-500' : '' ?>">
-                <button type="button" onclick="togglePassword('password', this)"
-                    class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-700">
-                    <svg class="w-5 h-5 eye-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        <path stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                    </svg>
-                    <svg class="w-5 h-5 eye-closed hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-width="2" d="M3 3l18 18M10.477 10.477A3 3 0 0113.52 13.52M7.05 7.05A7.5 7.5 0 004.22 10.5C5.29 13.574 8.418 16 12 16a7.48 7.48 0 003.95-1.05M9.9 4.24A9.1 9.1 0 0112 4c3.582 0 6.71 2.426 7.78 5.5a9.13 9.13 0 01-1.947 3.053"/>
-                    </svg>
-                </button>
+            <div class="zara-input-group">
+                <label>EMAIL *</label>
+                <input type="email" name="email" id="emailInput" required value="<?= $oldEmail ?>">
+                <?php if (isset($errors['email'])): ?>
+                    <p style="color:red; font-size:0.75rem; margin-top:5px;"><?= htmlspecialchars($errors['email']) ?></p>
+                <?php endif; ?>
             </div>
-            <?php if (isset($errors['password'])): ?>
-                <p class="text-red-500 text-xs mb-3"><?= htmlspecialchars($errors['password']) ?></p>
-            <?php else: ?>
-                <div class="mb-4"></div>
-            <?php endif; ?>
 
-            <!-- Confirm Password -->
-            <label class="block text-gray-700 font-medium mb-1">
-                Confirm Password <span class="text-red-500">*</span>
-            </label>
-            <div class="relative mb-1">
-                <input type="password" id="confirm_password" name="confirm_password"
-                       placeholder="Re-enter password"
-                       class="w-full p-3 pr-12 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none
-                              <?= isset($errors['confirm_password']) ? 'border-red-500' : '' ?>">
-                <button type="button" onclick="togglePassword('confirm_password', this)"
-                    class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-700">
-                    <svg class="w-5 h-5 eye-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                        <path stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                    </svg>
-                    <svg class="w-5 h-5 eye-closed hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-width="2" d="M3 3l18 18M10.477 10.477A3 3 0 0113.52 13.52M7.05 7.05A7.5 7.5 0 004.22 10.5C5.29 13.574 8.418 16 12 16a7.48 7.48 0 003.95-1.05M9.9 4.24A9.1 9.1 0 0112 4c3.582 0 6.71 2.426 7.78 5.5a9.13 9.13 0 01-1.947 3.053"/>
-                    </svg>
-                </button>
+            <div class="zara-input-group">
+                <label>MOBILE (OPTIONAL)</label>
+                <input type="text" name="mobile" id="mobileInput" value="<?= $oldMobile ?>" maxlength="10">
+                <?php if (isset($errors['mobile'])): ?>
+                    <p style="color:red; font-size:0.75rem; margin-top:5px;"><?= htmlspecialchars($errors['mobile']) ?></p>
+                <?php endif; ?>
             </div>
-            <?php if (isset($errors['confirm_password'])): ?>
-                <p class="text-red-500 text-xs mb-3"><?= htmlspecialchars($errors['confirm_password']) ?></p>
-            <?php else: ?>
-                <div class="mb-4"></div>
-            <?php endif; ?>
 
-            <button name="register" type="submit"
-                class="w-full bg-gradient-to-br from-[#e91e63] to-[#6a1b9a]
-                    hover:from-[#c2185b] hover:to-[#4a148c]
-                    text-white p-3 rounded-lg font-semibold transition duration-300">
-                Complete Registration
-            </button>
+            <!-- Password section (revealed after email confirmed) -->
+            <div id="passwordSection" class="<?= $hasErrors ? '' : 'hidden' ?>">
 
-        </div><!-- /passwordSection -->
+                <p style="font-size:0.75rem; margin-bottom:1rem;">NOW SET A PASSWORD TO COMPLETE YOUR REGISTRATION.</p>
 
-        <!-- "Next" button — shown before email is confirmed -->
-        <div id="nextBtnWrap" class="<?= $hasErrors ? 'hidden' : '' ?>">
+                <div class="zara-input-group">
+                    <label>PASSWORD *</label>
+                    <div style="position:relative;">
+                        <input type="password" id="password" name="password">
+                        <button type="button" onclick="togglePassword('password', this)" style="position:absolute; right:0; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer;">
+                            <!-- Eye Open -->
+                            <svg class="w-5 h-5 eye-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:20px; color:#666;">
+                                <path stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                            <!-- Eye Closed -->
+                            <svg class="w-5 h-5 eye-closed hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:20px; color:#666; display:none;">
+                                <path stroke-width="2" d="M3 3l18 18M10.477 10.477A3 3 0 0113.52 13.52M7.05 7.05A7.5 7.5 0 004.22 10.5C5.29 13.574 8.418 16 12 16a7.48 7.48 0 003.95-1.05M9.9 4.24A9.1 9.1 0 0112 4c3.582 0 6.71 2.426 7.78 5.5a9.13 9.13 0 01-1.947 3.053"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <?php if (isset($errors['password'])): ?>
+                        <p style="color:red; font-size:0.75rem; margin-top:5px;"><?= htmlspecialchars($errors['password']) ?></p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="zara-input-group">
+                    <label>CONFIRM PASSWORD *</label>
+                    <div style="position:relative;">
+                        <input type="password" id="confirm_password" name="confirm_password">
+                        <button type="button" onclick="togglePassword('confirm_password', this)" style="position:absolute; right:0; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer;">
+                            <!-- Eye Open -->
+                            <svg class="w-5 h-5 eye-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:20px; color:#666;">
+                                <path stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                            <!-- Eye Closed -->
+                            <svg class="w-5 h-5 eye-closed hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:20px; color:#666; display:none;">
+                                <path stroke-width="2" d="M3 3l18 18M10.477 10.477A3 3 0 0113.52 13.52M7.05 7.05A7.5 7.5 0 004.22 10.5C5.29 13.574 8.418 16 12 16a7.48 7.48 0 003.95-1.05M9.9 4.24A9.1 9.1 0 0112 4c3.582 0 6.71 2.426 7.78 5.5a9.13 9.13 0 01-1.947 3.053"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <?php if (isset($errors['confirm_password'])): ?>
+                        <p style="color:red; font-size:0.75rem; margin-top:5px;"><?= htmlspecialchars($errors['confirm_password']) ?></p>
+                    <?php endif; ?>
+                </div>
+
+                <button name="register" type="submit" class="zara-auth-btn">COMPLETE REGISTRATION</button>
+
+            </div><!-- /passwordSection -->
+
+            <!-- "Next" button — shown before email is confirmed -->
+            <div id="nextBtnWrap" class="<?= $hasErrors ? 'hidden' : '' ?>">
+                <button type="button" id="nextBtn" class="zara-auth-btn">NEXT</button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- RIGHT: LOG IN -->
+    <div class="zara-auth-right">
+        <h2>LOG IN</h2>
+        <p>
+            IF YOU ALREADY HAVE AN ACCOUNT, PLEASE LOG IN HERE.
+            <br><br>
+            BY LOGGING IN, YOU CAN ACCESS YOUR ORDERS AND ACCOUNT DETAILS FASTER.
+        </p>
+        <button onclick="window.location.href='login.php'" class="zara-auth-btn outline">LOG IN</button>
+    </div>
+
+</div>' : '' ?>">
             <button type="button" id="nextBtn"
-                class="w-full bg-gradient-to-br from-[#e91e63] to-[#6a1b9a]
-                    hover:from-[#c2185b] hover:to-[#4a148c]
+                class="w-full bg-black hover:bg-gray-800
                     text-white p-3 rounded-lg font-semibold transition duration-300">
                 Next →
             </button>
@@ -227,12 +227,11 @@ $hasErrors = !empty($errors);
 
     </form>
 
-    <p class="text-center text-gray-600 mt-4 text-sm">
-        Already have an account?
-        <a href="login.php" class="text-green-600 font-medium">Login</a>
+    <p style="text-align:center; font-size:0.85rem; margin-top:2rem;">
+        Already have an account? 
+        <a href="login.php" style="color:black; font-weight:700; text-decoration:underline;">Login</a>
     </p>
 
-</div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════
@@ -244,8 +243,8 @@ $hasErrors = !empty($errors);
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm mx-4 p-7 text-center" id="popupCard">
 
         <!-- Mail icon -->
-        <div class="flex items-center justify-center w-14 h-14 rounded-full bg-green-100 mx-auto mb-4">
-            <svg class="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <div class="flex items-center justify-center w-14 h-14 rounded-full bg-black text-white mx-auto mb-4">
+            <svg class="w-7 h-7 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round"
                       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
             </svg>
@@ -254,7 +253,7 @@ $hasErrors = !empty($errors);
         <h3 class="text-lg font-bold text-gray-800 mb-2">Check your email</h3>
         <p class="text-gray-500 text-sm mb-3">Make sure this address is correct before continuing:</p>
         <p id="popupEmail"
-           class="text-green-700 font-semibold text-base bg-green-50 rounded-lg px-4 py-2 mb-2 break-all"></p>
+           class="text-black font-semibold text-base bg-gray-100 rounded-lg px-4 py-2 mb-2 break-all"></p>
         <p class="text-gray-400 text-xs mb-6">Press <strong>Confirm</strong> to proceed, or <strong>Edit</strong> to change it.</p>
 
         <div class="flex gap-3">
@@ -263,8 +262,7 @@ $hasErrors = !empty($errors);
                        p-2.5 rounded-lg text-sm font-medium transition">Edit
             </button>
             <button id="popupConfirm"
-                class="flex-1 bg-gradient-to-br from-[#e91e63] to-[#6a1b9a]
-                       hover:from-[#c2185b] hover:to-[#4a148c]
+                class="flex-1 bg-black hover:bg-gray-800
                        text-white p-2.5 rounded-lg text-sm font-semibold transition">Confirm
             </button>
         </div>

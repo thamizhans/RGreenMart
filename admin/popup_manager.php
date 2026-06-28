@@ -156,6 +156,7 @@ $popupImages = $stmt->fetchAll(PDO::FETCH_ASSOC);
     .popup-card:hover { box-shadow: 0 8px 24px rgba(79,70,229,.15); transform: translateY(-2px); }
     @media (max-width: 768px) { .admin-main { margin-left: 0 !important; } }
 </style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body class="bg-gray-100">
 <div class="admin-container flex">
@@ -180,7 +181,7 @@ $popupImages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <form method="POST" class="flex items-center gap-3">
                         <span class="text-sm font-semibold text-gray-600">
                             Popups:
-                            <span class="<?= $popupEnabled ? 'text-green-600' : 'text-red-500' ?> font-bold">
+                            <span class="<?= $popupEnabled ? 'text-black' : 'text-red-500' ?> font-bold">
                                 <?= $popupEnabled ? 'ON' : 'OFF' ?>
                             </span>
                         </span>
@@ -200,7 +201,7 @@ $popupImages = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="bg-white rounded-xl shadow-lg p-6">
                 <h2 class="text-xl font-bold text-indigo-600 mb-1">Popup Reappearance Interval</h2>
                 <?php if ($successMsg): ?>
-                <div class="mb-4 flex items-center gap-2 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+                <div class="mb-4 flex items-center gap-2 p-3 bg-gray-100 border border-black text-black rounded-lg">
                     <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                     </svg>
@@ -282,7 +283,7 @@ $popupImages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 <!-- Flash messages -->
                 <?php if ($successMsg): ?>
-                <div class="mb-4 flex items-center gap-2 p-3 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+                <div class="mb-4 flex items-center gap-2 p-3 bg-gray-100 border border-black text-black rounded-lg">
                     <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                     </svg>
@@ -373,7 +374,7 @@ $popupImages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </span>
                             <!-- Status badge -->
                             <span class="absolute top-2 right-2 text-xs font-bold px-2 py-0.5 rounded-full
-                                         <?= $isEnabled ? 'bg-green-500 text-white' : 'bg-red-500 text-white' ?>">
+                                         <?= $isEnabled ? 'bg-black text-white text-white' : 'bg-red-500 text-white' ?>">
                                 <?= $isEnabled ? 'Enabled' : 'Disabled' ?>
                             </span>
                         </div>
@@ -389,7 +390,7 @@ $popupImages = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             class="text-xs px-3 py-1 rounded font-semibold transition
                                                    <?= $isEnabled
                                                        ? 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200'
-                                                       : 'bg-green-100 text-green-700 hover:bg-green-200' ?>">
+                                                       : 'bg-black text-white text-black hover:bg-black text-white' ?>">
                                         <?= $isEnabled ? 'Disable' : 'Enable' ?>
                                     </button>
                                 </form>

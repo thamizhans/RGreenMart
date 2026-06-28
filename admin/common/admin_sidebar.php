@@ -108,7 +108,7 @@
 
         <form method="POST" action="logout.php" class="mt-4">
             <button type="submit"
-                    style="background: linear-gradient(135deg, #e91e63, #6a1b9a);"
+                    style="background: linear-gradient(135deg, #000000, #000000);"
                     class="w-full text-white p-3 rounded transition-all hover:opacity-90">
                 Logout
             </button>

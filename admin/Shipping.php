@@ -162,6 +162,7 @@ body { font-family: 'Poppins', sans-serif; }
 .cod-card.selected-advance { border-color: #f97316; background: #fff7ed; }
 .cod-card.selected-charge  { border-color: #d97706; background: #fffbeb; }
 </style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body class="bg-gray-100">
 
@@ -173,7 +174,7 @@ body { font-family: 'Poppins', sans-serif; }
             <h2 class="text-2xl font-bold text-indigo-600 mb-6">Shipping Management</h2>
 
             <?php if(isset($_GET['success'])): ?>
-                <div class="mb-4 p-3 bg-green-100 text-green-700 rounded font-medium">
+                <div class="mb-4 p-3 bg-black text-white text-black rounded font-medium">
                     ✅ Settings updated successfully!
                 </div>
             <?php endif; ?>
@@ -197,7 +198,7 @@ body { font-family: 'Poppins', sans-serif; }
                 <div id="section_default" class="hidden p-3 bg-gray-50 rounded-lg border text-sm text-gray-600">
                     Shipping charges will be calculated automatically using Shiprocket's recommended courier rates.
                 </div>
-                <div id="section_free" class="hidden p-3 bg-green-50 rounded-lg border border-green-200 text-sm text-green-700">
+                <div id="section_free" class="hidden p-3 bg-gray-100 rounded-lg border border-black text-sm text-black">
                     All orders will have free shipping. No charges applied to customers.
                 </div>
                 <div id="section_conditional" class="hidden p-3 bg-blue-50 rounded-lg border border-blue-200">
@@ -348,7 +349,7 @@ body { font-family: 'Poppins', sans-serif; }
                                                 <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full font-semibold">
                                                     💳 Pay Online Now: ₹<span id="ex_online"><?= $exOnline ?></span>
                                                 </span>
-                                                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full font-semibold">
+                                                <span class="px-3 py-1 bg-black text-white text-black rounded-full font-semibold">
                                                     🏠 Pay on Delivery: ₹<span id="ex_cod"><?= $exCod ?></span>
                                                 </span>
                                             </div>

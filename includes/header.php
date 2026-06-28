@@ -94,13 +94,14 @@ if ($isLoggedIn) {
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Styles.css">
+    <link rel="stylesheet" href="/luxury-editorial.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
     * { box-sizing: border-box; }
 
     /* ── TOP BAR ─────────────────────────────────────────────────── */
     .header-topbar {
-        background: linear-gradient(135deg, #e91e63, #6a1b9a);
+        background: var(--lux-black);
         padding: 6px 0;
         width: 100%;
     }
@@ -178,9 +179,9 @@ if ($isLoggedIn) {
         text-decoration: none;
         flex-shrink: 0;
     }
-    .sparkles-icon { width: 26px; color: #059669; flex-shrink:0; }
-    .logo-text h1  { margin: 0; font-size: 21px; font-weight: 800; color: #064e3b; letter-spacing: -0.3px; line-height: 1.1; }
-    .logo-text p   { margin: 0; font-size: 11px; color: #059669; font-weight: 500; letter-spacing: 0.04em; }
+    .sparkles-icon { width: 26px; color: var(--lux-black); flex-shrink:0; }
+    .logo-text h1  { margin: 0; font-size: 21px; font-weight: 800; color: var(--lux-black); letter-spacing: -0.3px; line-height: 1.1; }
+    .logo-text p   { margin: 0; font-size: 11px; color: var(--lux-black); font-weight: 500; letter-spacing: 0.04em; }
 
     /* Right icon cluster */
     .header-icons {
@@ -197,7 +198,7 @@ if ($isLoggedIn) {
         border-radius: 50%;
         border: none;
         background: transparent;
-        color: #064e3b;
+        color: var(--lux-black);
         font-size: 20px;
         cursor: pointer;
         text-decoration: none;
@@ -205,8 +206,8 @@ if ($isLoggedIn) {
         position: relative;
     }
     .hdr-icon-btn:hover {
-        background: #f0fdf4;
-        color: #047857;
+        background: #f5f5f5;
+        color: #000000;
     }
 
     /* Cart badge */
@@ -214,7 +215,7 @@ if ($isLoggedIn) {
         position: absolute;
         top: 4px;
         right: 4px;
-        background: linear-gradient(135deg, #e91e63, #6a1b9a);
+        background: var(--lux-black);
         color: #fff;
         font-size: 9px;
         font-weight: 700;
@@ -235,13 +236,13 @@ if ($isLoggedIn) {
         justify-content: center;
         background: none;
         border: none;
-        color: #064e3b;
+        color: var(--lux-black);
         font-size: 22px;
         cursor: pointer;
         border-radius: 50%;
         transition: background 0.18s;
     }
-    .mobile-nav-toggle:hover { background: #f0fdf4; }
+    .mobile-nav-toggle:hover { background: #f5f5f5; }
     .hidden { display: none !important; }
 
     /* ── MOBILE NAV DRAWER ───────────────────────────────────────── */
@@ -266,10 +267,10 @@ if ($isLoggedIn) {
     .mobile-nav li a {
         display: flex; align-items: center; gap: 12px;
         padding: 10px 12px; border-radius: 10px;
-        color: #064e3b; font-size: 15px; font-weight: 600;
+        color: var(--lux-black); font-size: 15px; font-weight: 600;
         text-decoration: none; transition: background 0.15s;
     }
-    .mobile-nav li a:hover { background: #f0fdf4; }
+    .mobile-nav li a:hover { background: #f5f5f5; }
     .mobile-nav li a i { width: 20px; text-align: center; font-size: 16px; }
 
     /* Mobile social row */
@@ -316,7 +317,7 @@ if ($isLoggedIn) {
         }
     }
     .account-panel-header {
-        background: linear-gradient(135deg, #c2185b, #4a148c);
+        background: #333;
         padding: 18px 20px;
         display: flex; align-items: center; gap: 14px;
     }
@@ -332,41 +333,41 @@ if ($isLoggedIn) {
     .account-section-title { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.8px; color:#9ca3af; margin:10px 0 6px; }
     .account-info-row { display:flex; align-items:flex-start; gap:10px; padding:7px 0; border-bottom:1px solid #f3f4f6; font-size:13px; color:#374151; }
     .account-info-row:last-of-type { border-bottom:none; }
-    .account-info-row i { color:#059669; width:18px; font-size:14px; flex-shrink:0; margin-top:2px; }
+    .account-info-row i { color:var(--lux-black); width:18px; font-size:14px; flex-shrink:0; margin-top:2px; }
     .account-info-label { font-size:10px; color:#9ca3af; display:block; margin-bottom:1px; }
     .account-info-value { font-weight:600; color:#111827; word-break:break-all; }
-    .referral-link-box { background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:8px 10px; display:flex; align-items:center; gap:6px; margin-top:4px; }
+    .referral-link-box { background:#f5f5f5; border:1px solid #bbf7d0; border-radius:8px; padding:8px 10px; display:flex; align-items:center; gap:6px; margin-top:4px; }
     .referral-link-box span { font-size:11px; font-family:monospace; color:#065f46; flex:1; word-break:break-all; }
-    .copy-btn { border:none; background:#059669; color:white; border-radius:6px; padding:3px 8px; font-size:11px; cursor:pointer; white-space:nowrap; }
+    .copy-btn { border:none; background:var(--lux-black); color:white; border-radius:6px; padding:3px 8px; font-size:11px; cursor:pointer; white-space:nowrap; }
     .referral-people-list { list-style:none; padding:0; margin:4px 0 0; }
     .referral-people-list li { font-size:12px; color:#374151; padding:3px 0; display:flex; align-items:center; gap:6px; }
     .referral-people-list li::before { content:"👤"; font-size:11px; }
     .account-panel-actions { padding:12px 18px 16px; display:flex; flex-direction:column; gap:8px; }
-    .btn-edit-profile { display:flex; align-items:center; justify-content:center; gap:8px; padding:10px; background:#f0fdf4; color:#059669; border:1.5px solid #059669; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; width:100%; }
+    .btn-edit-profile { display:flex; align-items:center; justify-content:center; gap:8px; padding:10px; background:#f5f5f5; color:var(--lux-black); border:1.5px solid var(--lux-black); border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; width:100%; }
     .btn-edit-profile:hover { background:#dcfce7; }
-    .btn-logout-panel { display:flex; align-items:center; justify-content:center; gap:8px; padding:10px; background:linear-gradient(135deg,#e91e63,#6a1b9a); color:#fff; border:none; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; width:100%; }
-    .btn-logout-panel:hover { background:linear-gradient(135deg,#c2185b,#4a148c); }
+    .btn-logout-panel { display:flex; align-items:center; justify-content:center; gap:8px; padding:10px; background:var(--lux-black); color:#fff; border:none; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; width:100%; }
+    .btn-logout-panel:hover { background:#333; }
 
     /* ── EDIT PROFILE MODAL ──────────────────────────────────────── */
     #editProfileModal { position:fixed; inset:0; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; z-index:99999; }
     .edit-modal-box { background:white; border-radius:14px; padding:24px; max-width:420px; width:92%; box-shadow:0 20px 60px rgba(0,0,0,0.2); max-height:90vh; overflow-y:auto; }
     .edit-modal-box h2 { margin:0 0 16px; font-size:17px; font-weight:700; color:#111827; display:flex; align-items:center; gap:8px; }
-    .edit-modal-box h2 i { color:#059669; }
+    .edit-modal-box h2 i { color:var(--lux-black); }
     .edit-field-group { margin-bottom:12px; }
     .edit-field-group label { display:block; font-size:12px; font-weight:600; color:#374151; margin-bottom:4px; }
     .edit-field-group input { width:100%; border:1.5px solid #d1d5db; border-radius:8px; padding:9px 12px; font-size:13px; outline:none; transition:border-color 0.2s; box-sizing:border-box; }
-    .edit-field-group input:focus { border-color:#059669; }
+    .edit-field-group input:focus { border-color:var(--lux-black); }
     .edit-field-group .field-note { font-size:10px; color:#9ca3af; margin-top:3px; }
     .edit-section-divider { border:none; border-top:1px solid #e5e7eb; margin:14px 0; }
     .edit-section-label { font-size:11px; font-weight:700; text-transform:uppercase; color:#6b7280; margin-bottom:10px; letter-spacing:0.6px; }
     .otp-row { display:flex; gap:8px; align-items:flex-end; }
     .otp-row .edit-field-group { flex:1; margin-bottom:0; }
-    .btn-send-otp { padding:9px 14px; background:#059669; color:white; border:none; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; white-space:nowrap; transition:background 0.2s; }
-    .btn-send-otp:hover { background:#047857; }
+    .btn-send-otp { padding:9px 14px; background:var(--lux-black); color:white; border:none; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; white-space:nowrap; transition:background 0.2s; }
+    .btn-send-otp:hover { background:#000000; }
     .btn-send-otp:disabled { background:#9ca3af; cursor:not-allowed; }
     .edit-modal-actions { display:flex; gap:10px; margin-top:18px; }
     .btn-modal-cancel { flex:1; padding:10px; background:#f3f4f6; color:#374151; border:none; border-radius:8px; font-weight:600; font-size:14px; cursor:pointer; }
-    .btn-modal-save { flex:2; padding:10px; background:linear-gradient(135deg,#059669,#064e3b); color:white; border:none; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; }
+    .btn-modal-save { flex:2; padding:10px; background:var(--lux-black); color:white; border:none; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; }
     #profileSaveMsg { font-size:12px; margin-top:8px; text-align:center; min-height:16px; }
 
     /* ── LOGOUT MODAL ────────────────────────────────────────────── */
@@ -377,8 +378,8 @@ if ($isLoggedIn) {
     .logout-modal-actions { display:flex; gap:10px; }
     .btn-logout-cancel  { flex:1; padding:10px; background:#f3f4f6; color:#374151; border:none; border-radius:8px; font-weight:600; font-size:14px; cursor:pointer; transition:background 0.2s; }
     .btn-logout-cancel:hover { background:#e5e7eb; }
-    .btn-logout-confirm { flex:1; padding:10px; background:linear-gradient(135deg,#e91e63,#6a1b9a); color:white; border:none; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; }
-    .btn-logout-confirm:hover { background:linear-gradient(135deg,#c2185b,#4a148c); }
+    .btn-logout-confirm { flex:1; padding:10px; background:var(--lux-black); color:white; border:none; border-radius:8px; font-weight:700; font-size:14px; cursor:pointer; }
+    .btn-logout-confirm:hover { background:#333; }
 
     /* ── RESPONSIVE ──────────────────────────────────────────────── */
     @media (max-width: 992px) {
@@ -396,131 +397,69 @@ if ($isLoggedIn) {
 </head>
 
 <body>
-<header id="header">
-
-    <!-- ══ TOP INFO BAR ══════════════════════════════════════════════ -->
-    <div class="header-topbar">
-        <div class="topbar-inner">
-            <a href="/includes/ContactUs.php"   class="topbar-link">Contact Us</a>
-            <a href="/includes/HealthyTips.php" class="topbar-link">Healthy Tips</a>
-            <a href="/includes/About.php"       class="topbar-link">About Us</a>
-            <div class="topbar-socials">
-                <a href="https://www.facebook.com/people/RGreenMart/61584629313778/"
-                   target="_blank" rel="noopener" class="topbar-social-btn fb" title="Facebook">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-                <a href="https://www.youtube.com/@RGreenmart"
-                   target="_blank" rel="noopener" class="topbar-social-btn yt" title="YouTube">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-            </div>
+    <!-- LUXURY EDITORIAL HEADER -->
+    <header class="lux-header" id="luxHeader">
+        <div class="zara-header-left">
+            <button class="zara-hamburger" onclick="toggleZaraNav()" title="Menu">
+                <i class="bi bi-list"></i>
+            </button>
         </div>
-    </div>
 
-    <!-- ══ MAIN BAR ══════════════════════════════════════════════════ -->
-    <div class="header-main-bar">
-
-        <!-- LOGO (left) -->
-        <a href="/index.php" class="logo-container">
-            <svg class="sparkles-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 9.143 15.143 12l2.286 6.857L12 15.143 6.857 18 9.143 11.143 3 8l5.714 2.857L12 3z"/>
-            </svg>
-            <div class="logo-text">
-                <h1>RGreenMart</h1>
-                <p>Fresh. Pure. Premium.</p>
-            </div>
-        </a>
-
-        <!-- DESKTOP icon cluster (right) — icons only, no text -->
-        <div class="header-icons desktop-icons-only" style="position:relative;">
-            <!-- Home -->
-            <a href="/index.php" class="hdr-icon-btn" title="Home">
-                <i class="fa-solid fa-house"></i>
-            </a>
-
+        <div class="zara-header-center">
+            <a href="/index.php" class="zara-logo">RGreenMart</a>
+        </div>
+        
+        <div class="zara-header-right">
+            <button onclick="if(typeof toggleFilters === 'function') toggleFilters(); else window.location.href='/index.php';" class="zara-nav-link" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:inherit;">SEARCH</button>
             <?php if ($isLoggedIn): ?>
-            <!-- My Orders -->
-            <a href="/my_orders.php" class="hdr-icon-btn" title="My Orders">
-                <i class="fa-solid fa-box"></i>
-            </a>
-            <!-- Account -->
-            <button id="userBtn" class="hdr-icon-btn" title="Account">
-                <i class="fa-solid fa-user"></i>
-            </button>
+                <a href="/my_orders.php" class="zara-nav-link" title="My Orders">ORDERS</a>
+                <button id="userBtn" class="zara-nav-link" title="Account" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:inherit;">ACCOUNT</button>
             <?php else: ?>
-            <!-- Login -->
-            <a href="/login.php" class="hdr-icon-btn" title="Login">
-                <i class="fa-solid fa-right-to-bracket"></i>
-            </a>
+                <a href="/login.php" class="zara-nav-link" title="Login">LOG IN</a>
             <?php endif; ?>
-
-            <!-- Cart -->
-            <a href="/viewcart.php" class="hdr-icon-btn" title="Cart">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="cartCount" class="noticount">0</span>
+            <a href="/includes/ContactUs.php" class="zara-nav-link">HELP</a>
+            <a href="/viewcart.php" class="zara-nav-link" title="Cart" style="position:relative;">
+                BASKET
+                <span id="cartCount" class="zara-cart-badge">0</span>
             </a>
         </div>
-
-        <!-- MOBILE cluster: cart badge + hamburger -->
-        <div class="mobile-icon-cluster" style="display:none; align-items:center; gap:4px;">
-            <a href="/viewcart.php" class="hdr-icon-btn" title="Cart">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="cartCountMobile" class="noticount">0</span>
-            </a>
-            <button class="mobile-nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMobileNav()">
-                <svg id="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-                <svg id="close-icon" class="hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
-        </div>
-
-    </div><!-- /.header-main-bar -->
-
-    <!-- ══ MOBILE DRAWER ═════════════════════════════════════════════ -->
-    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
-        <nav aria-label="Mobile navigation">
-            <ul>
-                <li><a href="/index.php"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li><a href="/includes/About.php"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
-                <li><a href="/includes/HealthyTips.php"><i class="fa-solid fa-heart-pulse"></i> Healthy Tips</a></li>
-                <li><a href="/includes/ContactUs.php"><i class="fa-solid fa-phone"></i> Contact Us</a></li>
-                <?php if ($isLoggedIn): ?>
-                    <li><a href="/my_orders.php"><i class="fa-solid fa-box"></i> My Orders</a></li>
-                    <li><a href="#" onclick="toggleMobileNav(); setTimeout(openAccountPanel,200); return false;"><i class="fa-solid fa-user"></i> My Account</a></li>
-                    <?php if ($referralEnabled && $referralWallet > 0): ?>
-                    <li><a href="#" style="color:#d97706;"><i class="fa-solid fa-wallet"></i> Wallet: ₹<?= number_format($referralWallet, 2) ?></a></li>
-                    <?php endif; ?>
-                    <li><a href="logout.php"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
-                <?php else: ?>
-                    <li><a href="/login.php"><i class="fa-solid fa-right-to-bracket"></i> Login</a></li>
-                    <li><a href="/register.php"><i class="fa-solid fa-user-plus"></i> Register</a></li>
-                <?php endif; ?>
-            </ul>
-            <!-- Social icons in mobile drawer -->
-            <div class="mobile-nav-socials">
-                <a href="https://www.facebook.com/people/RGreenMart/61584629313778/"
-                   target="_blank" class="mobile-social-btn" style="background:#1877f2;" title="Facebook">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-                <a href="https://www.youtube.com/@RGreenmart"
-                   target="_blank" class="mobile-social-btn" style="background:#ff0000;" title="YouTube">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-            </div>
-        </nav>
-    </div>
-
-    <!-- MOBILE BACKDROP -->
-    <div id="accountPanelBackdrop"
-         style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:99998;"
-         onclick="closeAccountPanel()">
-    </div>
-
     </header>
+
+    <!-- ZARA STYLE SIDEBAR -->
+    <div class="zara-sidebar-overlay" id="zaraNavOverlay" onclick="toggleZaraNav()"></div>
+    <div class="zara-sidebar" id="zaraSidebar">
+        <button class="zara-sidebar-close" onclick="toggleZaraNav()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+        <ul class="zara-sidebar-menu">
+            <li><a href="/index.php">HOME</a></li>
+            <li><a href="/includes/About.php">OUR STORY</a></li>
+            <li><a href="/includes/HealthyTips.php">JOURNAL</a></li>
+            <li><a href="/includes/ContactUs.php">CONTACT</a></li>
+            <?php if ($isLoggedIn): ?>
+                <li style="margin-top: 2rem;"><a href="/logout.php" style="color: var(--lux-gray);">LOGOUT</a></li>
+            <?php endif; ?>
+        </ul>
+    </div>
+
+    <script>
+        function toggleZaraNav() {
+            document.getElementById('zaraSidebar').classList.toggle('active');
+            document.getElementById('zaraNavOverlay').classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        }
+        
+        // Sticky Header Logic
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('luxHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+    <!-- END LUXURY HEADER -->
 
     <?php if ($isLoggedIn): ?>
     <!-- ===== ACCOUNT PANEL ===== -->
@@ -569,7 +508,7 @@ if ($isLoggedIn) {
                         <span class="account-info-value"><?= htmlspecialchars($headerUser['email'] ?? '—') ?></span>
                         <?php if (!empty($headerUser['email_verified'])): ?>
                             <span title="Email Verified" style="display:inline-flex;align-items:center;gap:4px;
-                                background:#d1fae5;color:#065f46;font-size:11px;font-weight:700;
+                                background:#eaeaea;color:#065f46;font-size:11px;font-weight:700;
                                 padding:2px 8px;border-radius:20px;border:1px solid #6ee7b7;">
                                 ✅ Verified
                             </span>
@@ -609,7 +548,7 @@ if ($isLoggedIn) {
                 <i class="fa-solid fa-wallet"></i>
                 <div style="width:100%">
                     <span class="account-info-label">Wallet Balance</span>
-                    <span class="account-info-value" style="color:#059669;font-size:15px;">₹<?= number_format($referralWallet, 2) ?></span>
+                    <span class="account-info-value" style="color:var(--lux-black);font-size:15px;">₹<?= number_format($referralWallet, 2) ?></span>
                 </div>
             </div>
 
@@ -708,7 +647,7 @@ if ($isLoggedIn) {
                     style="flex:1;padding:10px;background:#f3f4f6;color:#374151;border:none;
                            border-radius:8px;font-weight:600;font-size:14px;cursor:pointer;">Cancel</button>
                 <button id="verifyEmailBtn" onclick="handleVerifyEmailBtn()"
-                    style="flex:2;padding:10px;background:linear-gradient(135deg,#e91e63,#6a1b9a);
+                    style="flex:2;padding:10px;background:var(--lux-black);
                            color:#fff;border:none;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;">
                     Send OTP
                 </button>
@@ -915,7 +854,7 @@ if ($isLoggedIn) {
     function showProfileMsg(msg, color) {
         const el = document.getElementById('profileSaveMsg');
         el.textContent = msg;
-        el.style.color = color==='green' ? '#059669' : '#dc2626';
+        el.style.color = color==='green' ? 'var(--lux-black)' : '#dc2626';
     }
 
     /* ===== VERIFY EMAIL MODAL ===== */
@@ -962,7 +901,7 @@ if ($isLoggedIn) {
                     document.getElementById('verifyOtpWrap').style.display = 'block';
                     document.getElementById('verifyEmailSubtitle').textContent = data.message;
                     btn.textContent = 'Verify OTP';
-                    msgEl.style.color = '#059669';
+                    msgEl.style.color = 'var(--lux-black)';
                     msgEl.textContent = 'OTP sent! Check your inbox.';
                 } else {
                     msgEl.style.color = '#dc2626';
@@ -995,7 +934,7 @@ if ($isLoggedIn) {
                     btn.disabled = false; btn.textContent = 'Verify OTP'; return;
                 }
                 if (data.success) {
-                    msgEl.style.color = '#059669';
+                    msgEl.style.color = 'var(--lux-black)';
                     msgEl.textContent = '✅ Email verified!';
                     btn.textContent = '✅ Verified';
                     setTimeout(() => location.reload(), 1200);

@@ -106,6 +106,7 @@ $billsDir = $_SERVER['DOCUMENT_ROOT'] . '/bills';
         margin-left: 3rem;
     }
     </style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 
 <body class="bg-gray-100">
@@ -160,7 +161,7 @@ $billsDir = $_SERVER['DOCUMENT_ROOT'] . '/bills';
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <?php if ($order['payment_status'] === 'paid'): ?>
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Paid</span>
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-black text-white text-black">Paid</span>
                                     <?php elseif ($order['payment_status'] === 'advance_paid'): ?>
                                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Advance Paid</span>
                                     <?php elseif ($order['payment_status'] === 'partial_paid'): ?>
@@ -192,7 +193,7 @@ $billsDir = $_SERVER['DOCUMENT_ROOT'] . '/bills';
                                         <span class="px-2 inline-flex text-xs font-semibold bg-indigo-100 text-indigo-800 rounded-full">Shipped</span>
 
                                     <?php elseif ($order['status'] === 'delivered'): ?>
-                                        <span class="px-2 inline-flex text-xs font-semibold bg-green-100 text-green-800 rounded-full">Delivered</span>
+                                        <span class="px-2 inline-flex text-xs font-semibold bg-black text-white text-black rounded-full">Delivered</span>
 
                                     <?php elseif ($order['status'] === 'cancelled'): ?>
                                         <span class="px-2 inline-flex text-xs font-semibold bg-red-100 text-red-800 rounded-full">Cancelled</span>
@@ -236,7 +237,7 @@ $billsDir = $_SERVER['DOCUMENT_ROOT'] . '/bills';
                                         $order['status'] === 'ordered'
                                     ): ?>
                                     <button onclick="markAsPaid(<?= $order['order_id'] ?>)"
-                                        class="px-3 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 transition text-xs">
+                                        class="px-3 py-1 bg-black text-white text-white rounded-lg hover:bg-black text-white transition text-xs">
                                         Mark Paid
                                     </button>
                                     <?php endif; ?>
@@ -250,7 +251,7 @@ $billsDir = $_SERVER['DOCUMENT_ROOT'] . '/bills';
                                     <a href="<?= htmlspecialchars($pdfUrl) ?>" target="_blank"
                                         class="px-3 py-1 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">Open</a>
                                     <a href="<?= htmlspecialchars($pdfUrl) ?>" download="Invoice_<?= htmlspecialchars($enquiryNo) ?>.pdf"
-                                        class="px-3 py-1 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">Download</a>
+                                        class="px-3 py-1 bg-black text-white text-white rounded-lg hover:bg-black text-white transition">Download</a>
                                     <?php else: ?>
                                     <span class="px-3 py-1 text-gray-400">No PDF</span>
                                     <?php endif; ?>
@@ -299,7 +300,7 @@ $billsDir = $_SERVER['DOCUMENT_ROOT'] . '/bills';
     min-width:280px; max-width:380px;
     padding:14px 20px 14px 16px;
     border-radius:12px;
-    background: linear-gradient(135deg,#6a1b9a,#e91e63);
+    background: linear-gradient(135deg,#000000,#000000);
     color:#fff; font-size:14px; font-weight:600;
     box-shadow:0 8px 28px rgba(106,27,154,0.35);
     display:flex; align-items:center; gap:12px;
@@ -334,7 +335,7 @@ $billsDir = $_SERVER['DOCUMENT_ROOT'] . '/bills';
             </button>
             <button id="adminConfirmYes"
                 style="padding:10px 24px;border-radius:9999px;border:none;
-                       background:linear-gradient(135deg,#e91e63,#6a1b9a);
+                       background:linear-gradient(135deg,#000000,#000000);
                        color:#fff;font-weight:700;font-size:14px;cursor:pointer;">
                 Confirm
             </button>
@@ -356,7 +357,7 @@ function showAdminToast(msg, type = 'success') {
     const icon  = document.getElementById('adminToastIcon');
     const msgEl = document.getElementById('adminToastMsg');
     const colors = {
-        success: 'linear-gradient(135deg,#6a1b9a,#e91e63)',
+        success: 'linear-gradient(135deg,#000000,#000000)',
         error:   'linear-gradient(135deg,#dc2626,#b91c1c)',
         info:    'linear-gradient(135deg,#0369a1,#0284c7)',
     };

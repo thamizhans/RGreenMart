@@ -28,6 +28,7 @@ $pdfFiles = is_dir($billsDir) ? glob($billsDir . '/*.pdf') : [];
             margin-left: 3rem;
         }
     </style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body class="bg-gray-100">
     <div class="admin-container flex">
@@ -53,7 +54,7 @@ $pdfFiles = is_dir($billsDir) ? glob($billsDir . '/*.pdf') : [];
                                     <td class="p-3 border-b"><?php echo htmlspecialchars($filename); ?></td>
                                     <td class="p-3 border-b">
                                         <a href="../bills/<?php echo htmlspecialchars($filename); ?>" target="_blank" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition-colors">Open</a>
-                                        <a href="../bills/<?php echo htmlspecialchars($filename); ?>" download class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition-colors">Download</a>
+                                        <a href="../bills/<?php echo htmlspecialchars($filename); ?>" download class="bg-black text-white text-white px-3 py-1 rounded hover:bg-black text-white transition-colors">Download</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

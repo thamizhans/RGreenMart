@@ -511,6 +511,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['single_upload'])) {
         font-weight: 500;
     }
     </style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 
 <body class="bg-gray-100">
@@ -524,7 +525,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['single_upload'])) {
                 </div>
 
                 <?php if(isset($_GET['success'])): ?>
-                    <div class="bg-green-100 text-green-700 p-4 rounded-lg mb-6">Item added successfully!</div>
+                    <div class="bg-black text-white text-black p-4 rounded-lg mb-6">Item added successfully!</div>
                 <?php endif; ?>
 
                 <form id="itemForm" method="POST" enctype="multipart/form-data" class="space-y-8">
@@ -706,22 +707,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['single_upload'])) {
 
     <div id="categoryModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
         <div class="bg-white p-6 rounded-xl w-96">
-            <h2 class="text-xl font-bold mb-4 text-green-700">Add Category</h2>
+            <h2 class="text-xl font-bold mb-4 text-black">Add Category</h2>
 
             <input id="newCategoryName" type="text" class="w-full p-2 border rounded mb-3" placeholder="Category Name">
 
-            <button onclick="saveCategory()" class="w-full py-2 bg-green-600 text-white rounded">Save</button>
+            <button onclick="saveCategory()" class="w-full py-2 bg-black text-white text-white rounded">Save</button>
             <button onclick="closeCategoryModal()" class="w-full mt-2 py-2 border rounded">Cancel</button>
         </div>
     </div>
 
     <div id="brandModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
         <div class="bg-white p-6 rounded-xl w-96">
-            <h2 class="text-xl font-bold mb-4 text-green-700">Add Brand</h2>
+            <h2 class="text-xl font-bold mb-4 text-black">Add Brand</h2>
 
             <input id="newBrandName" type="text" class="w-full p-2 border rounded mb-3" placeholder="Brand Name">
 
-            <button onclick="saveBrand()" class="w-full py-2 bg-green-600 text-white rounded">Save</button>
+            <button onclick="saveBrand()" class="w-full py-2 bg-black text-white text-white rounded">Save</button>
             <button onclick="closeBrandModal()" class="w-full mt-2 py-2 border rounded">Cancel</button>
         </div>
     </div>

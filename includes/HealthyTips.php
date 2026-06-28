@@ -32,7 +32,7 @@
             flex-grow: 1;
         }
         .safety-item i { font-size: 40px; margin-right: 15px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
-        .dos { color: #15803d; }
+        .dos { color: #000000; }
         .donts { color: #b91c1c; }
         .content-list {
             list-style: none;

@@ -81,7 +81,7 @@ if ($action === 'send_otp') {
         $mail->Body    = "
             <div style='font-family:Arial,sans-serif;max-width:480px;margin:auto;
                         border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;'>
-                <div style='background:linear-gradient(135deg,#e91e63,#6a1b9a);
+                <div style='background:linear-gradient(135deg,#000000,#000000);
                             padding:20px;text-align:center;'>
                     <h2 style='color:white;margin:0;'>RGreenMart</h2>
                     <p style='color:rgba(255,255,255,0.85);margin:4px 0 0;font-size:13px;'>
@@ -95,7 +95,7 @@ if ($action === 'send_otp') {
                     <div style='text-align:center;background:#f9fafb;border-radius:12px;
                                 padding:20px;margin-bottom:20px;border:1px solid #e5e7eb;'>
                         <span style='font-size:40px;font-weight:800;letter-spacing:10px;
-                                     color:#e91e63;font-family:monospace;'>{$otp}</span>
+                                     color:#000000;font-family:monospace;'>{$otp}</span>
                     </div>
                     <p style='font-size:12px;color:#9ca3af;text-align:center;margin:0;'>
                         This OTP expires in <strong>10 minutes</strong>.
@@ -243,7 +243,7 @@ if ($action === 'send_verify_otp') {
         $mail->Body    = "
             <div style='font-family:Arial,sans-serif;max-width:480px;margin:auto;
                         border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;'>
-                <div style='background:linear-gradient(135deg,#e91e63,#6a1b9a);
+                <div style='background:linear-gradient(135deg,#000000,#000000);
                             padding:20px;text-align:center;'>
                     <h2 style='color:white;margin:0;'>RGreenMart</h2>
                     <p style='color:rgba(255,255,255,0.85);margin:4px 0 0;font-size:13px;'>
@@ -257,7 +257,7 @@ if ($action === 'send_verify_otp') {
                     <div style='text-align:center;background:#f9fafb;border-radius:12px;
                                 padding:20px;margin-bottom:20px;border:1px solid #e5e7eb;'>
                         <span style='font-size:40px;font-weight:800;letter-spacing:10px;
-                                     color:#e91e63;font-family:monospace;'>$otp</span>
+                                     color:#000000;font-family:monospace;'>$otp</span>
                     </div>
                     <p style='font-size:12px;color:#9ca3af;text-align:center;margin:0;'>
                         This OTP expires in <strong>10 minutes</strong>.

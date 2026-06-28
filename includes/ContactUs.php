@@ -104,7 +104,7 @@ $email = $contact['email'] ?? 'sales@rgreenmart.com';
                         <div class="text-center">
                             <button type="submit"
                                     class="btn btn-primary w-full text-white font-semibold py-3 px-8 transition-all duration-300"
-                                    style="background: linear-gradient(135deg, #e91e63, #6a1b9a); border: none;"> Send Message
+                                    style="background: linear-gradient(135deg, #000000, #000000); border: none;"> Send Message
                             </button>
                         </div>
                     </form>
@@ -143,7 +143,7 @@ $conn = null;
 .section-title h2 {
     font-size: 32px;
     font-weight: bold;
-    color: #059669;
+    color: #000000;
     margin-bottom: 12px;
     text-align: center;
 }
@@ -219,7 +219,7 @@ $conn = null;
 
 .php-email-form .sent-message {
     background: #e6ffed;
-    color: #16a34a;
+    color: #000000;
 }
 
 .php-email-form .loading.show,

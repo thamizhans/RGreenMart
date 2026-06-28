@@ -74,6 +74,7 @@ $totalUsers = $conn->query("SELECT COUNT(*) FROM users")->fetchColumn();
             margin-left: 3rem;
         }
     </style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body class="bg-gray-100">
     <div class="admin-container flex">
@@ -83,7 +84,7 @@ $totalUsers = $conn->query("SELECT COUNT(*) FROM users")->fetchColumn();
         <h2 class="text-2xl font-bold text-indigo-600 mb-6">User Management Panel</h2>
             <?php if (!empty($message)): ?>
         <div id="successMessage"
-            class="mb-4 p-3 rounded bg-green-100 text-green-800 border border-green-300">
+            class="mb-4 p-3 rounded bg-black text-white text-black border border-black">
             <?= htmlspecialchars($message) ?>
         </div>
     <?php endif; ?>

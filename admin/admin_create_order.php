@@ -100,7 +100,7 @@ body { background: #f0f4ff; }
 /* Toast */
 #toast-wrap{position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:10px;pointer-events:none;}
 .toast{min-width:260px;max-width:360px;padding:12px 16px;border-radius:10px;font-size:14px;font-weight:500;box-shadow:0 4px 16px rgba(0,0,0,.15);display:flex;align-items:flex-start;gap:10px;animation:toastIn .3s ease;pointer-events:auto;}
-.toast.success{background:#f0fdf4;border:1px solid #86efac;color:#166534;}
+.toast.success{background:#eaeaea;border:1px solid #86efac;color:#166534;}
 .toast.error{background:#fef2f2;border:1px solid #fca5a5;color:#991b1b;}
 .toast.info{background:#eff6ff;border:1px solid #93c5fd;color:#1e40af;}
 .toast.warning{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;}
@@ -113,6 +113,7 @@ body { background: #f0f4ff; }
 #addrModal{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:8000;display:flex;align-items:center;justify-content:center;}
 #addrModal.hidden{display:none;}
 </style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body>
 <div class="admin-container flex">
@@ -269,7 +270,7 @@ body { background: #f0f4ff; }
 
                     <!-- Shipping mode info banner -->
                     <div class="mb-4 p-3 rounded-lg border text-sm font-medium
-                        <?php if($shippingMode==='free') echo 'bg-green-50 border-green-200 text-green-800';
+                        <?php if($shippingMode==='free') echo 'bg-gray-100 border-black text-black';
                               elseif($shippingMode==='conditional') echo 'bg-blue-50 border-blue-200 text-blue-800';
                               elseif($shippingMode==='fixed') echo 'bg-yellow-50 border-yellow-200 text-yellow-800';
                               elseif($shippingMode==='broker') echo 'bg-purple-50 border-purple-200 text-purple-800';
@@ -637,10 +638,10 @@ function autoSetShipping() {
     const result = document.getElementById('shippingResult');
     result.classList.remove('hidden');
     result.innerHTML = `
-        <div class="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg text-sm">
-            <span class="text-green-700 font-semibold">${icon} ${courierLabel}</span>
+        <div class="flex items-center gap-3 p-3 bg-gray-100 border border-black rounded-lg text-sm">
+            <span class="text-black font-semibold">${icon} ${courierLabel}</span>
             <span class="text-gray-600">Charge: <strong class="text-gray-900">₹${charge.toFixed(2)}</strong></span>
-            <span class="ml-auto text-green-600 font-semibold text-xs">✓ Applied</span>
+            <span class="ml-auto text-black font-semibold text-xs">✓ Applied</span>
         </div>`;
     showToast('Shipping applied: ' + courierLabel + ' – ₹' + charge.toFixed(2), 'success');
 }
@@ -684,8 +685,8 @@ async function fetchShipping() {
     };
 
     result.innerHTML = `
-        <div class="flex items-center gap-4 flex-wrap p-3 bg-green-50 border border-green-200 rounded-lg text-sm">
-            <span class="text-green-700 font-semibold">✓ ${data.courier_name}</span>
+        <div class="flex items-center gap-4 flex-wrap p-3 bg-gray-100 border border-black rounded-lg text-sm">
+            <span class="text-black font-semibold">✓ ${data.courier_name}</span>
             <span class="text-gray-700">Shipping: <strong>₹${data.rate}</strong></span>
             ${data.estimated_delivery_days ? `<span class="text-gray-500">ETA: <strong>${data.estimated_delivery_days} days</strong></span>` : ''}
             ${data.etd ? `<span class="text-gray-400 text-xs">(${data.etd})</span>` : ''}
@@ -807,12 +808,12 @@ async function placeOrder() {
 
             // Show big success banner
             result.innerHTML = `
-                <div class="p-5 bg-green-50 border-2 border-green-300 rounded-xl text-green-800 mt-2">
+                <div class="p-5 bg-gray-100 border-2 border-black rounded-xl text-black mt-2">
                     <div class="flex items-center gap-3 mb-3">
                         <span class="text-3xl">✅</span>
                         <div>
                             <p class="text-lg font-bold">Order #${data.order_id} Placed Successfully!</p>
-                            <p class="text-sm text-green-600">${data.message || ''}</p>
+                            <p class="text-sm text-black">${data.message || ''}</p>
                         </div>
                     </div>
                     <p class="text-xs text-gray-500 mb-4">📄 Invoice is being generated and will appear in Enquiries shortly.</p>

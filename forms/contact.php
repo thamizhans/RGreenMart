@@ -116,7 +116,7 @@ try {
     $mail->Subject = '[Contact] ' . $subject;
     $mail->Body    = '
 <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #e5e7eb;border-radius:8px;overflow:hidden;">
-  <div style="background:linear-gradient(135deg,#e91e63,#6a1b9a);padding:18px 24px;">
+  <div style="background:linear-gradient(135deg,#000000,#000000);padding:18px 24px;">
     <h2 style="color:#fff;margin:0;font-size:18px;">New Contact Form Message</h2>
   </div>
   <div style="padding:24px;">
@@ -128,7 +128,7 @@ try {
       <tr style="background:#f9fafb;">
         <td style="padding:8px 4px;color:#6b7280;font-weight:600;">Email</td>
         <td style="padding:8px 4px;">
-          <a href="mailto:' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '" style="color:#6a1b9a;">'
+          <a href="mailto:' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '" style="color:#000000;">'
             . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . '</a>
         </td>
       </tr>

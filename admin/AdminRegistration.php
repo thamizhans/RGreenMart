@@ -56,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$error) {
 <head>
     <meta charset="UTF-8">
     <title>Admin Registration</title>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body>
 <div style="padding-top:10%;">
@@ -67,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$error) {
         <?php endif; ?>
 
         <?php if ($success): ?>
-            <p style="color:green;font-weight:bold;"><?= htmlspecialchars($success) ?></p>
+            <p style="color: black;font-weight:bold;"><?= htmlspecialchars($success) ?></p>
         <?php endif; ?>
 
         <form method="POST" style="display:flex;flex-direction:column;">

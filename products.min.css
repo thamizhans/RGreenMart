@@ -149,7 +149,7 @@ td {
   text-decoration: line-through;
 }
 .discounted-price {
-  color: #16a34a;
+  color: #000000;
   font-weight: 700;
   font-size: 1.25rem;
 }
@@ -177,10 +177,10 @@ td {
   background-color: #b91c1c;
 }
 .quantity-controls button.plus {
-  background-color: #16a34a;
+  background-color: #000000;
 }
 .quantity-controls button.plus:hover {
-  background-color: #15803d;
+  background-color: #000000;
 }
 .quantity-controls input {
   width: 4rem;
@@ -399,8 +399,8 @@ td {
   font-weight: 700;
   color: #1f2937;
 }
-.btn-success {
-  background: #16a34a;
+.btn-dark {
+  background: #000000;
   color: #fff;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
@@ -408,8 +408,8 @@ td {
   font-weight: 700;
   transition: all 0.2s;
 }
-.btn-success:hover {
-  background: #15803d;
+.btn-dark:hover {
+  background: #000000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .modal {

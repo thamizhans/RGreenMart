@@ -191,7 +191,7 @@ unset($it);
         font-weight: 700;
         text-align: center;
     }
-    .stock-ok   { background: #dcfce7; color: #15803d; }
+    .stock-ok   { background: #dcfce7; color: #000000; }
     .stock-low  { background: #fef9c3; color: #854d0e; }
     .stock-none { background: #fee2e2; color: #b91c1c; }
 
@@ -280,11 +280,12 @@ unset($it);
     }
     .toast.fadeOut { animation: slideOut .35s ease forwards; }
     @keyframes slideOut { to { transform: translateX(120%); opacity: 0; } }
-    .toast.success { background: #f0fdf4; color: #15803d; border: 1px solid #86efac; }
+    .toast.success { background: #eaeaea; color: #000000; border: 1px solid #86efac; }
     .toast.error   { background: #fef2f2; color: #b91c1c; border: 1px solid #fca5a5; }
     .toast-icon { font-size: 18px; flex-shrink: 0; }
     .toast-msg  { flex: 1; }
 </style>
+<link rel="stylesheet" href="/admin-editorial.css">
 </head>
 <body class="bg-gray-100">
 

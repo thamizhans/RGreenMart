@@ -102,60 +102,33 @@ function loadCart() {
         const row = document.createElement("div");
         row.classList.add("cart-item-row");
 
+        row.classList.remove("cart-item-row");
+        row.classList.add("zara-cart-item");
+
         row.innerHTML = `
-            <div class="cart-item-info">
-                <img src="${item.image || './images/default.jpg'}" class="cart-img">
-                <div class="floatright">
-                    <h4 style="font-weight: 800"; font-size: 16px;">${item.name}</h4>
-                    <span>${item.brand || ""}</span>
-                    ${ (item.variant_weight || item.variant_unit) ? `<div class="variant">Weight: ${item.variant_weight || ''}${item.variant_unit ? ' ' + item.variant_unit : ''}</div>` : '' }
-                    <div class="price-meta">
-
-                        ${item.variant_old_price && Number(item.variant_old_price) > unitPrice 
-                        ? `<span class="old-price">
-                                ₹${Number(item.variant_old_price)}
-                        </span>` 
-                        : ''}
-
-                        <span class="final-price">
-                            ₹${Number(unitPrice)}
-                        </span>
-
-                        ${item.variant_discount 
-                        ? `<span class="discount">
-                                (${Math.floor(item.variant_discount)}% OFF)
-                        </span>` 
-                        : ''}
-
+            <img src="${item.image || './images/default.jpg'}" class="zara-cart-img">
+            <div class="zara-cart-info">
+                <div class="zara-cart-title-row">
+                    <h4 class="zara-cart-name">${item.name}</h4>
+                    <span class="zara-cart-price">₹${Number(unitPrice)}</span>
+                </div>
+                
+                <p class="zara-cart-meta">
+                    ${item.brand || ""} 
+                    ${ (item.variant_weight || item.variant_unit) ? ` | ${item.variant_weight || ''}${item.variant_unit ? ' ' + item.variant_unit : ''}` : '' }
+                </p>
+                
+                <div class="zara-cart-actions">
+                    <div class="zara-qty-control">
+                        ${qty > 1 
+                            ? `<button class="zara-qty-btn" onclick="changeQuantity(${index}, -1)">-</button>`
+                            : `<button class="zara-qty-btn" style="color:#ddd" disabled>-</button>`
+                        }
+                        <span>${qty}</span>
+                        <button class="zara-qty-btn" onclick="changeQuantity(${index}, 1)">+</button>
                     </div>
-                    <br/>
-                    <button class=" delete-btn" onclick="removeItem(${index})">
-                               Remove
-                           </button>
+                    <button class="zara-cart-delete" onclick="removeItem(${index})">DELETE</button>
                 </div>
-            </div>
-
-            <div class="qty custqty">
-                <div class="qty-box">
-                    ${qty > 1 
-                        ? `<button class="qty-btn" onclick="changeQuantity(${index}, -1)">
-                                <i class="fa-solid fa-minus"></i>
-                           </button>`
-                        : `<button class="qty-btn delete-btn" onclick="removeItem(${index})">
-                                <i class="fa-solid fa-trash"></i>
-                           </button>`
-                    }
-                    <hr class="hrline">
-                    <input id="qty-${index}" class="qty-input" type="number" value=${qty} min="1" onchange="setQty(${index}, this.value)">
-                    <hr class="hrline">
-                    <button class="qty-btn" onclick="changeQuantity(${index}, 1)">
-                        <i class="fa-solid fa-plus"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="cart-item-amount">
-                <strong class="m-1">₹</strong><span id="amount-${index}" class="itemtotal">${itemTotal.toFixed(2)}</span>
             </div>
         `;
 
